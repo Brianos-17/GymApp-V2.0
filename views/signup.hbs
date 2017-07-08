@@ -1,0 +1,65 @@
+{{> welcome-menu id="signup"}}
+
+<div class="ui two column grid basic middle aligned segment">
+    <div class="column">
+        <form class="ui stacked segment form" name="signup" action="/register" method="POST"
+              onsubmit="return validatePassword()">
+            <h3 class="ui header"> Register </h3>
+
+            <div class="two fields">
+                <div class="required field">
+                    <label> First Name </label>
+                    <input placeholder="First Name..." type="text" name="firstName" required>
+                </div>
+
+                <div class="required field">
+                    <label> Last Name </label>
+                    <input placeholder="Last Name..." type="text" name="lastName" required>
+                </div>
+            </div>
+
+            <div class="required field">
+                <label> Email </label>
+                <input placeholder="E-mail Address..." type="email" name="email" required>
+            </div>
+
+            <div class="required field">
+                <label> Password </label>
+                <input placeholder="Password..." type="password" name="password" required>
+            </div>
+            <div class="required field">
+                <label> Password Validation </label>
+                <input placeholder="Please enter the same password as above..." type="password" name="passwordValid">
+            </div>
+
+            <div class="field">
+                <label> Gender </label>
+                <select class="ui dropdown" name="gender">
+                    <option value=""> Unspecified </option>
+                    <option value="male"> Male</option>
+                    <option value="female"> Female</option>
+                </select>
+            </div>
+
+            <div class="two fields">
+                <div class="required field">
+                    <label> Height </label>
+                    <input placeholder="Height(in Metres)..." type="number" step=".01" min="1" max="3" name="height" required>
+                </div>
+                <div class="required field">
+                    <label> Current Starting Weight </label>
+                    <input placeholder="Starting Weight(in KGs)..." type="number" step=".01" min="35" max="250" name="startingWeight" required>
+                </div>
+            </div>
+
+            <button class="ui blue submit button"> Submit </button>
+            <div class="ui error message"></div>
+
+        </form>
+
+    </div>
+    <div class="column">
+        <img class="ui image" src="../../public/images/Sign_Up.png">
+    </div>
+
+</div>
