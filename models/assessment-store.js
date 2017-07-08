@@ -39,4 +39,4 @@ const assessment = {
   },
 };
 
-module.exports = assessmentStore;
+module.exports = assessment;
