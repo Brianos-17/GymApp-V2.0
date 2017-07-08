@@ -19,7 +19,7 @@ const assessment = {
   },
 
   getMemberAssessments(memberid) {
-    return this.store.findBy(this.collection, {memberid: memberid});
+    return this.store.findBy(this.collection, { memberid: memberid });
   },
 
   addAssessment(assessment) {
