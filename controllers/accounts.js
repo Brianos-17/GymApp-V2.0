@@ -50,19 +50,16 @@ const accounts = {
       response.cookie('member', member.email);
       logger.info(`${member.email} successfully authenticated. Logging in.`);
       response.redirect('/dashboard');
-    }
-    else {
+    } else {
       logger.info('authentication failed');
       response.redirect('/login');
     }
-    },
+  },
 
-    getCurrentMember(request) {
-      const memberEmail = request.cookies.member;
-      return memberStore.getMemberByEmail(memberEmail);
-    },
-  };
-
-  module.exports = accounts;
-
+  getCurrentMember(request) {
+    const memberEmail = request.cookies.member;
+    return memberStore.getMemberByEmail(memberEmail);
+  },
 };
+
+module.exports = accounts;
