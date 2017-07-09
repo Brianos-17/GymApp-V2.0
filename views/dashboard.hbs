@@ -1,28 +1,2 @@
 {{> member-menu id = "dashboard"}}
 
-<section class="ui raised segment">
-    <header class="ui center aligned header">
-        ${member.firstName} ${member.lastName}'s Assessments
-    </header>
-
-    <div class="ui center aligned middle aligned segment">
-        <div class="ui four column grid">
-            <div class="column">
-                <i class="huge user icon"></i>
-                <h3>${member.firstName} ${member.lastName}</h3>
-            </div>
-            <div class="column">
-                <i class="huge ${member.isIdealBodyWeight()} dashboard icon"></i>
-                <h3>Ideal Weight Indicator</h3>
-            </div>
-            <div class="column">
-                <i class="huge heartbeat icon"></i>
-                <h3>BMI ${member.calculateBMI()}</h3>
-            </div>
-            <div class="column">
-                <i class="huge doctor icon"></i>
-                <h3>${member.determineBMICategory(member.calculateBMI())}</h3>
-            </div>
-        </div>
-    </div>
-</section>
