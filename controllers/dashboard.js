@@ -14,6 +14,7 @@ const dashboard = {
     const loggedInMember = accounts.getCurrentMember(request);
     const viewData = {
       title: 'Member Dashboard',
+      member: loggedInMember,
       assessments: assessments.getMemberAssessments(loggedInMember.id),
     };
     logger.info(`rendering assessments for ${loggedInMember.firstName}`, assessments.getAllAssessments());
@@ -31,12 +32,14 @@ const dashboard = {
     const loggedInMember = accounts.getCurrentMember(request);
     const newAssessment = {
       id: uuid(),
+      date: new Date(),
       weight: request.body.weight,
       chest: request.body.chest,
       thigh: request.body.thigh,
       upperArm: request.body.upperArm,
       waist: request.body.waist,
       hips: request.body.hips,
+      comment: '',
     };
     logger.debug(`Adding new assessment for ${loggedInMember.firstName}`, newAssessment);
     assessments.addAssessment(newAssessment);

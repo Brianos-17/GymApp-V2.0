@@ -15,24 +15,24 @@
     </thead>
     <tbody>
     <div class="ui bulleted list">
-        {{#each }}
+        {{#each assessments}}
         <tr>
-            <td>${assessment.date}</td>
-            <td>${assessment.weight}</td>
-            <td>${assessment.chest}</td>
-            <td>${assessment.thigh}</td>
-            <td>${assessment.upperArm}</td>
-            <td>${assessment.waist}</td>
-            <td>${assessment.hips}</td>
-            <td><i class="large ${assessment.getTrend()} arrow circle left icon"></i></td>
-            <td>${assessment.comment}</td>
+            <td>{{date}}</td>
+            <td>{{weight}}</td>
+            <td>{{chest}}</td>
+            <td>{{thigh}}</td>
+            <td>{{upperArm}}</td>
+            <td>{{waist}}</td>
+            <td>{{hips}}</td>
+            <!--<td><i class="large ${assessment.getTrend()} arrow circle left icon"></i></td>-->
+            <td>{{comment}}</td>
             <td>
-                <a href="/dashboard/deleteassessment/${assessment.id}">
+                <a href="/dashboard/deleteassessment/{{id}}">
                     <i class=" large red trash icon"></i>
                 </a>
             </td>
         </tr>
-        #{/list}
+        {{/each}}
     </div>
     </tbody>
 </table>

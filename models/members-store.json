@@ -1,8 +1,8 @@
 {
   "members": [
     {
-      "firstName": "homer",
-      "lastName": "simpson",
+      "firstName": "Homer",
+      "lastName": "Simpson",
       "email": "homer@simpson.com",
       "password": "secret",
       "gender": "M",
@@ -11,8 +11,8 @@
       "id": "3ad52697-6d98-4d80-8273-084de55a86c0"
     },
     {
-      "firstName": "marge",
-      "lastName": "simpson",
+      "firstName": "Marge",
+      "lastName": "Simpson",
       "email": "marge@simpson.com",
       "password": "secret",
       "gender": "F",
