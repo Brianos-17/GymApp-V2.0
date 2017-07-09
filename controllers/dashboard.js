@@ -31,8 +31,17 @@ const dashboard = {
     const loggedInMember = accounts.getCurrentMember(request);
     const newAssessment = {
       id: uuid(),
+      weight: request.body.weight,
+      chest: request.body.chest,
+      thigh: request.body.thigh,
+      upperArm: request.body.upperArm,
+      waist: request.body.waist,
+      hips: request.body.hips,
+    };
+    logger.debug(`Adding new assessment for ${loggedInMember.firstName}`, newAssessment);
+    assessments.addAssessment(newAssessment);
+    response.redirect('/dashboard');
+  },
+};
 
-    }
-  }
-
-}
+module.exports = dashboard;
