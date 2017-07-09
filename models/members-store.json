@@ -5,6 +5,9 @@
       "lastName": "simpson",
       "email": "homer@simpson.com",
       "password": "secret",
+      "gender": "M",
+      "height": "1.9",
+      "startingWeight": "78",
       "id": "3ad52697-6d98-4d80-8273-084de55a86c0"
     },
     {
@@ -12,6 +15,9 @@
       "lastName": "simpson",
       "email": "marge@simpson.com",
       "password": "secret",
+      "gender": "F",
+      "height": "1.6",
+      "startingWeight": "65",
       "id": "2b6f0989-7b7f-4a38-ad26-aa06b922d751"
     }
   ]
