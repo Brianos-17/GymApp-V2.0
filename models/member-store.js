@@ -7,7 +7,6 @@ const _ = require('lodash');
 const JsonStore = require('./json-store');
 
 const memberStore = {
-
   store: new JsonStore('./models/members-store.json', { members: [] }),
   collection: 'members',
 

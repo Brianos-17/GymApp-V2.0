@@ -3,7 +3,7 @@
  */
 'use strict';
 
-const memberStore = require('../models/member-store');
+const memberStore = require('../models/members-store');
 const trainerStore = require('../models/trainer-store');
 const logger = require('../utils/logger');
 const uuid = require('uuid');

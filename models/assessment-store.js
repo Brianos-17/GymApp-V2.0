@@ -7,8 +7,8 @@ const _ = require('lodash');
 const JsonStore = require('./json-store');
 
 const assessment = {
-  store: new JsonStore('./models/assessment-store.json', { assessmentCollection: [] }),
-  collection: 'assessmentCollection',
+  store: new JsonStore('./models/members-store.json', { assessments: [] }),
+  collection: 'assessments',
 
   getAllAssessments() {
     return this.store.findAll(this.collection);
