@@ -27,12 +27,19 @@ const memberStore = {
   },
 
   getMemberByEmail(email) {
-    return this.store.findOneBy(this.collection, { email: email});
+    return this.store.findOneBy(this.collection, { email: email });
   },
 
   addAssessment(id, assessment) {
     const member = this.getMemberById(id);
     member.assessments.push(assessment);
+    this.store.save();
+  },
+
+  removeAssessment(id, assessmentId) {
+    const member = this.getMemberById(id);
+    const assessments = member.assessments;
+    _.remove(assessments, { assessmentId: assessmentId });
     this.store.save();
   },
 };

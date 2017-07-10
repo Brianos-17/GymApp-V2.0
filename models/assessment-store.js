@@ -18,15 +18,6 @@ const assessment = {
     return this.store.findOneBy(this.collection, { assessmentId: assessmentId });
   },
 
-  // getMemberAssessments(memberId) {
-  //   return this.store.findBy(this.collection, { memberId: memberId });
-  // },
-
-  addAssessment(assessment) {
-    this.store.add(this.collection, assessment);
-    this.store.save();
-  },
-
   removeAssessment(assessmentId) {
     const assessment = this.getAssessment(assessmentId);
     this.store.remove(this.collection, assessment);

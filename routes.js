@@ -16,11 +16,11 @@ router.get('/signup', accounts.signup);
 router.get('/logout', accounts.logout);
 router.get('/about', about.index);
 router.get('/dashboard', dashboard.index);
+router.get('/dashboard/removeAssessment/:id', dashboard.removeAssessment);
 
 router.post('/register', accounts.register);
 router.post('/authenticate', accounts.authenticate);
 router.post('/dashboard/addassessment', dashboard.addAssessment);
 
-router.get('/dashboard/deleteassessment/:id', dashboard.deleteAssessment);
 
 module.exports = router;

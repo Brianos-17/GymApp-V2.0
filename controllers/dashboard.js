@@ -20,10 +20,10 @@ const dashboard = {
     response.render('dashboard', viewData);
   },
 
-  deleteAssessment(request, response) {
+  removeAssessment(request, response) {
     const assessmentId = request.params.id;
     logger.debug(`Deleting Assessment ${assessmentId}`);
-    assessments.removeAssessment(assessmentId);
+    member.removeAssessment(assessmentId);
     response.redirect('/dashboard');
   },
 
