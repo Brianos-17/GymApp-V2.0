@@ -1,0 +1,48 @@
+{
+  "members": [
+    {
+      "firstName": "Homer",
+      "lastName": "Simpson",
+      "email": "homer@simpson.com",
+      "password": "secret",
+      "gender": "M",
+      "height": "1.9",
+      "startingWeight": "78",
+      "id": "3ad52697-6d98-4d80-8273-084de55a86c0",
+      "assessments": [
+        {
+          "date": "2017/04/17 13:22:34",
+          "weight": "123.3",
+          "chest": "45.0",
+          "thigh": "12.5",
+          "upperArm": "23.3",
+          "waist": "32.0",
+          "hips": "38.0",
+          "trend": "",
+          "comment": "Needs Improvement"
+        },
+        {
+          "assessmentId": "30321e24-0d5c-48f1-a50c-f073e32d30cf",
+          "date": "2017-07-10 17:15:35",
+          "weight": "345",
+          "chest": "3456",
+          "thigh": "2345",
+          "upperArm": "345",
+          "waist": "345",
+          "hips": "2345",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "firstName": "Marge",
+      "lastName": "Simpson",
+      "email": "marge@simpson.com",
+      "password": "secret",
+      "gender": "F",
+      "height": "1.6",
+      "startingWeight": "65",
+      "id": "2b6f0989-7b7f-4a38-ad26-aa06b922d751"
+    }
+  ]
+}
