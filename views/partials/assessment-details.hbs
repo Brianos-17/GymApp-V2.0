@@ -15,7 +15,7 @@
     </thead>
     <tbody>
     <div class="ui bulleted list">
-        {{#each assessments}}
+        {{#each member.assessments}}
         <tr>
             <td>{{date}}</td>
             <td>{{weight}}</td>
@@ -24,7 +24,7 @@
             <td>{{upperArm}}</td>
             <td>{{waist}}</td>
             <td>{{hips}}</td>
-            <!--<td><i class="large ${assessment.getTrend()} arrow circle left icon"></i></td>-->
+            <td><i class="large {{trend}} arrow circle left icon"></i></td>
             <td>{{comment}}</td>
             <td>
                 <a href="/dashboard/deleteassessment/{{id}}">

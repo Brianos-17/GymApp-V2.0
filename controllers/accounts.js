@@ -26,6 +26,7 @@ const accounts = {
 
   logout(request, response) {
     response.cookie('member', '');
+    logger.info('Logging out...');
     response.redirect('/');
   },
 

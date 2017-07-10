@@ -25,5 +25,5 @@ const routes = require('./routes');
 app.use('/', routes);
 
 const listener = app.listen(process.env.PORT || 4000, function () {
-  logger.info(`glitch-template-1 started on port ${listener.address().port}`);
+  logger.info(`GymApp-V2.0 started on port ${listener.address().port}`);
 });

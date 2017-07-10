@@ -15,9 +15,8 @@ const dashboard = {
     const viewData = {
       title: 'Member Dashboard',
       member: loggedInMember,
-      assessments: assessments.getMemberAssessments(loggedInMember.id),
     };
-    logger.info(`rendering assessments for ${loggedInMember.firstName}`, assessments.getAllAssessments());
+    logger.info(`rendering assessments for ${loggedInMember.firstName}`);
     response.render('dashboard', viewData);
   },
 
@@ -31,7 +30,8 @@ const dashboard = {
   addAssessment(request, response) {
     const loggedInMember = accounts.getCurrentMember(request);
     const newAssessment = {
-      id: uuid(),
+      assessmentId: uuid(),
+      memberId: loggedInMember.id,
       date: new Date(),
       weight: request.body.weight,
       chest: request.body.chest,

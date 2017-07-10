@@ -18,8 +18,8 @@ const memberStore = {
     this.store.add(this.collection, member);
   },
 
-  getMemberById(id) {
-    return this.store.findOneBy(this.collection, { id: id });
+  getMemberById(memberId) {
+    return this.store.findOneBy(this.collection, { memberId: memberId });
   },
 
   getMemberByEmail(email) {

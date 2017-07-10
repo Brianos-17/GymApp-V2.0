@@ -7,20 +7,20 @@ const _ = require('lodash');
 const JsonStore = require('./json-store');
 
 const assessment = {
-  store: new JsonStore('./models/members-store.json', { assessments: [] }),
-  collection: 'assessments',
+  store: new JsonStore('./models/members-store.json', { members: [] }),
+  collection: 'members',
 
   getAllAssessments() {
     return this.store.findAll(this.collection);
   },
 
-  getAssessment(id) {
-    return this.store.findOneBy(this.collection, { id: id });
+  getAssessment(assessmentId) {
+    return this.store.findOneBy(this.collection, { assessmentId: assessmentId });
   },
 
-  getMemberAssessments(memberid) {
-    return this.store.findBy(this.collection, { memberid: memberid });
-  },
+  // getMemberAssessments(memberId) {
+  //   return this.store.findBy(this.collection, { memberId: memberId });
+  // },
 
   addAssessment(assessment) {
     this.store.add(this.collection, assessment);
