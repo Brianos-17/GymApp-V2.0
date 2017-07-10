@@ -14,16 +14,26 @@ const memberStore = {
     return this.store.findAll(this.collection);
   },
 
+  // getMember(id) {
+  //   return this.store.findOneBy(this.collection, { id: id });
+  // },
+
   addMember(member) {
     this.store.add(this.collection, member);
   },
 
-  getMemberById(memberId) {
-    return this.store.findOneBy(this.collection, { memberId: memberId });
+  getMemberById(id) {
+    return this.store.findOneBy(this.collection, { id: id });
   },
 
   getMemberByEmail(email) {
     return this.store.findOneBy(this.collection, { email: email});
+  },
+
+  addAssessment(id, assessment) {
+    const member = this.getMemberById(id);
+    member.assessments.push(assessment);
+    this.store.save();
   },
 };
 

@@ -5,7 +5,7 @@
 
 const logger = require('../utils/logger.js');
 const accounts = require('./accounts.js');
-const assessments = require('../models/assessment-store.js');
+const member = require('../models/members-store.js');
 const uuid = require('uuid');
 
 const dashboard = {
@@ -29,10 +29,10 @@ const dashboard = {
 
   addAssessment(request, response) {
     const loggedInMember = accounts.getCurrentMember(request);
+    const memberId = loggedInMember.id;
     const newAssessment = {
       assessmentId: uuid(),
-      memberId: loggedInMember.id,
-      date: new Date(),
+      date: new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''),
       weight: request.body.weight,
       chest: request.body.chest,
       thigh: request.body.thigh,
@@ -42,7 +42,7 @@ const dashboard = {
       comment: '',
     };
     logger.debug(`Adding new assessment for ${loggedInMember.firstName}`, newAssessment);
-    assessments.addAssessment(newAssessment);
+    member.addAssessment(memberId, newAssessment);
     response.redirect('/dashboard');
   },
 };
