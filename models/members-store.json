@@ -42,6 +42,17 @@
           "waist": "2",
           "hips": "2",
           "comment": ""
+        },
+        {
+          "assessmentId": "30321e24-0d5c-48f1-a50c-f073e32d30cf",
+          "date": "2017-07-10 17:15:35",
+          "weight": "345",
+          "chest": "3456",
+          "thigh": "2345",
+          "upperArm": "345",
+          "waist": "345",
+          "hips": "2345",
+          "comment": ""
         }
       ]
     },

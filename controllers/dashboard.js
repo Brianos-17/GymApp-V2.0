@@ -32,7 +32,7 @@ const dashboard = {
     const memberId = loggedInMember.id;
     const newAssessment = {
       assessmentId: uuid(),
-      date: new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''),
+      date: new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''), //Retrieved from https://stackoverflow.com/questions/10645994/node-js-how-to-format-a-date-string-in-utc
       weight: request.body.weight,
       chest: request.body.chest,
       thigh: request.body.thigh,
