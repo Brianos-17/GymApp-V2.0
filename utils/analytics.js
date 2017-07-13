@@ -8,7 +8,7 @@ const member = require('../models/members-store');
 const analytics = {
   calculateBMI(member) {
     const list = member.assessments;
-    const latestAssessment = list[0];
+    const latestAssessment = list[0];//Check first assessment as all new ones are being added to start, not end
     if (list.length > 0) {
       return (latestAssessment.weight / (member.height * member.height));
     } else {
