@@ -7,14 +7,18 @@ const logger = require('../utils/logger.js');
 const accounts = require('./accounts.js');
 const member = require('../models/members-store.js');
 const uuid = require('uuid');
+const analytics = require('../utils/analytics');
 
 const dashboard = {
   index(request, response) {
     logger.info('rendering dashboard');
     const loggedInMember = accounts.getCurrentMember(request);
+    const bmi = analytics.calculateBMI(loggedInMember);
     const viewData = {
       title: 'Member Dashboard',
       member: loggedInMember,
+      bmi: analytics.calculateBMI(loggedInMember),
+      bmiCategory: analytics.BMICategory(bmi),
     };
     logger.info(`rendering assessments for ${loggedInMember.firstName}`);
     response.render('dashboard', viewData);
