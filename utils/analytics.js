@@ -10,29 +10,29 @@ const analytics = {
     const list = member.assessments;
     const latestAssessment = list[0];//Check first assessment as all new ones are being added to start, not end
     if (list.length > 0) {
-      return (latestAssessment.weight / (member.height * member.height));
+      return (latestAssessment.weight / (member.height * member.height)).toFixed(2);//rounds number to 2 decimal places
     } else {
-      return (member.startingWeight / (member.height * member.height));
+      return (member.startingWeight / (member.height * member.height)).toFixed(2);
     }
   },
 
   BMICategory(bmi) {
     if (bmi < 15) {
-      return "VERY SEVERELY UNDERWEIGHT";
+      return 'VERY SEVERELY UNDERWEIGHT';
     } else if ((bmi >= 15) && (bmi < 16)) {
-      return "SEVERELY UNDERWEIGHT";
+      return 'SEVERELY UNDERWEIGHT';
     } else if ((bmi >= 16) && (bmi < 18.5)) {
-      return "UNDERWEIGHT";
+      return 'UNDERWEIGHT';
     } else if ((bmi >= 18.5) && (bmi < 25)) {
-      return "NORMAL";
+      return 'NORMAL';
     } else if ((bmi >= 25) && (bmi < 30)) {
-      return "OVERWEIGHT";
+      return 'OVERWEIGHT';
     } else if ((bmi >= 30) && (bmi < 35)) {
-      return "MODERATELY OBESE";
+      return 'MODERATELY OBESE';
     } else if ((bmi >= 35) && (bmi < 40)) {
-      return "SEVERELY OBESE";
+      return 'SEVERELY OBESE';
     } else {
-      return "VERY SEVERELY OBESE";
+      return 'VERY SEVERELY OBESE';
     }
   },
 };

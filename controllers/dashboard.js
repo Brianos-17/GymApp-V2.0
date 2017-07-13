@@ -19,6 +19,7 @@ const dashboard = {
       member: loggedInMember,
       bmi: bmi,
       bmiCategory: analytics.BMICategory(bmi),
+      idealBodyWeight: analytics
     };
     logger.info(`rendering assessments for ${loggedInMember.firstName}`);
     response.render('dashboard', viewData);

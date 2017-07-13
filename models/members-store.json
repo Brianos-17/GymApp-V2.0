@@ -11,17 +11,6 @@
       "id": "3ad52697-6d98-4d80-8273-084de55a86c0",
       "assessments": [
         {
-          "assessmentId": "3e2c5fc9-39cf-473d-8457-1ee1f1ee37e1",
-          "date": "2017-07-13 14:27:30",
-          "weight": "110",
-          "chest": "1",
-          "thigh": "1",
-          "upperArm": "1",
-          "waist": "1",
-          "hips": "1",
-          "comment": ""
-        },
-        {
           "assessmentId": "30321e24-0d5c-48f1-a50c-f073e32d30cf",
           "date": "2017-07-10 17:15:35",
           "weight": "345",
