@@ -11,6 +11,17 @@
       "id": "3ad52697-6d98-4d80-8273-084de55a86c0",
       "assessments": [
         {
+          "assessmentId": "7ebd5d42-52fb-4776-95cc-8398907b40c0",
+          "date": "2017-07-13 15:52:25",
+          "weight": "79",
+          "chest": "0",
+          "thigh": "0",
+          "upperArm": "0",
+          "waist": "0",
+          "hips": "0",
+          "comment": ""
+        },
+        {
           "assessmentId": "30321e24-0d5c-48f1-a50c-f073e32d30cf",
           "date": "2017-07-10 17:15:35",
           "weight": "345",
@@ -41,8 +52,8 @@
       "email": "marge@simpson.com",
       "password": "secret",
       "gender": "F",
-      "height": "1.4",
-      "startingWeight": "45",
+      "height": "1.6",
+      "startingWeight": "65",
       "id": "2b6f0989-7b7f-4a38-ad26-aa06b922d751"
     }
   ]
