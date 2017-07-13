@@ -17,7 +17,7 @@ const dashboard = {
     const viewData = {
       title: 'Member Dashboard',
       member: loggedInMember,
-      bmi: analytics.calculateBMI(loggedInMember),
+      bmi: bmi,
       bmiCategory: analytics.BMICategory(bmi),
     };
     logger.info(`rendering assessments for ${loggedInMember.firstName}`);

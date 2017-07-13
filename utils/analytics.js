@@ -17,7 +17,23 @@ const analytics = {
   },
 
   BMICategory(bmi) {
-
+    if (bmi < 15) {
+      return "VERY SEVERELY UNDERWEIGHT";
+    } else if ((bmi >= 15) && (bmi < 16)) {
+      return "SEVERELY UNDERWEIGHT";
+    } else if ((bmi >= 16) && (bmi < 18.5)) {
+      return "UNDERWEIGHT";
+    } else if ((bmi >= 18.5) && (bmi < 25)) {
+      return "NORMAL";
+    } else if ((bmi >= 25) && (bmi < 30)) {
+      return "OVERWEIGHT";
+    } else if ((bmi >= 30) && (bmi < 35)) {
+      return "MODERATELY OBESE";
+    } else if ((bmi >= 35) && (bmi < 40)) {
+      return "SEVERELY OBESE";
+    } else {
+      return "VERY SEVERELY OBESE";
+    }
   },
 };
 
