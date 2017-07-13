@@ -15,6 +15,7 @@ const dashboard = {
     const viewData = {
       title: 'Member Dashboard',
       member: loggedInMember,
+      assessmentList: loggedInMember.assessments.reverse(),//Lists assessments in reverse chronological order
     };
     logger.info(`rendering assessments for ${loggedInMember.firstName}`);
     response.render('dashboard', viewData);
@@ -34,6 +35,7 @@ const dashboard = {
     const newAssessment = {
       assessmentId: uuid(),
       date: new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''), //Retrieved from https://stackoverflow.com/questions/10645994/node-js-how-to-format-a-date-string-in-utc
+      //Returns date in simple ISO format, replaces unnecessary characters with spaces to make format readable
       weight: request.body.weight,
       chest: request.body.chest,
       thigh: request.body.thigh,
