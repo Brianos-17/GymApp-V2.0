@@ -8,8 +8,8 @@ const member = require('../models/members-store');
 const analytics = {
   calculateBMI(member) {
     const list = member.assessments;
-    const latestAssessment = list[0];//Check first assessment as all new ones are being added to start, not end
     if (list.length > 0) {
+      const latestAssessment = list[0];//Check first assessment as all new ones are being added to start, not end
       return (latestAssessment.weight / (member.height * member.height)).toFixed(2);//rounds number to 2 decimal places
     } else {
       return (member.startingWeight / (member.height * member.height)).toFixed(2);
@@ -37,24 +37,25 @@ const analytics = {
   },
 
   idealBodyWeight(member) {
-    const inches = (member.height * 39.37).toFixed(2);
+    const inches = (member.height * 39.37);
     const list = member.assessments;
     const latestAssessment = list[0];
     let idealWeight = 0;
     if (inches > 60) {
       const over60 = ((inches - 60) * 2.3);
-      if (member.gender === 'M') {
+      if (member.gender.toString() === 'M') {
         idealWeight = (over60 + 50);
       } else {
         idealWeight = (over60 + 45);
       }
     } else {
-      if (member.gender === 'M') {
+      if (member.gender.toString() === 'M') {
         idealWeight = 50;
       } else {
         idealWeight = 45;
       }
     }
+
     if (list > 0) {
       if ((latestAssessment.weight <= (idealWeight + 2)) && (latestAssessment.weight >= (idealWeight - 2))) {
         return 'green';
