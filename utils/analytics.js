@@ -35,6 +35,38 @@ const analytics = {
       return 'VERY SEVERELY OBESE';
     }
   },
+
+  idealBodyWeight(member) {
+    const inches = (member.height * 39.37).toFixed(2);
+    const list = member.assessments;
+    const latestAssessment = list[0];
+    let idealWeight = 0;
+    if (inches > 60) {
+      const over60 = ((inches - 60) * 2.3);
+      if (member.gender === 'M') {
+        idealWeight = (over60 + 50);
+      } else {
+        idealWeight = (over60 + 45);
+      }
+    } else {
+      if (member.gender === 'M') {
+        idealWeight = 50;
+      } else {
+        idealWeight = 45;
+      }
+    }
+    if (list > 0) {
+      if ((latestAssessment.weight <= (idealWeight + 2)) && (latestAssessment.weight >= (idealWeight - 2))) {
+        return 'green';
+      } else { return 'red';
+      }
+    } else {
+      if ((member.startingWeight <= (idealWeight + 2)) && (member.startingWeight >= (idealWeight - 2))) {
+        return 'green';
+      } else { return 'red';
+      }
+    }
+  },
 };
 
 module.exports = analytics;
