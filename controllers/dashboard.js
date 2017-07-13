@@ -15,7 +15,6 @@ const dashboard = {
     const viewData = {
       title: 'Member Dashboard',
       member: loggedInMember,
-      assessmentList: loggedInMember.assessments.reverse(),//Lists assessments in reverse chronological order
     };
     logger.info(`rendering assessments for ${loggedInMember.firstName}`);
     response.render('dashboard', viewData);

@@ -11,15 +11,26 @@
       "id": "3ad52697-6d98-4d80-8273-084de55a86c0",
       "assessments": [
         {
-          "date": "2017-04-17 13:22:34",
-          "weight": "123.3",
-          "chest": "45.0",
-          "thigh": "12.5",
-          "upperArm": "23.3",
-          "waist": "32.0",
-          "hips": "38.0",
-          "trend": "",
-          "comment": "Needs Improvement"
+          "assessmentId": "b77728a3-7bde-48d8-a66a-f659f887e0b4",
+          "date": "2017-07-13 12:13:35",
+          "weight": "4",
+          "chest": "4",
+          "thigh": "4",
+          "upperArm": "4",
+          "waist": "4",
+          "hips": "4",
+          "comment": ""
+        },
+        {
+          "assessmentId": "a0636283-70c4-4fab-8918-94f88da08988",
+          "date": "2017-07-13 12:13:28",
+          "weight": "3",
+          "chest": "3",
+          "thigh": "3",
+          "upperArm": "3",
+          "waist": "3",
+          "hips": "3",
+          "comment": ""
         },
         {
           "assessmentId": "30321e24-0d5c-48f1-a50c-f073e32d30cf",
@@ -30,7 +41,19 @@
           "upperArm": "345",
           "waist": "345",
           "hips": "2345",
-          "comment": ""
+          "comment": "number 2"
+        },
+        {
+          "assessmentId": "30441e24-0d5f-48f1-a70c-f073e32d30ce",
+          "date": "2017-04-17 13:22:34",
+          "weight": "123.3",
+          "chest": "45.0",
+          "thigh": "12.5",
+          "upperArm": "23.3",
+          "waist": "32.0",
+          "hips": "38.0",
+          "trend": "",
+          "comment": "Needs Improvement"
         }
       ]
     },
