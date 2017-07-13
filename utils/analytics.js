@@ -8,7 +8,7 @@ const member = require('../models/members-store');
 const analytics = {
   calculateBMI(member) {
     const list = member.assessments;
-    if (list.length > 0) {
+    if (list > 0) {
       const latestAssessment = list[0];//Check first assessment as all new ones are being added to start, not end
       return (latestAssessment.weight / (member.height * member.height)).toFixed(2);//rounds number to 2 decimal places
     } else {
@@ -39,7 +39,6 @@ const analytics = {
   idealBodyWeight(member) {
     const inches = (member.height * 39.37);
     const list = member.assessments;
-    const latestAssessment = list[0];
     let idealWeight = 0;
     if (inches > 60) {
       const over60 = ((inches - 60) * 2.3);
@@ -57,6 +56,7 @@ const analytics = {
     }
 
     if (list > 0) {
+      const latestAssessment = list[0];
       if ((latestAssessment.weight <= (idealWeight + 2)) && (latestAssessment.weight >= (idealWeight - 2))) {
         return 'green';
       } else { return 'red';
