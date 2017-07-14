@@ -66,7 +66,20 @@
       "gender": "female",
       "height": "1.4",
       "startingWeight": "44",
-      "id": "d2a47370-5f57-45d6-a4bf-01e47eb20801"
+      "id": "627b19a8-e27a-4455-a3bd-05139528a411",
+      "assessments": [
+        {
+          "assessmentId": "8cb2f91e-7a36-4880-870b-1753b8ef8a71",
+          "date": "2017-07-14 10:58:36",
+          "weight": "120",
+          "chest": "0",
+          "thigh": "0",
+          "upperArm": "0",
+          "waist": "0",
+          "hips": "0",
+          "comment": ""
+        }
+      ]
     }
   ]
 }
