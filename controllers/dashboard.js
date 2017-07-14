@@ -7,14 +7,19 @@ const logger = require('../utils/logger.js');
 const accounts = require('./accounts.js');
 const member = require('../models/members-store.js');
 const uuid = require('uuid');
+const analytics = require('../utils/analytics');
 
 const dashboard = {
   index(request, response) {
     logger.info('rendering dashboard');
     const loggedInMember = accounts.getCurrentMember(request);
+    const bmi = analytics.calculateBMI(loggedInMember);
     const viewData = {
       title: 'Member Dashboard',
       member: loggedInMember,
+      bmi: bmi,
+      bmiCategory: analytics.BMICategory(bmi),
+      idealBodyWeight: analytics.idealBodyWeight(loggedInMember),
     };
     logger.info(`rendering assessments for ${loggedInMember.firstName}`);
     response.render('dashboard', viewData);
@@ -34,6 +39,7 @@ const dashboard = {
     const newAssessment = {
       assessmentId: uuid(),
       date: new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''), //Retrieved from https://stackoverflow.com/questions/10645994/node-js-how-to-format-a-date-string-in-utc
+      //Returns date in simple ISO format, replaces unnecessary characters with spaces to make format readable
       weight: request.body.weight,
       chest: request.body.chest,
       thigh: request.body.thigh,

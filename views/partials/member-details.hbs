@@ -10,16 +10,16 @@
                 <h3> {{member.firstName}} {{member.lastName}} </h3>
             </div>
             <div class="column">
-                <!--<i class="huge ${member.isIdealBodyWeight()} dashboard icon"></i>-->
+                <i class="huge {{idealBodyWeight}} dashboard icon"></i>
                 <h3>Ideal Weight Indicator</h3>
             </div>
             <div class="column">
                 <i class="huge heartbeat icon"></i>
-                <!--<h3>BMI ${member.calculateBMI()}</h3>-->
+                <h3>BMI {{bmi}}</h3>
             </div>
             <div class="column">
                 <i class="huge doctor icon"></i>
-                <!--<h3>${member.determineBMICategory(member.calculateBMI())}</h3>-->
+                <h3>{{bmiCategory}}</h3>
             </div>
         </div>
     </div>

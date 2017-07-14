@@ -18,12 +18,6 @@ const assessment = {
     return this.store.findOneBy(this.collection, { assessmentId: assessmentId });
   },
 
-  removeAssessment(assessmentId) {
-    const assessment = this.getAssessment(assessmentId);
-    this.store.remove(this.collection, assessment);
-    this.store.save();
-  },
-
   removeAllAssessments() {
     this.store.removeAll(this.collection);
     this.store.save();

@@ -32,7 +32,7 @@ const memberStore = {
 
   addAssessment(id, assessment) {
     const member = this.getMemberById(id);
-    member.assessments.push(assessment);
+    member.assessments.unshift(assessment);//Adds to beginning of array in order to list in reverse chronological order
     this.store.save();
   },
 
