@@ -69,6 +69,17 @@
       "id": "627b19a8-e27a-4455-a3bd-05139528a411",
       "assessments": [
         {
+          "assessmentId": "9bbf0a33-b413-42d9-9a11-ecb4184085d4",
+          "date": "2017-07-14 11:15:26",
+          "weight": "45",
+          "chest": "8",
+          "thigh": "8",
+          "upperArm": "8",
+          "waist": "8",
+          "hips": "8",
+          "comment": ""
+        },
+        {
           "assessmentId": "8cb2f91e-7a36-4880-870b-1753b8ef8a71",
           "date": "2017-07-14 10:58:36",
           "weight": "120",

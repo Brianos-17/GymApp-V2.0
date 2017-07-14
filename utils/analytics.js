@@ -3,7 +3,6 @@
  */
 
 const accounts = require('../controllers/accounts');
-const member = require('../models/members-store');
 
 const analytics = {
   calculateBMI(member) {
@@ -42,20 +41,20 @@ const analytics = {
     let idealWeight = 0;
     if (inches > 60) {
       const over60 = ((inches - 60) * 2.3);
-      if (member.gender === 'male') {
+      if (member.gender.toString() === 'male') {
         idealWeight = (over60 + 50);
       } else {
         idealWeight = (over60 + 45);
       }
     } else {
-      if (member.gender === 'male') {
+      if (member.gender.toString() === 'male') {
         idealWeight = 50;
       } else {
         idealWeight = 45;
       }
     }
 
-    if (list > 0) {
+    if (list.length > 0) {
       const latestAssessment = list[0];
       if ((latestAssessment.weight <= (idealWeight + 2)) && (latestAssessment.weight >= (idealWeight - 2))) {
         return 'green';
