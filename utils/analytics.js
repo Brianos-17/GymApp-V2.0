@@ -42,13 +42,13 @@ const analytics = {
     let idealWeight = 0;
     if (inches > 60) {
       const over60 = ((inches - 60) * 2.3);
-      if (member.gender.toString() === 'M') {
+      if (member.gender.equals('M')) {
         idealWeight = (over60 + 50);
       } else {
         idealWeight = (over60 + 45);
       }
     } else {
-      if (member.gender.toString() === 'M') {
+      if (member.gender.equals('M')) {
         idealWeight = 50;
       } else {
         idealWeight = 45;
