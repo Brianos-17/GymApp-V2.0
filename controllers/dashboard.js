@@ -46,10 +46,12 @@ const dashboard = {
       upperArm: request.body.upperArm,
       waist: request.body.waist,
       hips: request.body.hips,
+      trend: '',
       comment: '',
     };
     logger.debug(`Adding new assessment for ${loggedInMember.firstName}`, newAssessment);
     member.addAssessment(memberId, newAssessment);
+    analytics.trend(loggedInMember);
     response.redirect('/dashboard');
   },
 };
