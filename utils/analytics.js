@@ -37,7 +37,7 @@ const analytics = {
   },
 
   idealBodyWeight(member) {
-    const inches = (member.height * 39.37);
+    const inches = (member.height * 39.37);//converts members height from meters into inches
     const list = member.assessments;
     let idealWeight = 0;
     if (inches > 60) {
