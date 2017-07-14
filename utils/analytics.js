@@ -67,6 +67,30 @@ const analytics = {
       }
     }
   },
+
+  trend(member) {
+    let trend = 'green';
+    const idealBMI = 22;
+    const list = member.assessments;
+    if (list.length === 1) {
+      const previousBMI = (member.startingWeight / (member.height * member.height));
+      if (Math.abs(this.calculateBMI(member) - idealBMI) < Math.abs(previousBMI - idealBMI)) {
+        trend = 'green';
+      } else {
+        trend = 'red';
+      }
+    } else if (list.length > 1) {
+      const secondLatestAssessment = list[1];
+      const previousBMI = (secondLatestAssessment.weight / (member.height * member.height));
+      if (Math.abs(this.calculateBMI(member) - idealBMI) < Math.abs(previousBMI - idealBMI)) {
+        trend = 'green';
+      } else {
+        trend = 'red';
+      }
+    } else {
+      trend = 'black';
+    }
+  },
 };
 
 module.exports = analytics;
