@@ -40,6 +40,7 @@ const accounts = {
   register(request, response) {
     const member = request.body;
     member.id = uuid();
+    member.assessments = [];
     memberStore.addMember(member);
     logger.info(`registering ${member.email}`);
     response.redirect('/');
