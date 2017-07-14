@@ -88,7 +88,7 @@ const analytics = {
         trend = 'red';
       }
     } else {
-      trend = 'yellow';
+      trend = 'black';
     }
     list[0].trend = trend;
   },
