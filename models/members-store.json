@@ -5,7 +5,7 @@
       "lastName": "Simpson",
       "email": "homer@simpson.com",
       "password": "secret",
-      "gender": "M",
+      "gender": "male",
       "height": "1.9",
       "startingWeight": "78",
       "id": "3ad52697-6d98-4d80-8273-084de55a86c0",
@@ -51,11 +51,22 @@
       "lastName": "Simpson",
       "email": "marge@simpson.com",
       "password": "secret",
-      "gender": "F",
+      "gender": "female",
       "height": "1.6",
       "startingWeight": "65",
       "id": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
       "assessments": []
+    },
+    {
+      "firstName": "Lisa",
+      "lastName": "Simpson",
+      "email": "lisa@simpson.com",
+      "password": "secret",
+      "passwordValid": "secret",
+      "gender": "female",
+      "height": "1.4",
+      "startingWeight": "44",
+      "id": "d2a47370-5f57-45d6-a4bf-01e47eb20801"
     }
   ]
 }
