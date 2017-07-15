@@ -13,7 +13,7 @@ const trainerDashboard = {
       title: 'Trainer Dashboard',
       trainer: loggedInTrainer,
     };
-    logger.info(`rendering trainer dashboard for ${loggedInTrainer}`);
+    logger.info(`rendering trainer dashboard for ${loggedInTrainer.firstName}`);
     response.render('trainerDashboard', viewData);
   },
 };

@@ -69,7 +69,7 @@ const accounts = {
   },
 
   getCurrentTrainer(request) {
-    const trainerEmail = request.cookies.member;
+    const trainerEmail = request.cookies.trainer;
     return trainerStore.getTrainerByEmail(trainerEmail);
   },
 };
