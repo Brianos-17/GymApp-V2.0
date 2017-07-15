@@ -8,7 +8,14 @@ const accounts = require('./accounts.js');
 
 const trainerDashboard = {
   index(request, response) {
-    logger.info('rendering trainer dashboard');
     const loggedInTrainer = accounts.getCurrentTrainer(request);
-  }
-}
+    const viewData = {
+      title: 'Trainer Dashboard',
+      trainer: loggedInTrainer,
+    };
+    logger.info(`rendering trainer dashboard for ${loggedInTrainer}`);
+    response.render('trainerDashboard', viewData);
+  },
+};
+
+module.exports = trainerDashboard;

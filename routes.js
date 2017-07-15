@@ -8,6 +8,7 @@ const router = express.Router();
 
 const accounts = require('./controllers/accounts.js');
 const dashboard = require('./controllers/dashboard.js');
+const trainerDashboard = require('./controllers/trainerDashboard.js');
 const about = require('./controllers/about.js');
 
 router.get('/', accounts.index);
@@ -22,6 +23,5 @@ router.get('/trainerDashboard', trainerDashboard.index);
 router.post('/register', accounts.register);
 router.post('/authenticate', accounts.authenticate);
 router.post('/dashboard/addassessment', dashboard.addAssessment);
-
 
 module.exports = router;
