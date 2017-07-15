@@ -14,12 +14,13 @@ const dashboard = {
     logger.info('rendering dashboard');
     const loggedInMember = accounts.getCurrentMember(request);
     const bmi = analytics.calculateBMI(loggedInMember);
+    const idealBodyWeight = analytics.idealBodyWeight(loggedInMember);
     const viewData = {
       title: 'Member Dashboard',
       member: loggedInMember,
       bmi: bmi,
       bmiCategory: analytics.BMICategory(bmi),
-      idealBodyWeight: analytics.idealBodyWeight(loggedInMember),
+      idealBodyWeight: idealBodyWeight,
     };
     logger.info(`rendering assessments for ${loggedInMember.firstName}`);
     response.render('dashboard', viewData);
