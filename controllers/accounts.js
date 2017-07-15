@@ -67,6 +67,11 @@ const accounts = {
     const memberEmail = request.cookies.member;
     return memberStore.getMemberByEmail(memberEmail);
   },
+
+  getCurrentTrainer(request) {
+    const trainerEmail = request.cookies.member;
+    return trainerStore.getTrainerByEmail(trainerEmail);
+  },
 };
 
 module.exports = accounts;
