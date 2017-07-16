@@ -23,6 +23,12 @@ const trainerStore = {
   getTrainerByEmail(email) {
     return this.store.findOneBy(this.collection, { email: email });
   },
+
+  addMemberList(id, members) {
+    const trainer = this.getTrainerById(id);
+    trainer.members.push(members);
+    this.store.save();
+  },
 };
 
 module.exports = trainerStore;
