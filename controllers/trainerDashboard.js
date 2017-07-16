@@ -6,6 +6,7 @@
 const logger = require('../utils/logger.js');
 const accounts = require('./accounts.js');
 const members = require('../models/members-store.json');
+const trainer = require('../models/trainer-store.js');
 
 const trainerDashboard = {
   index(request, response) {
@@ -13,10 +14,17 @@ const trainerDashboard = {
     const viewData = {
       title: 'Trainer Dashboard',
       trainer: loggedInTrainer,
+      members: [],
     };
     logger.info(`rendering trainer dashboard for ${loggedInTrainer.firstName}`);
-    loggedInTrainer.
     response.render('trainerDashboard', viewData);
+  },
+
+  addMemberList(request) {
+    const loggedInTrainer = accounts.getCurrentTrainer(request);
+    const id = loggedInTrainer.id;
+    const members = members;
+    trainer.addMemberList(id, members);
   },
 };
 
