@@ -20,13 +20,6 @@ const trainerDashboard = {
     logger.info(`rendering trainer dashboard for ${loggedInTrainer.firstName}`);
     response.render('trainerDashboard', viewData);
   },
-
-  // addMemberList(request) {
-  //   const loggedInTrainer = accounts.getCurrentTrainer(request);
-  //   const id = loggedInTrainer.id;
-  //   const members = members;
-  //   trainer.addMemberList(id, members);
-  // },
 };
 
 module.exports = trainerDashboard;
