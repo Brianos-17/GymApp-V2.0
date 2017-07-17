@@ -20,6 +20,13 @@ const trainerDashboard = {
     logger.info(`rendering trainer dashboard for ${loggedInTrainer.firstName}`);
     response.render('trainerDashboard', viewData);
   },
+
+  removeMember(request, response) {
+    const id = request.params.id;
+    const removedMember = allMembers.getMemberById(id);
+    logger.debug(`Deleting member ${id}`);
+    
+  }
 };
 
 module.exports = trainerDashboard;
