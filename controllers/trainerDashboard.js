@@ -22,11 +22,15 @@ const trainerDashboard = {
   },
 
   viewMemberAssessments(request, response) {
-    const id = request.params.id;
+    const id = request.params.id; //Retrieves members id from the #each loop in member-list.hbs
+    const viewedMember = member.getMemberById(id);
+    //const loggedInTrainer = accounts.getCurrentTrainer(request);
+    logger.debug(`Rendering assessments for ${viewedMember.firstName}`);
+    response.redirect('/dashboard', viewedMember);
   },
 
   removeMember(request, response) {
-    const id = request.params.id;
+    const id = request.params.id; //Retrieves members id from the #each loop in member-list.hbs
     logger.debug(`Deleting member ${id}`);
     member.removeMember(id);
     response.redirect('/trainerDashboard');
