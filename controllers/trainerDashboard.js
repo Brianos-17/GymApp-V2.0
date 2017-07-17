@@ -5,6 +5,7 @@
 
 const logger = require('../utils/logger.js');
 const accounts = require('./accounts.js');
+const analytics = require('../utils/analytics.js');
 const member = require('../models/members-store.js');
 const trainer = require('../models/trainer-store.js');
 
@@ -24,9 +25,13 @@ const trainerDashboard = {
   viewMemberAssessments(request, response) {
     const id = request.params.id; //Retrieves members id from the #each loop in member-list.hbs
     const viewedMember = member.getMemberById(id);
+    const bmi = analytics.calculateBMI(viewedMember);
+    const idealBodyWeight = analytics.idealBodyWeight(viewedMember);
     const loggedInTrainer = accounts.getCurrentTrainer(request);
     const viewData = {
-      member: viewedMember,
+      member: viewedMember, bmi: bmi,
+      bmiCategory: analytics.BMICategory(bmi),
+      idealBodyWeight: idealBodyWeight,
     };
     logger.debug(`Rendering assessments for ${viewedMember.firstName}`);
     response.render('assessments', viewData);
