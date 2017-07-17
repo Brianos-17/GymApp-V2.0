@@ -24,9 +24,12 @@ const trainerDashboard = {
   viewMemberAssessments(request, response) {
     const id = request.params.id; //Retrieves members id from the #each loop in member-list.hbs
     const viewedMember = member.getMemberById(id);
-    //const loggedInTrainer = accounts.getCurrentTrainer(request);
+    const loggedInTrainer = accounts.getCurrentTrainer(request);
+    const viewData = {
+      member: viewedMember,
+    };
     logger.debug(`Rendering assessments for ${viewedMember.firstName}`);
-    response.redirect('/dashboard', viewedMember);
+    response.redirect('/dashboard', viewData);
   },
 
   removeMember(request, response) {
