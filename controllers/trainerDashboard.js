@@ -29,7 +29,7 @@ const trainerDashboard = {
       member: viewedMember,
     };
     logger.debug(`Rendering assessments for ${viewedMember.firstName}`);
-    response.redirect('/dashboard', viewData);
+    response.render('assessments', viewData);
   },
 
   removeMember(request, response) {
