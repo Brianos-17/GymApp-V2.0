@@ -21,6 +21,10 @@ const trainerDashboard = {
     response.render('trainerDashboard', viewData);
   },
 
+  viewMemberAssessments(request, response) {
+    const id = request.params.id;
+  },
+
   removeMember(request, response) {
     const id = request.params.id;
     logger.debug(`Deleting member ${id}`);
