@@ -28,6 +28,12 @@ const memberStore = {
     return this.store.findOneBy(this.collection, { email: email });
   },
 
+  removeMember(id) {
+    const removedMember = this.getMemberById(id);
+    this.store.remove(this.collection, removedMember);
+    this.store.save();
+  },
+
   addAssessment(id, assessment) {
     const member = this.getMemberById(id);
     member.assessments.unshift(assessment);//Adds to beginning of array in order to list in reverse chronological order

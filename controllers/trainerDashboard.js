@@ -5,13 +5,13 @@
 
 const logger = require('../utils/logger.js');
 const accounts = require('./accounts.js');
-const allMembers = require('../models/members-store.js');
+const member = require('../models/members-store.js');
 const trainer = require('../models/trainer-store.js');
 
 const trainerDashboard = {
   index(request, response) {
     const loggedInTrainer = accounts.getCurrentTrainer(request);
-    const memberList = allMembers.getAllMembers();
+    const memberList = member.getAllMembers();
     const viewData = {
       title: 'Trainer Dashboard',
       trainer: loggedInTrainer,
@@ -23,10 +23,10 @@ const trainerDashboard = {
 
   removeMember(request, response) {
     const id = request.params.id;
-    const removedMember = allMembers.getMemberById(id);
     logger.debug(`Deleting member ${id}`);
-    
-  }
+    member.removeMember(id);
+    response.redirect('/trainerDashboard');
+  },
 };
 
 module.exports = trainerDashboard;
