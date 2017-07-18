@@ -48,6 +48,12 @@ const trainerDashboard = {
     member.removeMember(id);
     response.redirect('/trainerDashboard');
   },
+
+  updateComment(request, response) {
+    const viewedMember = accounts.getCurrentMember(request);
+    const assessmentId = request.params.assessmentId;
+    const comment = request.body.comment;
+  },
 };
 
 module.exports = trainerDashboard;
