@@ -1,4 +1,5 @@
-<table class="ui fixed center aligned table">
+{{#each member.assessments}}
+    <table class="ui fixed center aligned table">
     <thead>
     <tr>
         <th> Date </th>
@@ -15,7 +16,6 @@
     </thead>
     <tbody>
     <div class="ui bulleted list">
-        {{#each member.assessments}}
         <tr>
             <td>{{date}}</td>
             <td>{{weight}}</td>
@@ -32,7 +32,22 @@
                 </a>
             </td>
         </tr>
-        {{/each}}
     </div>
     </tbody>
 </table>
+{{#if updateComment}}
+<div>
+    <h4> Update Comment </h4>
+    <form class="ui section form" action="/memberAssessment/${trainer.id}/${member.id}/updateComment/${assessment.id}" method="POST">
+        <div>
+            <input placeholder="Update Comment..." type="text" name="comment">
+        </div>
+        <div>
+            <br>
+            <button class="ui blue submit button"> Submit </button>
+        </div>
+    </form>
+</div>
+{{/if}}
+
+{{/each}}

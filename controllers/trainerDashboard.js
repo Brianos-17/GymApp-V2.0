@@ -27,13 +27,18 @@ const trainerDashboard = {
     const viewedMember = member.getMemberById(id);
     const bmi = analytics.calculateBMI(viewedMember);
     const idealBodyWeight = analytics.idealBodyWeight(viewedMember);
-    const loggedInTrainer = accounts.getCurrentTrainer(request);
     const viewData = {
-      member: viewedMember, bmi: bmi,
+      member: viewedMember,
+      bmi: bmi,
       bmiCategory: analytics.BMICategory(bmi),
       idealBodyWeight: idealBodyWeight,
     };
     logger.debug(`Rendering assessments for ${viewedMember.firstName}`);
+    const list = viewedMember.assessments;
+    for (let i = 0; i < list.length; i++) {
+      list[i].updateComment = true;
+    }
+
     response.render('assessments', viewData);
   },
 
