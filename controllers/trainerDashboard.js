@@ -34,7 +34,7 @@ const trainerDashboard = {
       idealBodyWeight: idealBodyWeight,
     };
     logger.debug(`Rendering assessments for ${viewedMember.firstName}`);
-    const list = viewedMember.assessments;
+    const list = viewedMember.assessments; //toggles boolean to allow trainers view update comment section
     for (let i = 0; i < list.length; i++) {
       list[i].updateComment = true;
     }

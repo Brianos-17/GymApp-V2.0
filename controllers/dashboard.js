@@ -23,6 +23,11 @@ const dashboard = {
       idealBodyWeight: idealBodyWeight,
     };
     logger.info(`rendering assessments for ${loggedInMember.firstName}`);
+    const list = loggedInMember.assessments; //toggles boolean to disallow members view update comment section
+    for (let i = 0; i < list.length; i++) {
+      list[i].updateComment = false;
+    }
+
     response.render('dashboard', viewData);
   },
 
