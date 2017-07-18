@@ -54,6 +54,7 @@ const dashboard = {
       hips: request.body.hips,
       trend: '',
       comment: '',
+      updateComment: false,
     };
     logger.debug(`Adding new assessment for ${loggedInMember.firstName}`, newAssessment);
     member.addAssessment(memberId, newAssessment);
