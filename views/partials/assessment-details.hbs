@@ -38,7 +38,7 @@
 {{#if updateComment}}
 <div>
     <h4> Update Comment </h4>
-    <form class="ui section form" action="/memberAssessment/${trainer.id}/${member.id}/updateComment/${assessment.id}" method="POST">
+    <form class="ui section form" action="/memberAssessment/updateComment/{{assessmentId}}" method="POST">
         <div>
             <input placeholder="Update Comment..." type="text" name="comment">
         </div>
