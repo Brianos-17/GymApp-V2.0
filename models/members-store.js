@@ -54,6 +54,10 @@ const memberStore = {
     _.remove(member.assessments, { assessmentId: assessmentId });
     this.store.save();
   },
+
+  save() {
+    this.store.save(); //Method which saves the JSON object after other methods has altered data
+  },
 };
 
 module.exports = memberStore;

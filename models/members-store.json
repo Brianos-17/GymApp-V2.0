@@ -20,8 +20,8 @@
           "waist": "1",
           "hips": "1",
           "trend": "",
-          "comment": "",
-          "updateComment": false
+          "comment": "test",
+          "updateComment": true
         },
         {
           "assessmentId": "30321e24-0d5c-48f1-a50c-f073e32d30cf",
@@ -34,7 +34,7 @@
           "hips": "2345",
           "trend": "red",
           "comment": "number 2",
-          "updateComment": false
+          "updateComment": true
         },
         {
           "assessmentId": "30441e24-0d5f-48f1-a70c-f073e32d30ce",
@@ -47,7 +47,7 @@
           "hips": "38.0",
           "trend": "black",
           "comment": "Needs Improvement",
-          "updateComment": false
+          "updateComment": true
         }
       ]
     },

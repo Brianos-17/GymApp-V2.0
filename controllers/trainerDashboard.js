@@ -56,6 +56,7 @@ const trainerDashboard = {
     const comment = request.body.comment;
     const assessmentToUpdate = member.getAssessmentById(memberId, assessmentId);
     assessmentToUpdate.comment = comment;
+    member.save();
     response.redirect('/trainerDashboard');
   },
 };
