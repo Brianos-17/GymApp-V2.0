@@ -34,9 +34,10 @@ const dashboard = {
   removeAssessment(request, response) {
     const assessmentId = request.params.assessmentId;
     const loggedInMember = accounts.getCurrentMember(request);
-    logger.debug(`Deleting Assessment ${assessmentId} for ${loggedInMember.firstName}`);
     member.removeAssessment(loggedInMember.id, assessmentId);
+    logger.debug(`Deleting Assessment ${assessmentId} for ${loggedInMember.firstName}`);
     response.redirect('/dashboard');
+
   },
 
   addAssessment(request, response) {

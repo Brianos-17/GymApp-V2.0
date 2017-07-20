@@ -50,6 +50,14 @@ const trainerDashboard = {
     response.redirect('/trainerDashboard');
   },
 
+  removeAssessment(request, response) {
+    const memberId = request.params.id;
+    const assessmentId = request.params.assessmentId;
+    member.removeAssessment(memberId, assessmentId);
+    logger.debug(`Removing Assessment ${assessmentId} for member ${memberId}`);
+    response.redirect('/trainerDashboard');
+  },
+
   updateComment(request, response) {
     const memberId = request.params.id;
     const assessmentId = request.params.assessmentId;

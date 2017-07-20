@@ -26,11 +26,20 @@
             <td>{{hips}}</td>
             <td><i class="large {{trend}} arrow circle left icon"></i></td>
             <td>{{comment}}</td>
-            <td>
-                <a href="/dashboard/removeAssessment/{{assessmentId}}">
-                    <i class=" large red trash icon"></i>
-                </a>
-            </td>
+            {{#unless updateComment}}
+                <td>
+                    <a href="/dashboard/removeAssessment/{{assessmentId}}">
+                        <i class=" large red trash icon"></i>
+                    </a>
+                </td>
+            {{/unless}}
+            {{#if updateComment}}
+                <td>
+                    <a href="/trainerDashboard/{{../id}}/removeAssessment/{{assessmentId}}">
+                        <i class=" large red trash icon"></i>
+                    </a>
+                </td>
+            {{/if}}
         </tr>
     </div>
     </tbody>
