@@ -53,12 +53,10 @@ const trainerDashboard = {
   updateComment(request, response) {
     const memberId = request.params.id;
     const assessmentId = request.params.assessmentId;
-    logger.info(memberId, assessmentId);//remove this line once method works
     const comment = request.body.comment;
     const assessmentToUpdate = member.getAssessmentById(memberId, assessmentId);
     assessmentToUpdate.comment = comment;
-    logger.info(`Updating ${assessmentToUpdate}`);
-    //response.redirect('/trainerDashboard/viewMemberAssessments/:id');
+    response.redirect('/trainerDashboard');
   },
 };
 

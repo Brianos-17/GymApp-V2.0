@@ -36,7 +36,11 @@ const memberStore = {
 
   getAssessmentById(memberId, assessmentId) {
     const member = this.getMemberById(memberId);
-    return this.store.findOneBy(member.assessments, { assessmentId: assessmentId });
+    for (let i = 0; i < member.assessments.length; i++) {
+      if (member.assessments[i].assessmentId === assessmentId) {
+        return member.assessments[i];
+      }
+    }
   },
 
   addAssessment(id, assessment) {
