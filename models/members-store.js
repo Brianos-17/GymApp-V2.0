@@ -34,6 +34,11 @@ const memberStore = {
     this.store.save();
   },
 
+  getAssessmentById(memberId, assessmentId) {
+    const member = this.getMemberById(memberId);
+    return this.store.findOneBy(member.assessments, { assessmentId: assessmentId });
+  },
+
   addAssessment(id, assessment) {
     const member = this.getMemberById(id);
     member.assessments.unshift(assessment);//Adds to beginning of array in order to list in reverse chronological order

@@ -32,6 +32,7 @@ const trainerDashboard = {
       bmi: bmi,
       bmiCategory: analytics.BMICategory(bmi),
       idealBodyWeight: idealBodyWeight,
+      id: id,
     };
     logger.debug(`Rendering assessments for ${viewedMember.firstName}`);
     const list = viewedMember.assessments; //toggles boolean to allow trainers view update comment section
@@ -50,9 +51,14 @@ const trainerDashboard = {
   },
 
   updateComment(request, response) {
-    const viewedMember = accounts.getCurrentMember(request);
+    const memberId = request.params.id;
     const assessmentId = request.params.assessmentId;
+    logger.info(memberId, assessmentId);//remove this line once method works
     const comment = request.body.comment;
+    const assessmentToUpdate = member.getAssessmentById(memberId, assessmentId);
+    assessmentToUpdate.comment = comment;
+    logger.info(`Updating ${assessmentToUpdate}`);
+    //response.redirect('/trainerDashboard/viewMemberAssessments/:id');
   },
 };
 

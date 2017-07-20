@@ -26,6 +26,6 @@ router.get('/trainerDashboard/viewMemberAssessments/:id', trainerDashboard.viewM
 router.post('/register', accounts.register);
 router.post('/authenticate', accounts.authenticate);
 router.post('/dashboard/addassessment', dashboard.addAssessment);
-router.post('/memberAssessment/updateComment/:assessmentId', trainerDashboard.updateComment);
+router.post('/memberAssessment/:id/updateComment/:assessmentId', trainerDashboard.updateComment);
 
 module.exports = router;
