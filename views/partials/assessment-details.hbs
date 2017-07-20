@@ -43,20 +43,20 @@
         </tr>
     </div>
     </tbody>
-</table>
-{{#if updateComment}}
-<div>
-    <h4> Update Comment </h4>
-    <form class="ui section form" action="/memberAssessment/{{../id}}/updateComment/{{assessmentId}}" method="POST">
-        <div>
-            <input placeholder="Update Comment..." type="text" name="comment">
-        </div>
-        <div>
-            <br>
-            <button class="ui blue submit button"> Submit </button>
-        </div>
-    </form>
-</div>
-{{/if}}
+    </table>
 
+    {{#if updateComment}}
+        <div>
+            <h4> Update Comment </h4>
+            <form class="ui section form" action="/memberAssessment/{{../id}}/updateComment/{{assessmentId}}" method="POST">
+                <div>
+                    <input placeholder="Update Comment..." type="text" name="comment">
+                </div>
+                <div>
+                    <br>
+                    <button class="ui blue submit button"> Submit </button>
+                </div>
+            </form>
+        </div>
+    {{/if}}
 {{/each}}
