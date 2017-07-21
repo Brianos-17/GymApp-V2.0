@@ -62,6 +62,40 @@ const dashboard = {
     analytics.trend(loggedInMember);
     response.redirect('/dashboard');
   },
+
+  account(request, response) {
+    const loggedInMember = accounts.getCurrentMember(request);
+    const viewData = {
+      member: loggedInMember,
+    };
+    response.render('account', viewData);
+  },
+
+  updateProfile(request, response) {
+    const loggedInMember = accounts.getCurrentMember(request);
+    if (request.body.firstName) {
+      loggedInMember.firstName = request.body.firstName;
+    } else if (request.body.lastName) {
+      loggedInMember.lastName = request.body.lastName;
+    } else if (request.body.email) {
+      loggedInMember.email = request.body.email;
+    } else if (request.body.gender) {
+      loggedInMember.gender = request.body.gender;
+    } else if (request.body.password) {
+      loggedInMember.password = request.body.password;
+    } else if (request.body.height) {
+      loggedInMember.height = request.body.height;
+    } else if (request.body.startingWeight) {
+      loggedInMember.startingWeight = request.body.startingWeight;
+    }
+
+    member.save();
+    response.redirect('/account');
+  },
+
+  updateProfileLastName (request, response) {
+
+  },
 };
 
 module.exports = dashboard;

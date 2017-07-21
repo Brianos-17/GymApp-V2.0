@@ -1,0 +1,117 @@
+{{> member-menu id="account"}}
+
+<div class="ui three column grid basic center aligned segment">
+    <div class="column left aligned">
+        <h3> Member Details </h3>
+        <table class="ui fixed left aligned table">
+            <tr>
+                <td>Email:</td>
+                <td>{{member.email}}</td>
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td>{{member.firstName}} {{member.lastName}}</td>
+            </tr>
+            <tr>
+                <td>Gender:</td>
+                <td> {{member.gender}}</td>
+            </tr>
+            <tr>
+                <td>Height:</td>
+                <td>{{member.height}} Meters </td>
+            </tr>
+            <tr>
+                <td>Starting Weight:</td>
+                <td>{{member.startingWeight}} KGs </td>
+            </tr>
+        </table>
+
+        <div class="middle aligned">
+            <!--<img class="ui large image" src="../../public/images/update.png">-->
+        </div>
+
+    </div>
+
+    <div class="column left aligned">
+        <h3>Update Profile</h3>
+
+        <form class="ui segment form" name="updateFirstName" action="/updateProfile" method="POST">
+            <div class="field">
+                <label> First Name </label>
+                <input placeholder="First Name..." type="text" name="firstName" required>
+            </div>
+            <button class="ui blue submit button">Update</button>
+        </form>
+
+        <form class="ui segment form" name="updateLastName" action="/updateProfile" method="POST">
+            <div class="field">
+                <label> Last Name </label>
+                <input placeholder="Last Name..." type="text" name="lastName" required>
+            </div>
+            <button class="ui blue submit button">Update</button>
+        </form>
+
+        <form class="ui segment form" name="updateEmail" action="/updateProfile" method="POST">
+            <div class="field">
+                <label> Email </label>
+                <input placeholder="E-mail Address..." type="email" name="email" required>
+            </div>
+            <button class="ui blue submit button">Update</button>
+        </form>
+
+        <form class="ui segment form" name="updateGender" action="/updateProfile" method="POST">
+            <div class="field">
+                <label> Gender </label>
+                <select class="ui dropdown" name="gender">
+                    <option value=""> Unspecified</option>
+                    <option value="male"> Male</option>
+                    <option value="female"> Female</option>
+                </select>
+            </div>
+            <button class="ui blue submit button">Update</button>
+        </form>
+    </div>
+
+    <div class="column left aligned">
+        <h3>Update Profile</h3>
+
+        <form class="ui segment form" name="updatePassword" action="/updateProfile" method="POST" onsubmit="return validatePassword()">
+            <div class="field">
+                <label> Password </label>
+                <input placeholder="Password..." type="password" name="password" required>
+            </div>
+            <div class="field">
+                <label> Password Validation </label>
+                <input placeholder="Please enter the same password as above..." type="password" name="passwordValid">
+            </div>
+            <button class="ui blue submit button">Update</button>
+        </form>
+
+        <form class="ui segment form" name="updateHeight" action="/updateProfile" method="POST">
+            <div class="field">
+                <label> Height </label>
+                <input placeholder="Height(in Metres)..." type="text" pattern="\d.*" name="height" required>
+            </div>
+            <button class="ui blue submit button">Update</button>
+        </form>
+
+        <form class="ui segment form" name="updateStartingWeight" action="/updateProfile" method="POST">
+            <div class="field">
+                <label> Current Starting Weight </label>
+                <input placeholder="Starting Weight(in KGs)..." type="text" pattern="\d.*" name="startingWeight" required>
+            </div>
+            <button class="ui blue submit button">Update</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function validatePassword() {
+        var passwordValid = document.forms["updatePassword"]["passwordValid"].value;
+        var password = document.forms["updatePassword"]["password"].value;
+        if(passwordValid !== password) {
+            alert("Your password validation must match your password");
+            return false;
+        }
+    }
+</script>
