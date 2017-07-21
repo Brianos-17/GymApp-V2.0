@@ -6,23 +6,23 @@
         <table class="ui fixed left aligned table">
             <tr>
                 <td>Email:</td>
-                <td>${member.email}</td>
+                <td>{{email}}</td>
             </tr>
             <tr>
                 <td>Name:</td>
-                <td>${member.firstName} ${member.lastName}</td>
+                <td>{{firstName}} {{lastName}}</td>
             </tr>
             <tr>
                 <td>Gender:</td>
-                <td> ${member.gender}</td>
+                <td> {{gender}}</td>
             </tr>
             <tr>
                 <td>Height:</td>
-                <td>${member.height} Meters (${member.convertHeightMetresToInches()} Inches)</td>
+                <td>{{height}} Meters </td>
             </tr>
             <tr>
                 <td>Starting Weight:</td>
-                <td>${member.startingWeight} KGs (${member.convertWeightKgToPounds()} Pounds)</td>
+                <td>{{startingWeight}} KGs </td>
             </tr>
         </table>
 
