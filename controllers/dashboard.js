@@ -62,6 +62,14 @@ const dashboard = {
     analytics.trend(loggedInMember);
     response.redirect('/dashboard');
   },
+
+  account(request, response) {
+    const loggedInMember = accounts.getCurrentMember(request);
+    const viewData = {
+      member: loggedInMember,
+    };
+    response.render('account', viewData);
+  },
 };
 
 module.exports = dashboard;

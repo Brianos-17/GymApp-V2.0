@@ -17,6 +17,7 @@ router.get('/signup', accounts.signup);
 router.get('/logout', accounts.logout);
 router.get('/about', about.index);
 router.get('/dashboard', dashboard.index);
+router.get('/account', )
 router.get('/dashboard/removeAssessment/:assessmentId', dashboard.removeAssessment);
 router.get('/trainerDashboard/:id/removeAssessment/:assessmentId', trainerDashboard.removeAssessment);
 router.get('/trainerDashboard', trainerDashboard.index);
