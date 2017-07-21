@@ -28,6 +28,21 @@ const memberStore = {
     return this.store.findOneBy(this.collection, { email: email });
   },
 
+  removeMember(id) {
+    const removedMember = this.getMemberById(id);
+    this.store.remove(this.collection, removedMember);
+    this.store.save();
+  },
+
+  getAssessmentById(memberId, assessmentId) {
+    const member = this.getMemberById(memberId);
+    for (let i = 0; i < member.assessments.length; i++) {
+      if (member.assessments[i].assessmentId === assessmentId) {
+        return member.assessments[i];
+      }
+    }
+  },
+
   addAssessment(id, assessment) {
     const member = this.getMemberById(id);
     member.assessments.unshift(assessment);//Adds to beginning of array in order to list in reverse chronological order
@@ -38,6 +53,10 @@ const memberStore = {
     const member = this.getMemberById(id);
     _.remove(member.assessments, { assessmentId: assessmentId });
     this.store.save();
+  },
+
+  save() {
+    this.store.save(); //Method which saves the JSON object after other methods has altered data
   },
 };
 

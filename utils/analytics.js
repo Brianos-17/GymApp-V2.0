@@ -90,6 +90,7 @@ const analytics = {
     } else {
       trend = 'black';
     }
+
     list[0].trend = trend;
   },
 };

@@ -8,6 +8,7 @@ const router = express.Router();
 
 const accounts = require('./controllers/accounts.js');
 const dashboard = require('./controllers/dashboard.js');
+const trainerDashboard = require('./controllers/trainerDashboard.js');
 const about = require('./controllers/about.js');
 
 router.get('/', accounts.index);
@@ -17,10 +18,14 @@ router.get('/logout', accounts.logout);
 router.get('/about', about.index);
 router.get('/dashboard', dashboard.index);
 router.get('/dashboard/removeAssessment/:assessmentId', dashboard.removeAssessment);
+router.get('/trainerDashboard/:id/removeAssessment/:assessmentId', trainerDashboard.removeAssessment);
+router.get('/trainerDashboard', trainerDashboard.index);
+router.get('/trainerDashboard/deleteMember/:id', trainerDashboard.removeMember);
+router.get('/trainerDashboard/viewMemberAssessments/:id', trainerDashboard.viewMemberAssessments);
 
 router.post('/register', accounts.register);
 router.post('/authenticate', accounts.authenticate);
 router.post('/dashboard/addassessment', dashboard.addAssessment);
-
+router.post('/memberAssessment/:id/updateComment/:assessmentId', trainerDashboard.updateComment);
 
 module.exports = router;

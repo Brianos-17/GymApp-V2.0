@@ -48,10 +48,15 @@ const accounts = {
 
   authenticate(request, response) {
     const member = memberStore.getMemberByEmail(request.body.email);
+    const trainer = trainerStore.getTrainerByEmail(request.body.email);
     if (member) {
       response.cookie('member', member.email);
-      logger.info(`${member.email} successfully authenticated. Logging in.`);
+      logger.info(`${member.email} successfully authenticated. Logging in...`);
       response.redirect('/dashboard');
+    } else if (trainer) {
+      response.cookie('trainer', trainer.email);
+      logger.info(`${trainer.email} successfully authenticated. Logging in...`);
+      response.redirect('/trainerDashboard');
     } else {
       logger.info('authentication failed');
       response.redirect('/login');
@@ -61,6 +66,11 @@ const accounts = {
   getCurrentMember(request) {
     const memberEmail = request.cookies.member;
     return memberStore.getMemberByEmail(memberEmail);
+  },
+
+  getCurrentTrainer(request) {
+    const trainerEmail = request.cookies.trainer;
+    return trainerStore.getTrainerByEmail(trainerEmail);
   },
 };
 

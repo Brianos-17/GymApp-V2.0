@@ -1,0 +1,25 @@
+<table class="ui table">
+
+    <tbody>
+    <div class="ui bulleted list">
+        {{#each memberList}}
+        <tr>
+            <td class="one wide">
+                <i class="small user icon"></i>
+            </td>
+            <td class="fourteen wide">
+                <a href="/trainerDashboard/viewMemberAssessments/{{id}}">{{firstName}}
+                    {{lastName}}</a>
+                <br>
+                {{assessments.length}} assessments
+            </td>
+            <td class=" one wide right aligned">
+                <a href="/trainerDashboard/deleteMember/{{id}}">
+                    <i class="large red trash icon"></i>
+                </a>
+            </td>
+        </tr>
+        {{/each}}
+    </div>
+    </tbody>
+</table>
