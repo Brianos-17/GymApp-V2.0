@@ -74,6 +74,7 @@ const dashboard = {
   updateProfileFirstName(request, response) {
     const loggedInMember = accounts.getCurrentMember(request);
     loggedInMember.firstName = request.body.firstName;
+    member.save();
     response.redirect('/account');
   },
 };
