@@ -35,7 +35,7 @@
     <div class="column left aligned">
         <h3>Update Profile</h3>
 
-        <form class="ui segment form" name="updateFirstName" action="/updateProfileFirstName" method="POST">
+        <form class="ui segment form" name="updateFirstName" action="/updateProfile" method="POST">
             <div class="field">
                 <label> First Name </label>
                 <input placeholder="First Name..." type="text" name="firstName" required>
@@ -43,7 +43,7 @@
             <button class="ui blue submit button">Update</button>
         </form>
 
-        <form class="ui segment form" name="updateLastName" action="/updateProfileLastName" method="POST">
+        <form class="ui segment form" name="updateLastName" action="/updateProfile" method="POST">
             <div class="field">
                 <label> Last Name </label>
                 <input placeholder="Last Name..." type="text" name="lastName" required>
@@ -51,7 +51,7 @@
             <button class="ui blue submit button">Update</button>
         </form>
 
-        <form class="ui segment form" name="updateEmail" action="/updateProfileEmail" method="POST">
+        <form class="ui segment form" name="updateEmail" action="/updateProfile" method="POST">
             <div class="field">
                 <label> Email </label>
                 <input placeholder="E-mail Address..." type="email" name="email" required>
@@ -59,7 +59,7 @@
             <button class="ui blue submit button">Update</button>
         </form>
 
-        <form class="ui segment form" name="updateGender" action="/updateProfileGender" method="POST">
+        <form class="ui segment form" name="updateGender" action="/updateProfile" method="POST">
             <div class="field">
                 <label> Gender </label>
                 <select class="ui dropdown" name="gender">
@@ -75,7 +75,7 @@
     <div class="column left aligned">
         <h3>Update Profile</h3>
 
-        <form class="ui segment form" name="updatePassword" action="/updateProfilePassword" method="POST" onsubmit="return validatePassword()">
+        <form class="ui segment form" name="updatePassword" action="/updateProfile" method="POST" onsubmit="return validatePassword()">
             <div class="field">
                 <label> Password </label>
                 <input placeholder="Password..." type="password" name="password" required>
@@ -87,7 +87,7 @@
             <button class="ui blue submit button">Update</button>
         </form>
 
-        <form class="ui segment form" name="updateHeight" action="/updateProfileHeight" method="POST">
+        <form class="ui segment form" name="updateHeight" action="/updateProfile" method="POST">
             <div class="field">
                 <label> Height </label>
                 <input placeholder="Height(in Metres)..." type="text" pattern="\d.*" name="height" required>
@@ -95,7 +95,7 @@
             <button class="ui blue submit button">Update</button>
         </form>
 
-        <form class="ui segment form" name="updateStartingWeight" action="/updateProfileStartingWeight" method="POST">
+        <form class="ui segment form" name="updateStartingWeight" action="/updateProfile" method="POST">
             <div class="field">
                 <label> Current Starting Weight </label>
                 <input placeholder="Starting Weight(in KGs)..." type="text" pattern="\d.*" name="startingWeight" required>

@@ -71,11 +71,30 @@ const dashboard = {
     response.render('account', viewData);
   },
 
-  updateProfileFirstName(request, response) {
+  updateProfile(request, response) {
     const loggedInMember = accounts.getCurrentMember(request);
-    loggedInMember.firstName = request.body.firstName;
+    if (request.body.firstName) {
+      loggedInMember.firstName = request.body.firstName;
+    } else if (request.body.lastName) {
+      loggedInMember.lastName = request.body.lastName;
+    } else if (request.body.email) {
+      loggedInMember.email = request.body.email;
+    } else if (request.body.gender) {
+      loggedInMember.gender = request.body.gender;
+    } else if (request.body.password) {
+      loggedInMember.password = request.body.password;
+    } else if (request.body.height) {
+      loggedInMember.height = request.body.height;
+    } else if (request.body.startingWeight) {
+      loggedInMember.startingWeight = request.body.startingWeight;
+    }
+
     member.save();
     response.redirect('/account');
+  },
+
+  updateProfileLastName (request, response) {
+
   },
 };
 
