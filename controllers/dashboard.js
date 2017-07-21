@@ -70,6 +70,12 @@ const dashboard = {
     };
     response.render('account', viewData);
   },
+
+  updateProfileFirstName(request, response) {
+    const loggedInMember = accounts.getCurrentMember(request);
+    loggedInMember.firstName = request.body.firstName;
+    response.redirect('/account');
+  },
 };
 
 module.exports = dashboard;

@@ -72,12 +72,6 @@ const accounts = {
     const trainerEmail = request.cookies.trainer;
     return trainerStore.getTrainerByEmail(trainerEmail);
   },
-
-  updateProfileFirstName(request) {
-    const loggedInMember = this.getCurrentMember(request);
-    const firstName = request.body.firstName;
-    loggedInMember.firstName = firstName;
-  },
 };
 
 module.exports = accounts;

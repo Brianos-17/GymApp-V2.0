@@ -28,6 +28,6 @@ router.post('/register', accounts.register);
 router.post('/authenticate', accounts.authenticate);
 router.post('/dashboard/addassessment', dashboard.addAssessment);
 router.post('/memberAssessment/:id/updateComment/:assessmentId', trainerDashboard.updateComment);
-router.post('/updateProfileFirstName', accounts.updateProfileFirstName);
+router.post('/updateProfileFirstName', dashboard.updateProfileFirstName);
 
 module.exports = router;
