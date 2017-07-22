@@ -20,7 +20,7 @@
           "waist": "1",
           "hips": "1",
           "trend": "",
-          "comment": "test",
+          "comment": "double test",
           "updateComment": false
         },
         {
@@ -61,6 +61,32 @@
       "startingWeight": "65",
       "id": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
       "assessments": []
+    },
+    {
+      "firstName": "Bart",
+      "lastName": "Simpson",
+      "email": "bart@simpson.com",
+      "password": "secret",
+      "passwordValid": "secret",
+      "gender": "male",
+      "height": "1.3",
+      "startingWeight": "59",
+      "id": "a25aaa9f-617e-4ebc-bca0-2a757ae48e37",
+      "assessments": [
+        {
+          "assessmentId": "18246a25-b9e8-4aba-ab3c-7921cb4c538b",
+          "date": "2017-07-22 12:48:16",
+          "weight": "1",
+          "chest": "1",
+          "thigh": "1",
+          "upperArm": "1",
+          "waist": "1",
+          "hips": "1",
+          "trend": "",
+          "comment": "",
+          "updateComment": false
+        }
+      ]
     }
   ]
 }

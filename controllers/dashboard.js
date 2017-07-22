@@ -89,12 +89,8 @@ const dashboard = {
       loggedInMember.startingWeight = request.body.startingWeight;
     }
 
-    member.save();
+    member.save();//save info to JSON file after made
     response.redirect('/account');
-  },
-
-  updateProfileLastName (request, response) {
-
   },
 };
 
