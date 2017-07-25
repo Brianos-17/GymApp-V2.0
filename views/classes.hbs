@@ -2,13 +2,51 @@
 {{> trainer-menu id="classes"}}
 
 <section class="ui raised segment">
-    <div class="ui animated button" tabindex="0">
-        <a href="/trainerDashboard/addNewClass"><div class="visible content"> Add a new class </div>
-        <div class="hidden content">
-            <i class="plus icon"></i>
+    <form class="ui stacked segment form" name="addNewClass" action="/trainerDashboard/addNewClass" method="POST">
+        <div class="three fields">
+            <div class="field">
+                <label> Class Name </label>
+                <input placeholder="Name..." type="text" name="name">
+            </div>
+            <div class="field">
+                <label> Capacity </label>
+                <input placeholder="Capacity..." type="text" name="maxCapacity">
+            </div>
+            <div class="field">
+                <label> Difficulty </label>
+                <input placeholder="Difficulty level..." type="text" name="difficultyLevel">
+            </div>
         </div>
-        </a>
-    </div>
+        <div class="three fields">
+            <div class="field">
+                <label> Duration </label>
+                <input placeholder="Duration..." type="text" name="duration">
+            </div>
+            <div class="field">
+                <label> Start Date </label>
+                <input placeholder="00.00cm" type="text" pattern="\d.*" name="waist">
+            </div>
+            <div class="field">
+                <label> Hips </label>
+                <input placeholder="00.00cm" type="text" pattern="\d.*" name="hips">
+            </div>
+        </div>
+
+        <button class="ui blue submit button"> Add Assessment </button>
+
+    </form>
+
+
+
+
+
+    <!--<div class="ui animated button" tabindex="0">-->
+        <!--<a href="/trainerDashboard/addNewClass"><div class="visible content"> Add a new class </div>-->
+        <!--<div class="hidden content">-->
+            <!--<i class="plus icon"></i>-->
+        <!--</div>-->
+        <!--</a>-->
+    <!--</div>-->
 
     {{#each classList}}
         <table class="ui table">

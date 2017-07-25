@@ -9,6 +9,7 @@ const analytics = require('../utils/analytics.js');
 const member = require('../models/members-store.js');
 const trainer = require('../models/trainer-store.js');
 const classes = require('../models/class-store.js');
+const uuid = require('uuid');
 
 const trainerDashboard = {
   index(request, response) {
@@ -77,6 +78,13 @@ const trainerDashboard = {
       classList: classList,
     };
     response.render('classes', viewData);
+  },
+
+  addNewClass(request, response) {
+    const newClass = {
+      classId: uuid(),
+
+    };
   },
 };
 
