@@ -23,6 +23,7 @@ router.get('/trainerDashboard/:id/removeAssessment/:assessmentId', trainerDashbo
 router.get('/trainerDashboard', trainerDashboard.index);
 router.get('/trainerDashboard/deleteMember/:id', trainerDashboard.removeMember);
 router.get('/trainerDashboard/viewMemberAssessments/:id', trainerDashboard.viewMemberAssessments);
+router.get('/classes', trainerDashboard.classes);
 
 router.post('/register', accounts.register);
 router.post('/authenticate', accounts.authenticate);

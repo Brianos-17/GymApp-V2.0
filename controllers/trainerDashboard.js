@@ -67,6 +67,14 @@ const trainerDashboard = {
     member.save();
     response.redirect('/trainerDashboard');
   },
+
+  classes(request, response) {
+    const trainer = accounts.getCurrentTrainer(request);
+    const viewData = {
+      trainer: trainer,
+    };
+    response.render('classes', viewData);
+  },
 };
 
 module.exports = trainerDashboard;
