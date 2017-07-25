@@ -1,6 +1,7 @@
 {
   "classes": [
     {
+      "classId": "classId",
       "name": "Yoga",
       "duration": "4 Weeks",
       "capacity": "20",
