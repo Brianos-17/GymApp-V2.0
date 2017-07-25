@@ -4,10 +4,10 @@
       "name": "Yoga",
       "duration": "4 Weeks",
       "capacity": "20",
-      "difficulty-level": "beginner",
+      "difficultyLevel": "beginner",
       "time": "12:00",
       "date": "2017-09-01",
-      "number-of-classes": "8"
+      "numberOfClasses": "8"
     }
   ]
 }
