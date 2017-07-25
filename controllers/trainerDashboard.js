@@ -8,6 +8,7 @@ const accounts = require('./accounts.js');
 const analytics = require('../utils/analytics.js');
 const member = require('../models/members-store.js');
 const trainer = require('../models/trainer-store.js');
+const classes = require('../models/class-store.js');
 
 const trainerDashboard = {
   index(request, response) {
@@ -70,8 +71,10 @@ const trainerDashboard = {
 
   classes(request, response) {
     const trainer = accounts.getCurrentTrainer(request);
+    const classList = classes.getAllClasses();
     const viewData = {
       trainer: trainer,
+      classList: classList,
     };
     response.render('classes', viewData);
   },

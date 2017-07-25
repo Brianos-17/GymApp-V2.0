@@ -1,8 +1,8 @@
-<table class="ui table">
+{{#each memberList}}
+    <table class="ui table">
 
     <tbody>
     <div class="ui bulleted list">
-        {{#each memberList}}
         <tr>
             <td class="one wide">
                 <i class="small user icon"></i>
@@ -19,7 +19,8 @@
                 </a>
             </td>
         </tr>
-        {{/each}}
     </div>
     </tbody>
 </table>
+
+{{/each}}
