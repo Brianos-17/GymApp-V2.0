@@ -25,4 +25,6 @@ const classStore = {
     this.store.remove(this.collection, removedClass);
     this.store.save();
   },
-}
+};
+
+module.exports = classStore;
