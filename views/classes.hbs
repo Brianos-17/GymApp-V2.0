@@ -3,26 +3,28 @@
 
 <section class="ui raised segment">
     <div class="ui animated button" tabindex="0">
-        <div class="visible content"> Add a new class </div>
+        <a href="/trainerDashboard/addNewClass"><div class="visible content"> Add a new class </div>
         <div class="hidden content">
             <i class="plus icon"></i>
         </div>
+        </a>
     </div>
 
     {{#each classList}}
         <table class="ui table">
-
-            <tbody>
             <div class="ui bulleted list">
+            <tbody>
                     <tr>
                         <td class="fourteen wide">
                             <a href="/trainerDashboard/viewMemberAssessments/{{classId}}">{{name}}</a>
                             <br>
                             Capacity: {{currentCapacity}}/{{maxCapacity}}
-                            <br>
-                            Difficulty: {{difficultyLevel}}
-                            <br>
-                            Duration: {{duration}}, Start Date: {{startDate}}
+                            <!--<br>-->
+                            <!--Difficulty: {{difficultyLevel}}-->
+                            <!--<br>-->
+                            <!--Duration: {{duration}}-->
+                            <!--<br>-->
+                            <!--Start Date: {{startDate}}-->
                         </td>
                         <td class=" one wide right aligned">
                             <a href="/trainerDashboard/deleteMember/{{id}}">
@@ -30,8 +32,8 @@
                             </a>
                         </td>
                     </tr>
-            </div>
             </tbody>
+            </div>
         </table>
 
     {{/each}}

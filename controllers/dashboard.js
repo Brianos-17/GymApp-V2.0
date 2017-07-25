@@ -92,8 +92,6 @@ const dashboard = {
     member.save();//save info to JSON file after made
     response.redirect('/account');
   },
-
-
 };
 
 module.exports = dashboard;
