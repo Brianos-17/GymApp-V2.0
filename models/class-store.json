@@ -2,25 +2,23 @@
   "classes": [
     {
       "classId": "4b6a8989-7b7f-4e99-ad26-ca06d722d733",
-      "name": "Yoga",
+      "className": "Yoga",
       "duration": "4 Weeks",
       "maxCapacity": "20",
       "currentCapacity": "0",
       "difficultyLevel": "Beginner",
-      "time": "12:00",
-      "startDate": "2017-09-01",
-      "numberOfClasses": "8"
+      "classTime": "12:00",
+      "startDate": "2017-09-01"
     },
     {
       "classId": "3d6f6589-7b7f-4a38-f126-b236f922a952",
-      "name": "HIT",
+      "className": "HIT",
       "duration": "6 Weeks",
       "maxCapacity": "15",
       "currentCapacity": "0",
       "difficultyLevel": "Beginner",
       "time": "13:30",
-      "startDate": "2017-09-01",
-      "numberOfClasses": "12"
+      "startDate": "2017-09-01"
     }
   ]
 }

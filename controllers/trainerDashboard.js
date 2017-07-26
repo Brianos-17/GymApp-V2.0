@@ -70,7 +70,7 @@ const trainerDashboard = {
     response.redirect('/trainerDashboard');
   },
 
-  classes(request, response) {
+  showClasses(request, response) {
     const trainer = accounts.getCurrentTrainer(request);
     const classList = classes.getAllClasses();
     const viewData = {
@@ -83,8 +83,15 @@ const trainerDashboard = {
   addNewClass(request, response) {
     const newClass = {
       classId: uuid(),
-
+      className: request.body.className,
+      duration: request.body.duration,
+      maxCapacity: request.body.maxCapacity,
+      currentCapacity: 0,
+      difficultyLevel: request.body.difficultyLevel,
+      classTime: request.body.classTime,
+      startDate: request.body.startDate,
     };
+    classes.addClasses(newClass);
   },
 };
 
