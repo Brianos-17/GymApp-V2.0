@@ -19,6 +19,16 @@
       "difficultyLevel": "Beginner",
       "time": "13:30",
       "startDate": "2017-09-01"
+    },
+    {
+      "classId": "61b12eaa-7b73-49f9-a90f-698809b4ddba",
+      "className": "Test",
+      "duration": "4 Weeks",
+      "maxCapacity": "15",
+      "currentCapacity": 0,
+      "difficultyLevel": "Beginner",
+      "classTime": "12:00 PM",
+      "startDate": "July 27, 2017"
     }
   ]
 }

@@ -77,7 +77,7 @@ const trainerDashboard = {
       trainer: trainer,
       classList: classList,
     };
-    response.render('classes', viewData);
+    response.render('classes', viewData, trainer);
   },
 
   addNewClass(request, response) {

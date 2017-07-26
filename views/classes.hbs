@@ -1,7 +1,15 @@
-
-{{> trainer-menu id="classes"}}
+{{#unless trainer}}
+    {{> member-menu id="classes"}}
+{{/unless}}
+{{#if trainer}}
+    {{> trainer-menu id="classes"}}
+{{/if}}
+<!--Toggles navigation bars depending on who views the page-->
 
 <section class="ui raised segment">
+
+{{#if trainer}}
+    
     <form class="ui stacked segment form" name="addNewClass" action="/trainerDashboard/addNewClass" method="POST">
         <div class="three fields">
             <div class="field">
@@ -105,9 +113,7 @@
         </script>
         <!--//code to allow calendar to popup when selected-->
     </form>
-
-
-
+{{/if}}
 
     {{#each classList}}
         <table class="ui table">

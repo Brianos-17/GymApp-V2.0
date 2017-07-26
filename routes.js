@@ -24,12 +24,12 @@ router.get('/trainerDashboard', trainerDashboard.index);
 router.get('/trainerDashboard/deleteMember/:id', trainerDashboard.removeMember);
 router.get('/trainerDashboard/viewMemberAssessments/:id', trainerDashboard.viewMemberAssessments);
 router.get('/classes', trainerDashboard.showClasses);
-router.get('/trainerDashboard/addNewClass', trainerDashboard.addNewClass);
 
 router.post('/register', accounts.register);
 router.post('/authenticate', accounts.authenticate);
 router.post('/dashboard/addassessment', dashboard.addAssessment);
 router.post('/memberAssessment/:id/updateComment/:assessmentId', trainerDashboard.updateComment);
 router.post('/updateProfile', dashboard.updateProfile);
+router.post('/trainerDashboard/addNewClass', trainerDashboard.addNewClass);
 
 module.exports = router;
