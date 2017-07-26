@@ -23,8 +23,13 @@
                 <input placeholder="Duration..." type="text" name="duration">
             </div>
             <div class="field">
-                <label> Start Date </label>
-                <input placeholder="00.00cm" type="text" pattern="\d.*" name="waist">
+                <label> Start Date/Time </label>
+                <div class="ui calendar" id="startDateCalendar">
+                    <div class="ui input left icon">
+                        <i class="calendar icon"></i>
+                        <input type="text" placeholder="Date/Time">
+                    </div>
+                </div>
             </div>
             <div class="field">
                 <label> Hips </label>
@@ -32,21 +37,15 @@
             </div>
         </div>
 
-        <button class="ui blue submit button"> Add Assessment </button>
+        <button class="ui blue submit button"> Add Class </button>
 
+        <script>$(function(){
+            $('#startDateCalendar').calendar();
+        });</script>
     </form>
 
 
 
-
-
-    <!--<div class="ui animated button" tabindex="0">-->
-        <!--<a href="/trainerDashboard/addNewClass"><div class="visible content"> Add a new class </div>-->
-        <!--<div class="hidden content">-->
-            <!--<i class="plus icon"></i>-->
-        <!--</div>-->
-        <!--</a>-->
-    <!--</div>-->
 
     {{#each classList}}
         <table class="ui table">
