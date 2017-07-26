@@ -92,6 +92,7 @@ const trainerDashboard = {
       startDate: request.body.startDate,
     };
     classes.addClasses(newClass);
+    response.redirect('/classes');
   },
 };
 
