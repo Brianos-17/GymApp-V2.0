@@ -74,7 +74,7 @@ const trainerDashboard = {
     const trainer = accounts.getCurrentTrainer(request);
     const classList = classes.getAllClasses();
     const viewData = {
-      trainer: trainer,
+      trainer: trainer, //toggles the addNewClass form in classes.hbs on and off
       classList: classList,
     };
     response.render('classes', viewData);
@@ -86,7 +86,7 @@ const trainerDashboard = {
       className: request.body.className,
       duration: request.body.duration,
       maxCapacity: request.body.maxCapacity,
-      currentCapacity: 0,
+      currentCapacity: "0",
       difficultyLevel: request.body.difficultyLevel,
       classTime: request.body.classTime,
       startDate: request.body.startDate,

@@ -25,7 +25,7 @@
       "className": "Test",
       "duration": "4 Weeks",
       "maxCapacity": "15",
-      "currentCapacity": 0,
+      "currentCapacity": "0",
       "difficultyLevel": "Beginner",
       "classTime": "12:00 PM",
       "startDate": "July 27, 2017"
