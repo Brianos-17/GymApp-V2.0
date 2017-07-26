@@ -8,6 +8,7 @@ const accounts = require('./accounts.js');
 const member = require('../models/members-store.js');
 const uuid = require('uuid');
 const analytics = require('../utils/analytics');
+const classes = require('../models/class-store.js');
 
 const dashboard = {
   index(request, response) {
@@ -91,6 +92,15 @@ const dashboard = {
 
     member.save();//save info to JSON file after made
     response.redirect('/account');
+  },
+
+  showClasses(request, response) {
+    const member = accounts.getCurrentMember(request);
+    const classList = classes.getAllClasses();
+    const viewData = {
+      classList: classList,
+    };
+    response.render('classes', viewData);
   },
 };
 

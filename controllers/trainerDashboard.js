@@ -74,7 +74,6 @@ const trainerDashboard = {
     const trainer = accounts.getCurrentTrainer(request);
     const classList = classes.getAllClasses();
     const viewData = {
-      trainer: trainer,
       classList: classList,
     };
     response.render('classes', viewData, trainer);
