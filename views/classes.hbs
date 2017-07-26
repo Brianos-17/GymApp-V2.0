@@ -23,25 +23,42 @@
                 <input placeholder="Duration..." type="text" name="duration">
             </div>
             <div class="field">
-                <label> Start Date/Time </label>
+                <label> Start Date </label>
                 <div class="ui calendar" id="startDateCalendar">
                     <div class="ui input left icon">
                         <i class="calendar icon"></i>
-                        <input type="text" placeholder="Date/Time">
+                        <input type="text" placeholder="Date">
                     </div>
                 </div>
             </div>
             <div class="field">
-                <label> Hips </label>
-                <input placeholder="00.00cm" type="text" pattern="\d.*" name="hips">
+                <label> Start Time </label>
+                <div class="ui calendar" id="startTimeCalendar">
+                    <div class="ui input left icon">
+                        <i class="time icon"></i>
+                        <input type="text" placeholder="Time">
+                    </div>
+                </div>
             </div>
         </div>
 
         <button class="ui blue submit button"> Add Class </button>
 
-        <script>$(function(){
-            $('#startDateCalendar').calendar();
-        });</script>
+        <script>
+            $(function(){
+            $('#startDateCalendar').calendar(
+                    {type: 'date'}
+            );
+        });
+        </script>
+        <script>
+            $(function() {
+                $('#startTimeCalendar').calendar(
+                        {type: 'time'}
+                );
+            });
+        </script>
+        <!--//code to allow calendar to popup when selected-->
     </form>
 
 
