@@ -1,4 +1,3 @@
-
 {{#if updatedClass}}
     <form class="ui stacked segment form" name="editClass" action="/trainerDashboard/editClass/{{updatedClass.classId}}" method="POST">
 {{/if}}
@@ -6,6 +5,7 @@
     <form class="ui stacked segment form" name="addNewClass" action="/trainerDashboard/addNewClass" method="POST">
 {{/unless}}
 <!--toggles views depending on whether trainer is adding or editing class-->
+
     <div class="three fields">
         <div class="field">
             <label> Class Name </label>
@@ -96,7 +96,7 @@
 {{#unless updatedClass}}
         <button class="ui blue submit button"> Add Class </button>
 {{/unless}}
-
+    <!--toggles views depending on whether trainer is adding or editing class-->
 
     <script>
         $(function(){
