@@ -86,8 +86,8 @@ const trainerDashboard = {
       classId: uuid(),
       className: request.body.className,
       duration: request.body.duration,
-      maxCapacity: request.body.maxCapacity,
-      currentCapacity: '0',
+      maxCapacity: parseInt(request.body.maxCapacity, 10),
+      currentCapacity: 0,
       difficultyLevel: request.body.difficultyLevel,
       classTime: request.body.classTime,
       startDate: request.body.startDate,
@@ -117,7 +117,8 @@ const trainerDashboard = {
     const editedClass = classes.getClassById(classId);
     editedClass.className = request.body.className;
     editedClass.duration = request.body.duration;
-    editedClass.maxCapacity = request.body.maxCapacity;
+    const maxCapacity = parseInt(request.body.maxCapacity, 10);
+    editedClass.maxCapacity = maxCapacity;
     editedClass.difficultyLevel = request.body.difficultyLevel;
     editedClass.classTime = request.body.classTime;
     editedClass.startDate = request.body.startDate;
