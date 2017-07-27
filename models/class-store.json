@@ -29,6 +29,16 @@
       "difficultyLevel": "Beginner",
       "classTime": "12:00 PM",
       "startDate": "July 27, 2017"
+    },
+    {
+      "classId": "61d120b5-dd71-4df2-9a70-9ba752cc9325",
+      "className": "Spin",
+      "duration": "4 Weeks",
+      "maxCapacity": "10",
+      "currentCapacity": "0",
+      "difficultyLevel": "Intermediary",
+      "classTime": "4:30 PM",
+      "startDate": "July 30, 2017"
     }
   ]
 }

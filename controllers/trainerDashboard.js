@@ -94,6 +94,13 @@ const trainerDashboard = {
     classes.addClasses(newClass);
     response.redirect('/classes');
   },
+
+  removeClass(request, response) {
+    const classId = request.body.classId;
+    logger.debug(`Deleting class ${classId}`);
+    classes.removeClass(classId);
+    response.redirect('/classes');
+  },
 };
 
 module.exports = trainerDashboard;
