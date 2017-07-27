@@ -104,6 +104,20 @@ const dashboard = {
     logger.info('Rendering classes');
     response.render('classes', viewData);
   },
+
+  enrollInClass(request, response) {
+    const classId = request.params.classId;
+    const enrolledClass = classes.getClassById(classId);
+    const currentMember = accounts.getCurrentMember(request);
+    if (enrolledClass.currentCapacity < enrolledClass.maxCapacity) {
+      enrolledClass.currentCapacity = enrolledClass.currentCapacity + 1;
+      logger.debug(`Enrolling ${currentMember.firstName} in ${enrolledClass.className} class`);
+    } else {
+      alert('This class is already full');
+    }
+
+    response.redirect('/classes');
+  },
 };
 
 module.exports = dashboard;

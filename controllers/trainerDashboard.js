@@ -121,6 +121,7 @@ const trainerDashboard = {
     editedClass.difficultyLevel = request.body.difficultyLevel;
     editedClass.classTime = request.body.classTime;
     editedClass.startDate = request.body.startDate;
+    classes.save();
     response.redirect('/classes');
   },
 };

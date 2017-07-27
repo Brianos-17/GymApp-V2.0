@@ -27,6 +27,7 @@ router.get('/memberClasses', dashboard.showClasses);
 router.get('/classes', trainerDashboard.showClasses);
 router.get('/trainerDashboard/removeClass/:classId', trainerDashboard.removeClass);
 router.get('/trainerDashboard/updateClass/:classId', trainerDashboard.updateClass);
+router.get('/dashboard/enroll/:classId', dashboard.enrollInClass);
 
 router.post('/register', accounts.register);
 router.post('/authenticate', accounts.authenticate);

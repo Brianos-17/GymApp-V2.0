@@ -56,6 +56,13 @@
                             </a>
                         </td>
                         {{/if}}
+                        {{#unless trainer}}
+                            <td class="one wide right aligned">
+                                <a href="/dashboard/enroll{{classdId}}">
+                                    <i class="large blue add user icon"></i>
+                                </a>
+                            </td>
+                        {{/unless}}
                     </tr>
             </tbody>
             </div>
