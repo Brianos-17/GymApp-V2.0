@@ -77,6 +77,7 @@ const trainerDashboard = {
       trainer: trainer, //toggles the addNewClass form in classes.hbs on and off
       classList: classList,
     };
+    logger.info('Rendering classes');
     response.render('classes', viewData);
   },
 
@@ -86,7 +87,7 @@ const trainerDashboard = {
       className: request.body.className,
       duration: request.body.duration,
       maxCapacity: request.body.maxCapacity,
-      currentCapacity: "0",
+      currentCapacity: '0',
       difficultyLevel: request.body.difficultyLevel,
       classTime: request.body.classTime,
       startDate: request.body.startDate,
@@ -99,6 +100,27 @@ const trainerDashboard = {
     const classId = request.params.classId;
     logger.debug(`Deleting class ${classId}`);
     classes.removeClass(classId);
+    response.redirect('/classes');
+  },
+
+  updateClass(request, response) {
+    const classId = request.params.classId;
+    const updatedClass = classes.getClassById(classId);
+    const viewData = {
+      updatedClass: updatedClass,
+    };
+    response.render('updateClass', viewData);
+  },
+
+  editClass(request, response) {
+    const classId = request.params.classId;
+    const editedClass = classes.getClassById(classId);
+    editedClass.className = request.body.className;
+    editedClass.duration = request.body.duration;
+    editedClass.maxCapacity = request.body.maxCapacity;
+    editedClass.difficultyLevel = request.body.difficultyLevel;
+    editedClass.classTime = request.body.classTime;
+    editedClass.startDate = request.body.startDate;
     response.redirect('/classes');
   },
 };

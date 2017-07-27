@@ -98,8 +98,10 @@ const dashboard = {
     const member = accounts.getCurrentMember(request);
     const classList = classes.getAllClasses();
     const viewData = {
+      member: member,
       classList: classList,
     };
+    logger.info('Rendering classes');
     response.render('classes', viewData);
   },
 };
