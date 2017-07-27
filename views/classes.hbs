@@ -34,14 +34,17 @@
                                     Duration: {{duration}}
                                     <br>
                                     Start Date: {{startDate}}
+                                        <br>
+                                        Time: {{classTime}}
+
                                     </p>
                                 </div>
                             </div>
 
                         </td>
-                        {{#if trainer}}
+                        {{#if ../trainer}}
                         <td class=" one wide right aligned">
-                            <a href="/trainerDashboard/deleteClass/{{classId}}">
+                            <a href="/trainerDashboard/removeClass/{{classId}}">
                                 <i class="large red trash icon"></i>
                             </a>
                         </td>

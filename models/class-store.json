@@ -1,44 +1,24 @@
 {
   "classes": [
     {
-      "classId": "4b6a8989-7b7f-4e99-ad26-ca06d722d733",
+      "classId": "26a52777-4ad5-48c1-993f-b93722c32f77",
       "className": "Yoga",
       "duration": "4 Weeks",
       "maxCapacity": "20",
       "currentCapacity": "0",
       "difficultyLevel": "Beginner",
-      "classTime": "12:00",
-      "startDate": "2017-09-01"
+      "classTime": "1:00 PM",
+      "startDate": "July 31, 2017"
     },
     {
-      "classId": "3d6f6589-7b7f-4a38-f126-b236f922a952",
+      "classId": "65cd6031-f8c0-4049-88fc-684bdd3d3d13",
       "className": "HIT",
-      "duration": "6 Weeks",
-      "maxCapacity": "15",
-      "currentCapacity": "0",
-      "difficultyLevel": "Beginner",
-      "time": "13:30",
-      "startDate": "2017-09-01"
-    },
-    {
-      "classId": "61b12eaa-7b73-49f9-a90f-698809b4ddba",
-      "className": "Test",
       "duration": "4 Weeks",
       "maxCapacity": "15",
       "currentCapacity": "0",
       "difficultyLevel": "Beginner",
-      "classTime": "12:00 PM",
-      "startDate": "July 27, 2017"
-    },
-    {
-      "classId": "61d120b5-dd71-4df2-9a70-9ba752cc9325",
-      "className": "Spin",
-      "duration": "4 Weeks",
-      "maxCapacity": "10",
-      "currentCapacity": "0",
-      "difficultyLevel": "Intermediary",
-      "classTime": "4:30 PM",
-      "startDate": "July 30, 2017"
+      "classTime": "2:30 PM",
+      "startDate": "July 31, 2017"
     }
   ]
 }

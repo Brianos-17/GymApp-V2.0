@@ -96,7 +96,7 @@ const trainerDashboard = {
   },
 
   removeClass(request, response) {
-    const classId = request.body.classId;
+    const classId = request.params.classId;
     logger.debug(`Deleting class ${classId}`);
     classes.removeClass(classId);
     response.redirect('/classes');
