@@ -116,7 +116,7 @@ const dashboard = {
       alert('This class is already full');
     }
 
-    response.redirect('/classes');
+    response.redirect('/memberClasses');
   },
 };
 

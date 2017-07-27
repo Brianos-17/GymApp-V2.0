@@ -58,9 +58,12 @@
                         {{/if}}
                         {{#unless trainer}}
                             <td class="one wide right aligned">
-                                <a href="/dashboard/enroll{{classdId}}">
+                                <a href="/dashboard/enroll/{{classId}}">
                                     <i class="large blue add user icon"></i>
                                 </a>
+                            </td>
+                            <td class="one wide right aligned">
+                                <i class="large red remove user icon"></i>
                             </td>
                         {{/unless}}
                     </tr>
