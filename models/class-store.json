@@ -1,50 +1,122 @@
 {
   "classes": [
     {
-      "classId": "26a52777-4ad5-48c1-993f-b93722c32f77",
+      "classId": "935aa716-862f-43d7-9177-df6b9649adf5",
       "className": "Yoga",
-      "duration": "4 Weeks",
-      "maxCapacity": 20,
-      "currentCapacity": 0,
       "difficultyLevel": "Beginner",
-      "classTime": "1:00 PM",
-      "startDate": "July 31, 2017"
-    },
-    {
-      "classId": "65cd6031-f8c0-4049-88fc-684bdd3d3d13",
-      "className": "HIT",
-      "duration": "4 Weeks",
-      "maxCapacity": 15,
-      "currentCapacity": 15,
-      "difficultyLevel": "Beginner",
-      "classTime": "2:30 PM",
-      "startDate": "July 31, 2017"
-    },
-    {
-      "classId": "d9a032d7-b663-4c5e-81d2-2e774256eb65",
-      "className": "Test",
-      "difficultyLevel": "Beginner",
-      "classTime": "12:00 PM",
+      "classTime": "10:00 AM",
       "sessions": [
         {
-          "date": "2017-07-01",
+          "sessionId": "c4b6f018-53ad-42a2-a22e-2f50c34fdb84",
+          "date": "2017-07-31",
           "currentCapacity": 0,
           "maxCapacity": 10
         },
         {
-          "date": "2017-07-08",
+          "sessionId": "ed9a6911-d612-43c5-889d-0c9585b6ae53",
+          "date": "2017-08-07",
           "currentCapacity": 0,
           "maxCapacity": 10
         },
         {
-          "date": "2017-07-15",
+          "sessionId": "6cc080d2-6189-4f68-a720-4498115f87f1",
+          "date": "2017-08-14",
           "currentCapacity": 0,
           "maxCapacity": 10
         },
         {
-          "date": "2017-07-22",
+          "sessionId": "9b0b6e1f-b0b1-4b49-9cec-4383b127d4d5",
+          "date": "2017-08-21",
           "currentCapacity": 0,
           "maxCapacity": 10
+        }
+      ]
+    },
+    {
+      "classId": "a59927ef-a8fe-44db-b631-49edb4aa20b0",
+      "className": "HIT",
+      "difficultyLevel": "Beginner",
+      "classTime": "2:30 PM",
+      "sessions": [
+        {
+          "sessionId": "0cc04348-514a-4445-83e0-8564b2ff2019",
+          "date": "2017-07-31",
+          "currentCapacity": 0,
+          "maxCapacity": 20
+        },
+        {
+          "sessionId": "f99a4584-73b8-480f-ae21-864ad3f55d92",
+          "date": "2017-08-07",
+          "currentCapacity": 0,
+          "maxCapacity": 20
+        },
+        {
+          "sessionId": "1ed77b0b-4c22-46b4-bdd8-e3287d3ead01",
+          "date": "2017-08-14",
+          "currentCapacity": 0,
+          "maxCapacity": 20
+        },
+        {
+          "sessionId": "84c92fd8-336b-4cb0-a95a-532855ad7b33",
+          "date": "2017-08-21",
+          "currentCapacity": 0,
+          "maxCapacity": 20
+        }
+      ]
+    },
+    {
+      "classId": "e5fae54c-1149-4a31-b16d-b485b6d6c9d8",
+      "className": "Spin",
+      "difficultyLevel": "Intermediary",
+      "classTime": "6:45 PM",
+      "sessions": [
+        {
+          "sessionId": "3cf9f54d-d1e9-4277-851d-6819f52fe282",
+          "date": "2017-08-01",
+          "currentCapacity": 0,
+          "maxCapacity": 15
+        },
+        {
+          "sessionId": "51c80596-48c4-4b98-aae7-40c0df486182",
+          "date": "2017-08-08",
+          "currentCapacity": 0,
+          "maxCapacity": 15
+        },
+        {
+          "sessionId": "5db99669-563d-4543-a288-73b414e83446",
+          "date": "2017-08-15",
+          "currentCapacity": 0,
+          "maxCapacity": 15
+        },
+        {
+          "sessionId": "3b9fa917-74d2-4857-a326-904e1b959f37",
+          "date": "2017-08-22",
+          "currentCapacity": 0,
+          "maxCapacity": 15
+        },
+        {
+          "sessionId": "2755b5b2-708f-4e5c-a342-54173cbd9127",
+          "date": "2017-08-29",
+          "currentCapacity": 0,
+          "maxCapacity": 15
+        },
+        {
+          "sessionId": "75dca90f-015b-40ab-adb5-a3d54bbec96d",
+          "date": "2017-09-05",
+          "currentCapacity": 0,
+          "maxCapacity": 15
+        },
+        {
+          "sessionId": "87134684-f1ad-4184-a4c6-5647d551b835",
+          "date": "2017-09-12",
+          "currentCapacity": 0,
+          "maxCapacity": 15
+        },
+        {
+          "sessionId": "5395f9cf-e24d-436c-ad76-bb28d8616cca",
+          "date": "2017-09-19",
+          "currentCapacity": 0,
+          "maxCapacity": 15
         }
       ]
     }

@@ -29,16 +29,13 @@
                                 <div class="content">
                                     <p class="transition hidden">
                                     <br>
-                                    Capacity: {{currentCapacity}}/{{maxCapacity}}
-                                    <br>
                                     Difficulty: {{difficultyLevel}}
                                     <br>
-                                    Duration: {{duration}}
-                                    <br>
-                                    Start Date: {{startDate}}
-                                        <br>
-                                        Time: {{classTime}}
-
+                                        {{#each sessions}}
+                                            <br>
+                                            Date: {{date}} &nbsp; Capacity: {{currentCapacity}}/{{maxCapacity}}
+                                            <br>
+                                        {{/ each}}
                                     </p>
                                 </div>
                             </div>
