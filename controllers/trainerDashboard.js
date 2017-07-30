@@ -85,13 +85,33 @@ const trainerDashboard = {
     const newClass = {
       classId: uuid(),
       className: request.body.className,
-      duration: request.body.duration,
-      maxCapacity: parseInt(request.body.maxCapacity, 10),//Converts string to int
-      currentCapacity: 0,
       difficultyLevel: request.body.difficultyLevel,
       classTime: request.body.classTime,
-      startDate: request.body.startDate,
+      sessions: [],
+
+      // -------classId: uuid(),
+      // -------className: request.body.className,
+      // duration: request.body.duration,
+      // maxCapacity: parseInt(request.body.maxCapacity, 10),//Converts string to int
+      // currentCapacity: 0,
+      // -------- difficultyLevel: request.body.difficultyLevel,
+      // --------classTime: request.body.classTime,
+      // startDate: request.body.startDate,
     };
+
+    for (let i = 0; i < parseInt(request.body.duration, 10); i++) {
+      const startDate = new Date(request.body.startDate);
+      const date = new Date(startDate.setTime((startDate.getTime() + 86400000)  + ((7 * i) * 86400000)));
+      //Retrieved from: https://stackoverflow.com/questions/6963311/add-days-to-a-date-object
+      //Date being set backwards as it is not initialized in GMT. adding extra day to offset this
+      const session = {
+        date: date,
+        currentCapacity: 0,
+        maxCapacity: parseInt(request.body.maxCapacity, 10),//Converts string to int
+      };
+      newClass.sessions.push(session);
+    }
+
     classes.addClasses(newClass);
     response.redirect('/classes');
   },

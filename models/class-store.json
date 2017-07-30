@@ -19,6 +19,29 @@
       "difficultyLevel": "Beginner",
       "classTime": "2:30 PM",
       "startDate": "July 31, 2017"
+    },
+    {
+      "classId": "be4f0ba9-60f6-45e1-b396-85d73536ac3c",
+      "className": "Test",
+      "difficultyLevel": "Beginner",
+      "classTime": "4:00 AM",
+      "sessions": [
+        {
+          "date": "2017-07-10T23:00:00.000Z",
+          "currentCapacity": 0,
+          "maxCapacity": 1
+        },
+        {
+          "date": "2017-07-17T23:00:00.000Z",
+          "currentCapacity": 0,
+          "maxCapacity": 1
+        },
+        {
+          "date": "2017-07-24T23:00:00.000Z",
+          "currentCapacity": 0,
+          "maxCapacity": 1
+        }
+      ]
     }
   ]
 }
