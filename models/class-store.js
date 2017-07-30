@@ -26,6 +26,15 @@ const classStore = {
     this.store.save();
   },
 
+  getSessionById(classId, sessionId) {
+    const currentClass = this.getClassById(classId);
+    for (let i = 0; i < currentClass.sessions.length; i++) {
+      if (currentClass.sessions[i].sessionId === sessionId) {
+        return currentClass.sessions[i];
+      }
+    }
+  },
+
   save() {
     this.store.save();
   }

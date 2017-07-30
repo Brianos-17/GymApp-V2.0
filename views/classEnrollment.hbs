@@ -1,0 +1,26 @@
+{{> member-menu id="classEnrollment"}}
+
+<section class="ui raised segment">
+    <h4> {{chosenClass.className}} Class Enrollment </h4>
+    <table class="ui table">
+        <tbody>
+        {{#each chosenClass.sessions}}
+        <tr>
+            <td>
+                Date: {{date}} &nbsp; Time: {{../chosenClass.classTime}} &nbsp; Capacity: {{currentCapacity}}/{{maxCapacity}}
+            </td>
+            <td class="one wide right aligned">
+                <a href="/dashboard/{{../chosenClass.classId}}/enroll/{{sessionId}}">
+                    <button class="ui blue submit button">Enroll</button></a>
+            </td>
+        </tr>
+        {{/each}}
+        <tr>
+            <td></td>
+            <td class="one wide right aligned">
+                <button class="ui blue submit button">Enroll All</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</section>

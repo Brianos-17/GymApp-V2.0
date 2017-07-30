@@ -11,19 +11,6 @@
       "id": "3ad52697-6d98-4d80-8273-084de55a86c0",
       "assessments": [
         {
-          "assessmentId": "75ee0bcb-164c-4242-8d23-9d85b600cdd7",
-          "date": "2017-07-18 14:36:33",
-          "weight": "1",
-          "chest": "1",
-          "thigh": "1",
-          "upperArm": "1",
-          "waist": "1",
-          "hips": "1",
-          "trend": "",
-          "comment": "double test",
-          "updateComment": false
-        },
-        {
           "assessmentId": "30321e24-0d5c-48f1-a50c-f073e32d30cf",
           "date": "2017-07-10 17:15:35",
           "weight": "345",
@@ -49,6 +36,20 @@
           "comment": "Needs Improvement",
           "updateComment": false
         }
+      ],
+      "sessions": [
+        {
+          "sessionId": "c4b6f018-53ad-42a2-a22e-2f50c34fdb84",
+          "date": "2017-07-31",
+          "currentCapacity": 1,
+          "maxCapacity": 10
+        },
+        {
+          "sessionId": "ed9a6911-d612-43c5-889d-0c9585b6ae53",
+          "date": "2017-08-07",
+          "currentCapacity": 1,
+          "maxCapacity": 10
+        }
       ]
     },
     {
@@ -60,7 +61,8 @@
       "height": "1.6",
       "startingWeight": "65",
       "id": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
-      "assessments": []
+      "assessments": [],
+      "sessions": []
     },
     {
       "firstName": "Bart",
@@ -86,7 +88,8 @@
           "comment": "",
           "updateComment": false
         }
-      ]
+      ],
+      "sessions": []
     }
   ]
 }

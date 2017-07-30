@@ -105,15 +105,36 @@ const dashboard = {
     response.render('classes', viewData);
   },
 
-  enrollInClass(request, response) {
+  classEnrollment(request, response) {
     const classId = request.params.classId;
-    const enrolledClass = classes.getClassById(classId);
+    const chosenClass = classes.getClassById(classId);
     const currentMember = accounts.getCurrentMember(request);
-    if (enrolledClass.currentCapacity < enrolledClass.maxCapacity) {
-      enrolledClass.currentCapacity += 1;
-      logger.debug(`Enrolling ${currentMember.firstName} in ${enrolledClass.className} class`);
+    const viewData = {
+      chosenClass: chosenClass,
+      member: currentMember,
+    };
+    response.render('classEnrollment', viewData);
+  },
+
+  enrollInClass(request, response) {
+    const sessionId = request.params.sessionId;
+    const classId = request.params.classId;
+    const currentSession = classes.getSessionById(classId, sessionId);
+    const currentMember = accounts.getCurrentMember(request);
+    let notAlreadyEnrolled = true; //Boolean check to stop members from enrolling in a class more than once
+    for (let i = 0; i < currentMember.sessions.length; i++) {
+      if (currentMember.sessions[i].sessionId === sessionId) {
+        notAlreadyEnrolled = false;
+      }
+    }
+    if ((notAlreadyEnrolled) && (currentSession.currentCapacity < currentSession.maxCapacity)) {
+      currentSession.currentCapacity += 1;
+      logger.debug(`Enrolling ${currentMember.firstName}`);
+      currentMember.sessions.push(currentSession);
+      member.save();
+      classes.save();
     } else {
-      alert('This class is already full');
+      logger.debug('Unable to enroll ');
     }
 
     response.redirect('/memberClasses');

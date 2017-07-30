@@ -33,7 +33,8 @@
                                     <br>
                                         {{#each sessions}}
                                             <br>
-                                            Date: {{date}} &nbsp; Capacity: {{currentCapacity}}/{{maxCapacity}}
+                                            Date: {{date}} &nbsp; Time: {{../classTime}}
+                                            &nbsp; Capacity: {{currentCapacity}}/{{maxCapacity}}
                                             <br>
                                         {{/ each}}
                                     </p>
@@ -58,9 +59,6 @@
                                 <a href="/dashboard/enroll/{{classId}}">
                                     <i class="large blue add user icon"></i>
                                 </a>
-                            </td>
-                            <td class="one wide right aligned">
-                                <i class="large red remove user icon"></i>
                             </td>
                         {{/unless}}
                     </tr>

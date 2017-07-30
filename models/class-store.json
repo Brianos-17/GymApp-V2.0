@@ -9,13 +9,13 @@
         {
           "sessionId": "c4b6f018-53ad-42a2-a22e-2f50c34fdb84",
           "date": "2017-07-31",
-          "currentCapacity": 0,
+          "currentCapacity": 1,
           "maxCapacity": 10
         },
         {
           "sessionId": "ed9a6911-d612-43c5-889d-0c9585b6ae53",
           "date": "2017-08-07",
-          "currentCapacity": 0,
+          "currentCapacity": 1,
           "maxCapacity": 10
         },
         {
