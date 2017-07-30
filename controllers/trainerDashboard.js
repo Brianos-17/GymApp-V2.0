@@ -94,8 +94,9 @@ const trainerDashboard = {
       const startDate = new Date(request.body.startDate);
       const date = new Date(startDate.setTime((startDate.getTime() + 86400000)  + ((7 * i) * 86400000)));
       //Retrieved from: https://stackoverflow.com/questions/6963311/add-days-to-a-date-object
-      //Date being set backwards as it is not initialized in GMT. adding extra day to offset this
+      //Date being set backwards as it is not initialized in GMT. Adding extra day to offset this
       const session = {
+        sessionId: new uuid(),
         date: date.toISOString().substring(0, 10),//substring to only get date and remove timestamp
         currentCapacity: 0,
         maxCapacity: parseInt(request.body.maxCapacity, 10),//Converts string to int
