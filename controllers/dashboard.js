@@ -131,6 +131,7 @@ const dashboard = {
       currentSession.currentCapacity += 1;
       logger.debug(`Enrolling ${currentMember.firstName}`);
       currentMember.sessions.push(currentSession);
+      currentSession.members.push(currentMember.id);//Add member Id to session to keep track of enrollment
       member.save();
       classes.save();
     } else {
@@ -140,24 +141,24 @@ const dashboard = {
     response.redirect('/memberClasses');
   },
 
-  enrollAll(request, response) {
-    const classId = request.params.classId;
-    const currentClass = classes.getClassById(classId);
-    // const currentMember = accounts.getCurrentMember(request);
-    // for (let i = 0; i < currentClass.sessions.length; i++) {
-    //   const sessionId = currentClass.sessions[i].sessionId;
-    //   for (let x = 0; x < currentMember.sessions.length; x++) {
-    //     const enrolledSessionId = currentMember.sessions[x].sessionId;
-    //     if (sessionId === enrolledSessionId) {
-    //       break;
-    //     } else {
-    //
-    //     }
-      }
-    }
-
-    response.redirect('/memberClasses');
-  },
+  // enrollAll(request, response) {
+  //   const classId = request.params.classId;
+  //   const currentClass = classes.getClassById(classId);
+  //   // const currentMember = accounts.getCurrentMember(request);
+  //   // for (let i = 0; i < currentClass.sessions.length; i++) {
+  //   //   const sessionId = currentClass.sessions[i].sessionId;
+  //   //   for (let x = 0; x < currentMember.sessions.length; x++) {
+  //   //     const enrolledSessionId = currentMember.sessions[x].sessionId;
+  //   //     if (sessionId === enrolledSessionId) {
+  //   //       break;
+  //   //     } else {
+  //   //
+  //   //     }
+  //     }
+  //   }
+  //
+  //   response.redirect('/memberClasses');
+  // },
 };
 
 module.exports = dashboard;

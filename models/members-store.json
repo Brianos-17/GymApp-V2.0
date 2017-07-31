@@ -49,6 +49,20 @@
           "date": "2017-08-07",
           "currentCapacity": 1,
           "maxCapacity": 10
+        },
+        {
+          "sessionId": "f37692a1-1d43-4302-8268-388918d56529",
+          "date": "2017-07-31",
+          "currentCapacity": 1,
+          "maxCapacity": 20,
+          "members": []
+        },
+        {
+          "sessionId": "ff6c2652-6d99-495e-a448-780bdae7ba31",
+          "date": "2017-08-07",
+          "currentCapacity": 1,
+          "maxCapacity": 20,
+          "members": []
         }
       ]
     },
