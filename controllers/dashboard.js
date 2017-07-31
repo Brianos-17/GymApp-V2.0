@@ -32,15 +32,6 @@ const dashboard = {
     response.render('dashboard', viewData);
   },
 
-  removeAssessment(request, response) {
-    const assessmentId = request.params.assessmentId;
-    const loggedInMember = accounts.getCurrentMember(request);
-    member.removeAssessment(loggedInMember.id, assessmentId);
-    logger.debug(`Deleting Assessment ${assessmentId} for ${loggedInMember.firstName}`);
-    response.redirect('/dashboard');
-
-  },
-
   addAssessment(request, response) {
     const loggedInMember = accounts.getCurrentMember(request);
     const memberId = loggedInMember.id;
@@ -62,6 +53,15 @@ const dashboard = {
     member.addAssessment(memberId, newAssessment);
     analytics.trend(loggedInMember);
     response.redirect('/dashboard');
+  },
+
+  removeAssessment(request, response) {
+    const assessmentId = request.params.assessmentId;
+    const loggedInMember = accounts.getCurrentMember(request);
+    member.removeAssessment(loggedInMember.id, assessmentId);
+    logger.debug(`Deleting Assessment ${assessmentId} for ${loggedInMember.firstName}`);
+    response.redirect('/dashboard');
+
   },
 
   account(request, response) {
@@ -135,6 +135,25 @@ const dashboard = {
       classes.save();
     } else {
       logger.debug('Unable to enroll ');
+    }
+
+    response.redirect('/memberClasses');
+  },
+
+  enrollAll(request, response) {
+    const classId = request.params.classId;
+    const currentClass = classes.getClassById(classId);
+    // const currentMember = accounts.getCurrentMember(request);
+    // for (let i = 0; i < currentClass.sessions.length; i++) {
+    //   const sessionId = currentClass.sessions[i].sessionId;
+    //   for (let x = 0; x < currentMember.sessions.length; x++) {
+    //     const enrolledSessionId = currentMember.sessions[x].sessionId;
+    //     if (sessionId === enrolledSessionId) {
+    //       break;
+    //     } else {
+    //
+    //     }
+      }
     }
 
     response.redirect('/memberClasses');

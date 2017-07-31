@@ -100,6 +100,7 @@ const trainerDashboard = {
         date: date.toISOString().substring(0, 10),//substring to only get date and remove timestamp
         currentCapacity: 0,
         maxCapacity: parseInt(request.body.maxCapacity, 10),//Converts string to int
+        members: [],//Array of members in order to keep track of who has enrolled in each session
       };
       newClass.sessions.push(session);
     }
