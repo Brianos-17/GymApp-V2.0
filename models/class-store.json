@@ -101,58 +101,74 @@
         {
           "sessionId": "7b935c0f-6e29-4c30-ad8a-a73f0c32bf5b",
           "date": "2017-07-31",
-          "currentCapacity": 0,
+          "currentCapacity": 1,
           "maxCapacity": 25,
-          "members": []
+          "members": [
+            "a25aaa9f-617e-4ebc-bca0-2a757ae48e37"
+          ]
         },
         {
           "sessionId": "3d62788b-99af-47c2-bee3-cf4cfa23d7c2",
           "date": "2017-08-07",
-          "currentCapacity": 0,
+          "currentCapacity": 1,
           "maxCapacity": 25,
-          "members": []
+          "members": [
+            "a25aaa9f-617e-4ebc-bca0-2a757ae48e37"
+          ]
         },
         {
           "sessionId": "a801ef87-3f3a-486c-ad7f-e55beecb46a5",
           "date": "2017-08-14",
-          "currentCapacity": 0,
+          "currentCapacity": 1,
           "maxCapacity": 25,
-          "members": []
+          "members": [
+            "a25aaa9f-617e-4ebc-bca0-2a757ae48e37"
+          ]
         },
         {
           "sessionId": "dd65b14c-5ff8-4770-bf61-d805dddec948",
           "date": "2017-08-21",
-          "currentCapacity": 0,
+          "currentCapacity": 1,
           "maxCapacity": 25,
-          "members": []
+          "members": [
+            "a25aaa9f-617e-4ebc-bca0-2a757ae48e37"
+          ]
         },
         {
           "sessionId": "53190af7-81f3-4724-aebd-3f2c0e74256b",
           "date": "2017-08-28",
-          "currentCapacity": 0,
+          "currentCapacity": 1,
           "maxCapacity": 25,
-          "members": []
+          "members": [
+            "a25aaa9f-617e-4ebc-bca0-2a757ae48e37"
+          ]
         },
         {
           "sessionId": "7035805c-04fe-4505-be7c-f53b6f1675fd",
           "date": "2017-09-04",
-          "currentCapacity": 0,
+          "currentCapacity": 1,
           "maxCapacity": 25,
-          "members": []
+          "members": [
+            "a25aaa9f-617e-4ebc-bca0-2a757ae48e37"
+          ]
         },
         {
           "sessionId": "e77a08a3-8029-4012-99ce-b01d0cb326f4",
           "date": "2017-09-11",
-          "currentCapacity": 0,
+          "currentCapacity": 1,
           "maxCapacity": 25,
-          "members": []
+          "members": [
+            "a25aaa9f-617e-4ebc-bca0-2a757ae48e37"
+          ]
         },
         {
           "sessionId": "e9f46ccc-29a3-4e75-a85d-06944967b67e",
           "date": "2017-09-18",
-          "currentCapacity": 0,
+          "currentCapacity": 1,
           "maxCapacity": 25,
-          "members": []
+          "members": [
+            "a25aaa9f-617e-4ebc-bca0-2a757ae48e37"
+          ]
         }
       ]
     }

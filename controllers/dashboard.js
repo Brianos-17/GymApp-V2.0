@@ -144,12 +144,14 @@ const dashboard = {
     const classId = request.params.classId;
     const currentClass = classes.getClassById(classId);
     const currentMember = accounts.getCurrentMember(request);
-    let notAlreadyEnrolled = true; //Boolean check to stop members from enrolling in a class more than once
-    for (let i = 0; i < currentClass.sessions.length; i++) {
+    for (let i = 0; i < currentClass.sessions.length; i++) { //cycles through each session
       let session = currentClass.sessions[i];
-      for (let x = 0; x < session.members.length; x++) {
+      let notAlreadyEnrolled = true; //Boolean check to stop members from enrolling in a class more than once
+      for (let x = 0; x < session.members.length; x++) { //cycles through each member in the session
         if (session.members[x] === currentMember.id) {
           notAlreadyEnrolled = false;
+          logger.info(notAlreadyEnrolled);
+          break;
         }
       }
 
