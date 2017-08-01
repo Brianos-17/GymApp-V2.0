@@ -36,34 +36,6 @@
           "comment": "Needs Improvement",
           "updateComment": false
         }
-      ],
-      "sessions": [
-        {
-          "sessionId": "c4b6f018-53ad-42a2-a22e-2f50c34fdb84",
-          "date": "2017-07-31",
-          "currentCapacity": 1,
-          "maxCapacity": 10
-        },
-        {
-          "sessionId": "ed9a6911-d612-43c5-889d-0c9585b6ae53",
-          "date": "2017-08-07",
-          "currentCapacity": 1,
-          "maxCapacity": 10
-        },
-        {
-          "sessionId": "f37692a1-1d43-4302-8268-388918d56529",
-          "date": "2017-07-31",
-          "currentCapacity": 1,
-          "maxCapacity": 20,
-          "members": []
-        },
-        {
-          "sessionId": "ff6c2652-6d99-495e-a448-780bdae7ba31",
-          "date": "2017-08-07",
-          "currentCapacity": 1,
-          "maxCapacity": 20,
-          "members": []
-        }
       ]
     },
     {
@@ -75,8 +47,7 @@
       "height": "1.6",
       "startingWeight": "65",
       "id": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
-      "assessments": [],
-      "sessions": []
+      "assessments": []
     },
     {
       "firstName": "Bart",
@@ -102,8 +73,7 @@
           "comment": "",
           "updateComment": false
         }
-      ],
-      "sessions": []
+      ]
     }
   ]
 }

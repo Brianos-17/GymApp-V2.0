@@ -29,7 +29,7 @@ router.get('/trainerDashboard/removeClass/:classId', trainerDashboard.removeClas
 router.get('/trainerDashboard/updateClass/:classId', trainerDashboard.updateClass);
 router.get('/dashboard/enroll/:classId', dashboard.classEnrollment);
 router.get('/dashboard/:classId/enroll/:sessionId', dashboard.enrollInClass);
-// router.get('/dashboard/:classId/enrollAll', dashboard.enrollAll);
+router.get('/dashboard/:classId/enrollAll', dashboard.enrollAll);
 
 router.post('/register', accounts.register);
 router.post('/authenticate', accounts.authenticate);

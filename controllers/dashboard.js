@@ -122,43 +122,50 @@ const dashboard = {
     const currentSession = classes.getSessionById(classId, sessionId);
     const currentMember = accounts.getCurrentMember(request);
     let notAlreadyEnrolled = true; //Boolean check to stop members from enrolling in a class more than once
-    for (let i = 0; i < currentMember.sessions.length; i++) {
-      if (currentMember.sessions[i].sessionId === sessionId) {
+    for (let i = 0; i < currentSession.members.length; i++) {
+      if (currentSession.members[i] === currentMember.id) {
         notAlreadyEnrolled = false;
       }
     }
+
     if ((notAlreadyEnrolled) && (currentSession.currentCapacity < currentSession.maxCapacity)) {
       currentSession.currentCapacity += 1;
       logger.debug(`Enrolling ${currentMember.firstName}`);
-      currentMember.sessions.push(currentSession);
-      currentSession.members.push(currentMember.id);//Add member Id to session to keep track of enrollment
-      member.save();
+      currentSession.members.push(currentMember.id);//Add member Id to session to keep track of enrollment and allow for boolean check
       classes.save();
     } else {
-      logger.debug('Unable to enroll ');
+      logger.debug('Unable to enroll');
     }
 
     response.redirect('/memberClasses');
   },
 
-  // enrollAll(request, response) {
-  //   const classId = request.params.classId;
-  //   const currentClass = classes.getClassById(classId);
-  //   // const currentMember = accounts.getCurrentMember(request);
-  //   // for (let i = 0; i < currentClass.sessions.length; i++) {
-  //   //   const sessionId = currentClass.sessions[i].sessionId;
-  //   //   for (let x = 0; x < currentMember.sessions.length; x++) {
-  //   //     const enrolledSessionId = currentMember.sessions[x].sessionId;
-  //   //     if (sessionId === enrolledSessionId) {
-  //   //       break;
-  //   //     } else {
-  //   //
-  //   //     }
-  //     }
-  //   }
-  //
-  //   response.redirect('/memberClasses');
-  // },
+  enrollAll(request, response) {
+    const classId = request.params.classId;
+    const currentClass = classes.getClassById(classId);
+    const currentMember = accounts.getCurrentMember(request);
+    let notAlreadyEnrolled = true; //Boolean check to stop members from enrolling in a class more than once
+    for (let i = 0; i < currentClass.sessions.length; i++) {
+      let session = currentClass.sessions[i];
+      for (let x = 0; x < session.members.length; x++) {
+        if (session.members[x] === currentMember.id) {
+          notAlreadyEnrolled = false;
+        }
+      }
+
+      if ((notAlreadyEnrolled) && (session.currentCapacity < session.maxCapacity)) {
+        session.currentCapacity += 1;
+        logger.debug(`Enrolling ${currentMember.firstName} in ${currentClass.className} on ${currentClass.sessions[i].date}`);
+        session.members.push(currentMember.id);
+        //Add member Id to session to keep track of enrollment and allow for boolean check
+        classes.save();
+      } else {
+        logger.info('Unable to enroll in current session');
+      }
+    }
+
+    response.redirect('/memberClasses');
+  },
 };
 
 module.exports = dashboard;
