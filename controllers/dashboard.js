@@ -150,8 +150,7 @@ const dashboard = {
       for (let x = 0; x < session.members.length; x++) { //cycles through each member in the session
         if (session.members[x] === currentMember.id) {
           notAlreadyEnrolled = false;
-          logger.info(notAlreadyEnrolled);
-          break;
+          break; //breaks out of loop as soon as code determines that the current member is already enrolled
         }
       }
 
