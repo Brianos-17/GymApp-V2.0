@@ -13,7 +13,8 @@
     {{/if}}
 
     {{#unless trainer}}
-        <h4>{{member.firstName}}'s Enrolled Classes</h4>
+        <h4>{{member.firstName}}'s Current Classes</h4>
+        {{> member-classes}}
     {{/unless}}
 
     <h4>List of Available Classes</h4>
@@ -22,7 +23,6 @@
 
 <script>
     $(function(){
-        $('.ui.accordian').accordion();
+        $('.ui.accordian').accordion();//Code to expand and close accordion
     });
-//    Code to expand and close accordion
 </script>

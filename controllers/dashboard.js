@@ -97,9 +97,26 @@ const dashboard = {
   showClasses(request, response) {
     const member = accounts.getCurrentMember(request);
     const classList = classes.getAllClasses();
+    const enrolledClasses = [];
+    const enrolledSessions = [];
+    loop1: for (let i = 0; i < classList.length; i++) { //cycle through each class
+      loop2: for (let x = 0; x < classList[i].sessions.length; x++) { //cycle through each classes sessions
+        loop3: for (let y = 0; y < classList[i].sessions[x].members.length; y++) { //cycle through each sessions' members
+          if (classList[i].sessions[x].members[y] === member.id) {
+            enrolledClasses.push(classList[i]);
+            break loop2;
+            // enrolledSessions.push(classList[i].sessions[x]);
+
+          }
+        }
+      }
+    }
+
     const viewData = {
       member: member,
       classList: classList,
+      enrolledClass: enrolledClasses,
+      enrolledSessions: enrolledSessions,
     };
     logger.info('Rendering classes');
     response.render('classes', viewData);
