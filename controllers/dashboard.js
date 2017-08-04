@@ -98,15 +98,12 @@ const dashboard = {
     const member = accounts.getCurrentMember(request);
     const classList = classes.getAllClasses();
     const enrolledClasses = [];
-    const enrolledSessions = [];
     loop1: for (let i = 0; i < classList.length; i++) { //cycle through each class
-      loop2: for (let x = 0; x < classList[i].sessions.length; x++) { //cycle through each classes sessions
+      loop2: for (let x = 0; x < classList[i].sessions.length; x++) { //cycle through each classes' sessions
         loop3: for (let y = 0; y < classList[i].sessions[x].members.length; y++) { //cycle through each sessions' members
           if (classList[i].sessions[x].members[y] === member.id) {
             enrolledClasses.push(classList[i]);
-            break loop2;
-            // enrolledSessions.push(classList[i].sessions[x]);
-
+            break loop2;//break out of loop 2 so as to avoid re-adding the same class twice
           }
         }
       }
@@ -116,7 +113,6 @@ const dashboard = {
       member: member,
       classList: classList,
       enrolledClass: enrolledClasses,
-      enrolledSessions: enrolledSessions,
     };
     logger.info('Rendering classes');
     response.render('classes', viewData);
@@ -131,6 +127,27 @@ const dashboard = {
       member: currentMember,
     };
     response.render('classEnrollment', viewData);
+  },
+
+  classUnenrollment(request, response) {
+    const classId = request.params.classId;
+    const chosenClass = classes.getClassById(classId);
+    const currentMember = accounts.getCurrentMember(request);
+    for (let i = 0; i < chosenClass.sessions.length; i++) {
+      let notEnrolledInThisSession = true;
+      for (let x = 0; x < chosenClass.sessions[i].members.length; x++) {
+        if (chosenClass.sessions[i].members[x] === currentMember.id) {
+          notEnrolledInThisSession = false;
+          break;
+        }
+      }
+
+    }
+    const viewData = {
+      chosenClass: chosenClass,
+      member: currentMember,
+    };
+    response.render('classUnenrollment', viewData);
   },
 
   enrollInClass(request, response) {

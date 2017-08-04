@@ -30,6 +30,7 @@ router.get('/trainerDashboard/updateClass/:classId', trainerDashboard.updateClas
 router.get('/dashboard/enroll/:classId', dashboard.classEnrollment);
 router.get('/dashboard/:classId/enroll/:sessionId', dashboard.enrollInClass);
 router.get('/dashboard/:classId/enrollAll', dashboard.enrollAll);
+router.get('/dashboard/unEnroll/:classId', dashboard.classUnenrollment);
 
 router.post('/register', accounts.register);
 router.post('/authenticate', accounts.authenticate);
