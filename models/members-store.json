@@ -11,19 +11,6 @@
       "id": "3ad52697-6d98-4d80-8273-084de55a86c0",
       "assessments": [
         {
-          "assessmentId": "75ee0bcb-164c-4242-8d23-9d85b600cdd7",
-          "date": "2017-07-18 14:36:33",
-          "weight": "1",
-          "chest": "1",
-          "thigh": "1",
-          "upperArm": "1",
-          "waist": "1",
-          "hips": "1",
-          "trend": "",
-          "comment": "test",
-          "updateComment": false
-        },
-        {
           "assessmentId": "30321e24-0d5c-48f1-a50c-f073e32d30cf",
           "date": "2017-07-10 17:15:35",
           "weight": "345",
@@ -61,6 +48,32 @@
       "startingWeight": "65",
       "id": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
       "assessments": []
+    },
+    {
+      "firstName": "Bart",
+      "lastName": "Simpson",
+      "email": "bart@simpson.com",
+      "password": "secret",
+      "passwordValid": "secret",
+      "gender": "male",
+      "height": "1.3",
+      "startingWeight": "59",
+      "id": "a25aaa9f-617e-4ebc-bca0-2a757ae48e37",
+      "assessments": [
+        {
+          "assessmentId": "18246a25-b9e8-4aba-ab3c-7921cb4c538b",
+          "date": "2017-07-22 12:48:16",
+          "weight": "1",
+          "chest": "1",
+          "thigh": "1",
+          "upperArm": "1",
+          "waist": "1",
+          "hips": "1",
+          "trend": "",
+          "comment": "",
+          "updateComment": false
+        }
+      ]
     }
   ]
 }

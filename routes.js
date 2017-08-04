@@ -23,11 +23,22 @@ router.get('/trainerDashboard/:id/removeAssessment/:assessmentId', trainerDashbo
 router.get('/trainerDashboard', trainerDashboard.index);
 router.get('/trainerDashboard/deleteMember/:id', trainerDashboard.removeMember);
 router.get('/trainerDashboard/viewMemberAssessments/:id', trainerDashboard.viewMemberAssessments);
+router.get('/memberClasses', dashboard.showClasses);
+router.get('/classes', trainerDashboard.showClasses);
+router.get('/trainerDashboard/removeClass/:classId', trainerDashboard.removeClass);
+router.get('/trainerDashboard/updateClass/:classId', trainerDashboard.updateClass);
+router.get('/dashboard/enroll/:classId', dashboard.classEnrollment);
+router.get('/dashboard/:classId/enroll/:sessionId', dashboard.enrollInClass);
+router.get('/dashboard/:classId/enrollAll', dashboard.enrollAll);
 
 router.post('/register', accounts.register);
 router.post('/authenticate', accounts.authenticate);
 router.post('/dashboard/addassessment', dashboard.addAssessment);
 router.post('/memberAssessment/:id/updateComment/:assessmentId', trainerDashboard.updateComment);
 router.post('/updateProfile', dashboard.updateProfile);
+router.post('/trainerDashboard/addNewClass', trainerDashboard.addNewClass);
+router.post('/trainerDashboard/editClass/:classId', trainerDashboard.editClass);
 
 module.exports = router;
+
+

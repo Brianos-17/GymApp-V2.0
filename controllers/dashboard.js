@@ -8,6 +8,7 @@ const accounts = require('./accounts.js');
 const member = require('../models/members-store.js');
 const uuid = require('uuid');
 const analytics = require('../utils/analytics');
+const classes = require('../models/class-store.js');
 
 const dashboard = {
   index(request, response) {
@@ -31,15 +32,6 @@ const dashboard = {
     response.render('dashboard', viewData);
   },
 
-  removeAssessment(request, response) {
-    const assessmentId = request.params.assessmentId;
-    const loggedInMember = accounts.getCurrentMember(request);
-    member.removeAssessment(loggedInMember.id, assessmentId);
-    logger.debug(`Deleting Assessment ${assessmentId} for ${loggedInMember.firstName}`);
-    response.redirect('/dashboard');
-
-  },
-
   addAssessment(request, response) {
     const loggedInMember = accounts.getCurrentMember(request);
     const memberId = loggedInMember.id;
@@ -61,6 +53,15 @@ const dashboard = {
     member.addAssessment(memberId, newAssessment);
     analytics.trend(loggedInMember);
     response.redirect('/dashboard');
+  },
+
+  removeAssessment(request, response) {
+    const assessmentId = request.params.assessmentId;
+    const loggedInMember = accounts.getCurrentMember(request);
+    member.removeAssessment(loggedInMember.id, assessmentId);
+    logger.debug(`Deleting Assessment ${assessmentId} for ${loggedInMember.firstName}`);
+    response.redirect('/dashboard');
+
   },
 
   account(request, response) {
@@ -89,12 +90,81 @@ const dashboard = {
       loggedInMember.startingWeight = request.body.startingWeight;
     }
 
-    member.save();
+    member.save();//save info to JSON file after made
     response.redirect('/account');
   },
 
-  updateProfileLastName (request, response) {
+  showClasses(request, response) {
+    const member = accounts.getCurrentMember(request);
+    const classList = classes.getAllClasses();
+    const viewData = {
+      member: member,
+      classList: classList,
+    };
+    logger.info('Rendering classes');
+    response.render('classes', viewData);
+  },
 
+  classEnrollment(request, response) {
+    const classId = request.params.classId;
+    const chosenClass = classes.getClassById(classId);
+    const currentMember = accounts.getCurrentMember(request);
+    const viewData = {
+      chosenClass: chosenClass,
+      member: currentMember,
+    };
+    response.render('classEnrollment', viewData);
+  },
+
+  enrollInClass(request, response) {
+    const sessionId = request.params.sessionId;
+    const classId = request.params.classId;
+    const currentSession = classes.getSessionById(classId, sessionId);
+    const currentMember = accounts.getCurrentMember(request);
+    let notAlreadyEnrolled = true; //Boolean check to stop members from enrolling in a class more than once
+    for (let i = 0; i < currentSession.members.length; i++) {
+      if (currentSession.members[i] === currentMember.id) {
+        notAlreadyEnrolled = false;
+      }
+    }
+
+    if ((notAlreadyEnrolled) && (currentSession.currentCapacity < currentSession.maxCapacity)) {
+      currentSession.currentCapacity += 1;
+      logger.debug(`Enrolling ${currentMember.firstName}`);
+      currentSession.members.push(currentMember.id);//Add member Id to session to keep track of enrollment and allow for boolean check
+      classes.save();
+    } else {
+      logger.debug('Unable to enroll');
+    }
+
+    response.redirect('/memberClasses');
+  },
+
+  enrollAll(request, response) {
+    const classId = request.params.classId;
+    const currentClass = classes.getClassById(classId);
+    const currentMember = accounts.getCurrentMember(request);
+    let notAlreadyEnrolled = true; //Boolean check to stop members from enrolling in a class more than once
+    for (let i = 0; i < currentClass.sessions.length; i++) {
+      let session = currentClass.sessions[i];
+      for (let x = 0; x < session.members.length; x++) {
+        if (session.members[x] === currentMember.id) {
+          notAlreadyEnrolled = false;
+        }
+      }
+
+      if ((notAlreadyEnrolled) && (session.currentCapacity < session.maxCapacity)) {
+        session.currentCapacity += 1;
+        logger.debug(`Enrolling ${currentMember.firstName} in ${currentClass.className} on ${currentClass.sessions[i].date}`);
+        session.members.push(currentMember.id);
+        //Add member Id to session to keep track of enrollment and allow for boolean check
+        classes.save();
+      } else {
+        logger.info('Unable to enroll in current session');
+      }
+    }
+
+    response.redirect('/memberClasses');
   },
 };
 

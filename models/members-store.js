@@ -56,7 +56,7 @@ const memberStore = {
   },
 
   save() {
-    this.store.save(); //Method which saves the JSON object after other methods has altered data
+    this.store.save(); //Method used by controllers which saves the JSON object after they have altered data
   },
 };
 
