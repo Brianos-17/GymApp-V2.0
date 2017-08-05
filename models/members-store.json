@@ -39,14 +39,6 @@
       ],
       "bookings": [
         {
-          "bookingId": "dd5aa54e-1a63-425c-acbe-0004522fae0c",
-          "trainerId": "4ad52597-6d98-4d80-8673-084be55a87a0",
-          "trainerFirstName": "Tony",
-          "trainerLastName": "Stark",
-          "bookingDate": "August 2, 2017",
-          "bookingTime": "4:00 AM"
-        },
-        {
           "bookingId": "0f60323c-6db0-4af0-88ef-38f1e1b75dea",
           "trainerId": "4ad52337-6e17-4d80-8f78-084be25a4ad7",
           "trainerFirstName": "Steve",

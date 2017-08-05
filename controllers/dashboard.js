@@ -231,6 +231,14 @@ const dashboard = {
     member.addBooking(memberId, newBooking);
     response.redirect('/memberBookings');
   },
+
+  removeBooking(request, response) {
+    const currentMember = accounts.getCurrentMember(request);
+    const bookingId = request.params.bookingId;
+    logger.info(`Removing booking ${bookingId}`);
+    member.removeBooking(currentMember.id, bookingId);
+    response.redirect('/memberBookings');
+  }
 };
 
 module.exports = dashboard;

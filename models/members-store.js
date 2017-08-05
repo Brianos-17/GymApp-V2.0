@@ -61,6 +61,12 @@ const memberStore = {
     this.store.save();
   },
 
+  removeBooking(id, bookingId) {
+    const member = this.getMemberById(id);
+    _.remove(member.bookings, { bookingId: bookingId });
+    this.store.save();
+  },
+
   save() {
     this.store.save(); //Method used by controllers which saves the JSON object after they have altered data
   },
