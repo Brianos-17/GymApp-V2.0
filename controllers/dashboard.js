@@ -206,9 +206,11 @@ const dashboard = {
   booking(request, response) {
     const member = accounts.getCurrentMember(request);
     const trainerList = trainer.getAllTrainers();
+    const bookingList = member.bookings;
     const viewData = {
       member: member,
       trainerList: trainerList,
+      bookingList: bookingList,
     };
     response.render('bookings', viewData);
   },
@@ -216,9 +218,13 @@ const dashboard = {
   addNewBooking(request, response) {
     const loggedInMember = accounts.getCurrentMember(request);
     const memberId = loggedInMember.id;
+    const trainerId = request.body.trainerId;
+    const currentTrainer = trainer.getTrainerById(trainerId);
     const newBooking = {
       bookingId: uuid(),
-      trainerId: request.body.trainerId,
+      trainerId: trainerId,
+      trainerFirstName: currentTrainer.firstName,
+      trainerLastName: currentTrainer.lastName,
       bookingDate: request.body.bookingDate,
       bookingTime: request.body.bookingTime,
     };

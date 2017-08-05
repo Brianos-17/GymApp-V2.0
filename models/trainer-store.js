@@ -16,16 +16,16 @@ const trainerStore = {
     this.store.add(this.collection, trainer);
   },
 
-  getTrainerById(id) {
-    return this.store.findOneBy(this.collection, { id: id });
+  getTrainerById(trainerId) {
+    return this.store.findOneBy(this.collection, { trainerId: trainerId });
   },
 
   getTrainerByEmail(email) {
     return this.store.findOneBy(this.collection, { email: email });
   },
 
-  addMemberList(id, members) {
-    const trainer = this.getTrainerById(id);
+  addMemberList(trainerId, members) {
+    const trainer = this.getTrainerById(trainerId);
     trainer.members.push(members);
     this.store.save();
   },

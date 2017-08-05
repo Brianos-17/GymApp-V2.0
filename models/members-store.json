@@ -37,7 +37,32 @@
           "updateComment": false
         }
       ],
-      "bookings": []
+      "bookings": [
+        {
+          "bookingId": "dd5aa54e-1a63-425c-acbe-0004522fae0c",
+          "trainerId": "4ad52597-6d98-4d80-8673-084be55a87a0",
+          "trainerFirstName": "Tony",
+          "trainerLastName": "Stark",
+          "bookingDate": "August 2, 2017",
+          "bookingTime": "4:00 AM"
+        },
+        {
+          "bookingId": "0f60323c-6db0-4af0-88ef-38f1e1b75dea",
+          "trainerId": "4ad52337-6e17-4d80-8f78-084be25a4ad7",
+          "trainerFirstName": "Steve",
+          "trainerLastName": "Rogers",
+          "bookingDate": "August 8, 2017",
+          "bookingTime": "10:00 AM"
+        },
+        {
+          "bookingId": "6e72f33c-fb2a-4c80-9177-d4048c6859d8",
+          "trainerId": "1bd5638f-4e3a-4d90-5f78-1355a25a4d2e",
+          "trainerFirstName": "Natasha",
+          "trainerLastName": "Romanova",
+          "bookingDate": "August 29, 2017",
+          "bookingTime": "5:20 PM"
+        }
+      ]
     },
     {
       "firstName": "Marge",

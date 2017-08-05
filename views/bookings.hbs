@@ -10,5 +10,11 @@
     <h4>Add a new Booking</h4>
     {{> new-booking}}
 
-    <h4> Current Bookings </h4>
+    {{#if member}}
+        <h4> {{member.firstName}}'s Current Bookings </h4>
+    {{/if}}
+    {{#unless member}}
+        <h4> {{trainer.firstName}}'s Current Bookings</h4>
+    {{/unless}}
+    {{> booking-details}}
 </section>
