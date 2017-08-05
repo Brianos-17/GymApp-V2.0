@@ -223,7 +223,7 @@ const dashboard = {
       bookingTime: request.body.bookingTime,
     };
     member.addBooking(memberId, newBooking);
-    response.redirect('/bookings');
+    response.redirect('/memberBookings');
   },
 };
 
