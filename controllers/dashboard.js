@@ -6,6 +6,7 @@
 const logger = require('../utils/logger.js');
 const accounts = require('./accounts.js');
 const member = require('../models/members-store.js');
+const trainer = require('../models/trainer-store.js');
 const uuid = require('uuid');
 const analytics = require('../utils/analytics');
 const classes = require('../models/class-store.js');
@@ -200,6 +201,16 @@ const dashboard = {
     }
 
     response.redirect('/memberClasses');
+  },
+
+  booking(request, response) {
+    const member = accounts.getCurrentMember(request);
+    const trainerList = trainer.getAllTrainers();
+    const viewData = {
+      member: member,
+      trainerList: trainerList,
+    };
+    response.render('bookings', viewData);
   },
 };
 
