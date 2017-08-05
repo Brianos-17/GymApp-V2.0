@@ -35,6 +35,7 @@ router.get('/dashboard/:classId/enroll/:sessionId', dashboard.enrollInClass);
 router.get('/dashboard/:classId/enrollAll', dashboard.enrollAll);
 router.get('/dashboard/unEnroll/:classId', dashboard.classUnenrollment);
 router.get('/dashboard/removeBooking/:bookingId', dashboard.removeBooking);
+router.get('/dashboard/updateBooking/:bookingId', dashboard.updateBooking);
 
 router.post('/register', accounts.register);
 router.post('/authenticate', accounts.authenticate);
@@ -46,5 +47,3 @@ router.post('/trainerDashboard/editClass/:classId', trainerDashboard.editClass);
 router.post('/dashboard/addNewBooking', dashboard.addNewBooking);
 
 module.exports = router;
-
-

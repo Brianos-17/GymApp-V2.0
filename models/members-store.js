@@ -61,6 +61,15 @@ const memberStore = {
     this.store.save();
   },
 
+  getBookingById(memberId, bookingId) {
+    const member = this.getMemberById(memberId);
+    for (let i = 0; i < member.bookings.length; i++) {
+      if (member.bookings[i].bookingId === bookingId) {
+        return member.bookings[i];
+      }
+    }
+  },
+
   removeBooking(id, bookingId) {
     const member = this.getMemberById(id);
     _.remove(member.bookings, { bookingId: bookingId });

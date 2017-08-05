@@ -1,0 +1,7 @@
+{{#if member}}
+    {{> member-menu id="updateBooking"}}
+{{/if}}
+{{#unless member}}
+    {{> trainer-menu id="updateBooking"}}
+{{/unless}}
+<!--Toggles navigation bars depending on who views the page-->

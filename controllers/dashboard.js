@@ -235,10 +235,21 @@ const dashboard = {
   removeBooking(request, response) {
     const currentMember = accounts.getCurrentMember(request);
     const bookingId = request.params.bookingId;
-    logger.info(`Removing booking ${bookingId}`);
+    logger.info(`Removing booking ${bookingId} from ${currentMember.firstName}`);
     member.removeBooking(currentMember.id, bookingId);
     response.redirect('/memberBookings');
-  }
+  },
+
+  updateBooking(request, response) {
+    const currentMember = accounts.getCurrentMember(request);
+    const bookingId = request.params.bookingId;
+    const updatedBooking = member.getBookingById(currentMember.id, bookingId);
+    const viewData = {
+      updatedBooking: updatedBooking,
+    };
+    logger.info(`Retrieving information for update to booking: ${bookingId}`);
+    response.render('updatedBooking', viewData);
+  },
 };
 
 module.exports = dashboard;
