@@ -212,6 +212,19 @@ const dashboard = {
     };
     response.render('bookings', viewData);
   },
+
+  addNewBooking(request, response) {
+    const loggedInMember = accounts.getCurrentMember(request);
+    const memberId = loggedInMember.id;
+    const newBooking = {
+      bookingId: uuid(),
+      trainerId: request.body.trainerId,
+      bookingDate: request.body.bookingDate,
+      bookingTime: request.body.bookingTime,
+    };
+    member.addBooking(memberId, newBooking);
+    response.redirect('/bookings');
+  },
 };
 
 module.exports = dashboard;

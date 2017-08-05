@@ -40,6 +40,7 @@ router.post('/memberAssessment/:id/updateComment/:assessmentId', trainerDashboar
 router.post('/updateProfile', dashboard.updateProfile);
 router.post('/trainerDashboard/addNewClass', trainerDashboard.addNewClass);
 router.post('/trainerDashboard/editClass/:classId', trainerDashboard.editClass);
+router.post('/dashboard/addNewBooking', dashboard.addNewBooking);
 
 module.exports = router;
 

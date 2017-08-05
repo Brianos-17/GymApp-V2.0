@@ -55,6 +55,12 @@ const memberStore = {
     this.store.save();
   },
 
+  addBooking(id, booking) {
+    const member = this.getMemberById(id);
+    member.bookings.push(booking);
+    this.store.save();
+  },
+
   save() {
     this.store.save(); //Method used by controllers which saves the JSON object after they have altered data
   },

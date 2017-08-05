@@ -6,7 +6,7 @@
       "email": "tony@stark.com",
       "password": "secret",
       "gender": "male",
-      "id": "4ad52597-6d98-4d80-8673-084be55a87a0",
+      "trainerId": "4ad52597-6d98-4d80-8673-084be55a87a0",
       "members": []
     },
     {
@@ -15,7 +15,7 @@
       "email": "steve@rogers.com",
       "password": "secret",
       "gender": "male",
-      "id": "4ad52337-6e17-4d80-8f78-084be25a4ad7",
+      "trainerId": "4ad52337-6e17-4d80-8f78-084be25a4ad7",
       "members": []
     },
     {
@@ -24,7 +24,7 @@
       "email": "natasha@romanova.com",
       "password": "secret",
       "gender": "female",
-      "id": "1bd5638f-4e3a-4d90-5f78-1355a25a4d2e",
+      "trainerId": "1bd5638f-4e3a-4d90-5f78-1355a25a4d2e",
       "members": []
     }
   ]
