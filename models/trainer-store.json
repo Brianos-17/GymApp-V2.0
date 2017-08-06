@@ -7,7 +7,21 @@
       "password": "secret",
       "gender": "male",
       "trainerId": "4ad52597-6d98-4d80-8673-084be55a87a0",
-      "members": []
+      "bookings": [
+        {
+          "bookingId": "1536e926-41da-4c6d-9c79-d46a64742e35",
+          "bookingDate": "August 8, 2017",
+          "bookingTime": "9:00 AM"
+        },
+        {
+          "bookingId": "c21d3067-b2f4-4675-b307-29a3559d9548",
+          "memberId": "3ad52697-6d98-4d80-8273-084de55a86c0",
+          "memberFirstName": "Homer",
+          "memberLastName": "Simpson",
+          "bookingDate": "August 17, 2017",
+          "bookingTime": "1:00 PM"
+        }
+      ]
     },
     {
       "firstName": "Steve",
@@ -16,7 +30,7 @@
       "password": "secret",
       "gender": "male",
       "trainerId": "4ad52337-6e17-4d80-8f78-084be25a4ad7",
-      "members": []
+      "bookings": []
     },
     {
       "firstName": "Natasha",
@@ -25,7 +39,7 @@
       "password": "secret",
       "gender": "female",
       "trainerId": "1bd5638f-4e3a-4d90-5f78-1355a25a4d2e",
-      "members": []
+      "bookings": []
     }
   ]
 }

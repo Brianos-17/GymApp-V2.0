@@ -142,9 +142,11 @@ const trainerDashboard = {
   booking(request, response) {
     const trainer = accounts.getCurrentTrainer(request);
     const memberList = member.getAllMembers();
+    const bookingList = trainer.bookings;
     const viewData = {
       trainer: trainer,
       memberList: memberList,
+      bookingList: bookingList,
     };
     response.render('bookings', viewData);
   },
@@ -167,10 +169,10 @@ const trainerDashboard = {
   },
 
   removeBooking(request, response) {
-    const currentMember = accounts.getCurrentMember(request);
+    const currentTrainer = accounts.getCurrentTrainer(request);
     const bookingId = request.params.bookingId;
-    logger.info(`Removing booking ${bookingId} from ${currentMember.firstName}`);
-    member.removeBooking(currentMember.id, bookingId);
+    logger.info(`Removing booking ${bookingId} from ${currentTrainer.firstName}`);
+    trainer.removeBooking(currentTrainer.id, bookingId);
     response.redirect('/memberBookings');
   },
 
