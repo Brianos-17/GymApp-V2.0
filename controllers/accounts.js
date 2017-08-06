@@ -39,7 +39,7 @@ const accounts = {
 
   register(request, response) {
     const member = request.body;
-    member.id = uuid();
+    member.memberId = uuid();
     member.assessments = [];
     member.bookings = [];
     memberStore.addMember(member);

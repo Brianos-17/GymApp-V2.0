@@ -20,16 +20,16 @@ const memberStore = {
     this.store.save();
   },
 
-  getMemberById(id) {
-    return this.store.findOneBy(this.collection, { id: id });
+  getMemberById(memberId) {
+    return this.store.findOneBy(this.collection, { memberId: memberId });
   },
 
   getMemberByEmail(email) {
     return this.store.findOneBy(this.collection, { email: email });
   },
 
-  removeMember(id) {
-    const removedMember = this.getMemberById(id);
+  removeMember(memberId) {
+    const removedMember = this.getMemberById(memberId);
     this.store.remove(this.collection, removedMember);
     this.store.save();
   },
@@ -43,20 +43,20 @@ const memberStore = {
     }
   },
 
-  addAssessment(id, assessment) {
-    const member = this.getMemberById(id);
+  addAssessment(memberId, assessment) {
+    const member = this.getMemberById(memberId);
     member.assessments.unshift(assessment);//Adds to beginning of array in order to list in reverse chronological order
     this.store.save();
   },
 
-  removeAssessment(id, assessmentId) {
-    const member = this.getMemberById(id);
+  removeAssessment(memberId, assessmentId) {
+    const member = this.getMemberById(memberId);
     _.remove(member.assessments, { assessmentId: assessmentId });
     this.store.save();
   },
 
-  addBooking(id, booking) {
-    const member = this.getMemberById(id);
+  addBooking(memberId, booking) {
+    const member = this.getMemberById(memberId);
     member.bookings.push(booking);
     this.store.save();
   },
@@ -70,8 +70,8 @@ const memberStore = {
     }
   },
 
-  removeBooking(id, bookingId) {
-    const member = this.getMemberById(id);
+  removeBooking(memberId, bookingId) {
+    const member = this.getMemberById(memberId);
     _.remove(member.bookings, { bookingId: bookingId });
     this.store.save();
   },
