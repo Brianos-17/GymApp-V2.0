@@ -7,12 +7,12 @@
 
     <div class="three fields">
         <div class="field">
-                <label> Trainer </label>
-                <select class="ui dropdown" name="trainerId">
-                    {{#each trainerList}}
-                        <option value="{{trainerId}}">{{firstName}} {{lastName}}</option>
-                    {{/each}}
-                </select>
+            <label> Trainer </label>
+            <select class="ui dropdown" name="trainerId">
+                {{#each memberList}}
+                    <option value="{{memberId}}">{{firstName}} {{lastName}}</option>
+                {{/each}}
+            </select>
         </div>
         <div class="field">
             <label> Date </label>
@@ -36,27 +36,27 @@
     </div>
 
 {{#if updatedBooking}}
-    <button class="ui blue submit button"> Update Booking </button>
+        <button class="ui blue submit button"> Update Booking </button>
 {{/if}}
 {{#unless updatedBooking}}
-    <button class="ui blue submit button"> Create Booking </button>
+        <button class="ui blue submit button"> Create Booking </button>
 {{/unless}}
 
 </form>
 
-<script>
-    $(function(){
-        $('#bookingDateCalendar').calendar(
-                {type: 'date'}
-        );
-    });
-</script>
-<!--//code to allow calendar to popup, when selected, with dates -->
-<script>
-    $(function() {
-        $('#bookingTimeCalendar').calendar(
-                {type: 'time'}
-        );
-    });
-</script>
-<!--//code to allow calendar to popup, when selected, with times -->
+    <script>
+        $(function(){
+            $('#bookingDateCalendar').calendar(
+                    {type: 'date'}
+            );
+        });
+    </script>
+    <!--//code to allow calendar to popup, when selected, with dates -->
+    <script>
+        $(function() {
+            $('#bookingTimeCalendar').calendar(
+                    {type: 'time'}
+            );
+        });
+    </script>
+    <!--//code to allow calendar to popup, when selected, with times -->

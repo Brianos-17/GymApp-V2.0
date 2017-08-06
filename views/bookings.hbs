@@ -11,6 +11,9 @@
     {{#if member}}
         {{> new-booking-member}}
     {{/if}}
+    {{#unless member}}
+        {{> new-booking-trainer}}
+    {{/unless}}
 
     {{#if member}}
         <h4> {{member.firstName}}'s Current Bookings </h4>

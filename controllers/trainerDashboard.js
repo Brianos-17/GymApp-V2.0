@@ -147,7 +147,24 @@ const trainerDashboard = {
       memberList: memberList,
     };
     response.render('bookings', viewData);
-  }
+  },
+
+  addNewBooking(request, response) {
+    const loggedInTrainer = accounts.getCurrentTrainer(request);
+    const trainerId = loggedInTrainer.id;
+    const memberId = request.body.memberId;
+    const currentMember = member.getMemberById(memberId);
+    const newBooking = {
+      bookingId: uuid(),
+      memberId: memberId,
+      memberFirstName: currentMember.firstName,
+      memberLastName: currentMember.lastName,
+      bookingDate: request.body.bookingDate,
+      bookingTime: request.body.bookingTime,
+    };
+    trainer.addBooking(trainerId, newBooking);
+    response.redirect('/trainerBookings');
+  },
 };
 
 module.exports = trainerDashboard;
