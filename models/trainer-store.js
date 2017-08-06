@@ -35,6 +35,10 @@ const trainerStore = {
     trainer.bookings.push(booking);
     this.store.save();
   },
+
+  save() {
+    this.store.save(); //Method used by controllers which saves the JSON object after they have altered data
+  },
 };
 
 module.exports = trainerStore;

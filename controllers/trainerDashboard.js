@@ -165,6 +165,43 @@ const trainerDashboard = {
     trainer.addBooking(trainerId, newBooking);
     response.redirect('/trainerBookings');
   },
+
+  removeBooking(request, response) {
+    const currentMember = accounts.getCurrentMember(request);
+    const bookingId = request.params.bookingId;
+    logger.info(`Removing booking ${bookingId} from ${currentMember.firstName}`);
+    member.removeBooking(currentMember.id, bookingId);
+    response.redirect('/memberBookings');
+  },
+
+  updateBooking(request, response) {
+    const currentMember = accounts.getCurrentMember(request);
+    const bookingId = request.params.bookingId;
+    const updatedBooking = member.getBookingById(currentMember.id, bookingId);
+    const trainerList = trainer.getAllTrainers();
+    const viewData = {
+      updatedBooking: updatedBooking,
+      trainerList: trainerList,
+    };
+    logger.info(`Retrieving information for update to booking: ${bookingId}`);
+    response.render('updateBooking', viewData);
+  },
+
+  editBooking(request, response) {
+    const currentTrainer = accounts.getCurrentTrainer(request);
+    const bookingId = request.params.bookingId;
+    const editedBooking = trainer.getBookingById(currentTrainer.id, bookingId);
+    const memberId = request.body.memberId;
+    const newMember = member.getMemberById(memberId);
+    editedBooking.memberId = memberId;
+    editedBooking.memberFirstName = newMember.firstName;
+    editedBooking.memberLastName = newMember.lastName;
+    editedBooking.bookingDate = request.body.bookingDate;
+    editedBooking.bookingTime = request.body.bookingTime;
+    logger.info(`Editing booking ${bookingId} for ${currentTrainer.firstName}`);
+    trainer.save();//Saves info after update
+    response.redirect('/memberBookings');
+  },
 };
 
 module.exports = trainerDashboard;
