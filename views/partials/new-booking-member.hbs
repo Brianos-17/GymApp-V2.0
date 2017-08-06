@@ -1,28 +1,18 @@
-{{#if member}}
-    <form class="ui stacked segment form" name="addNewBooking" action="/dashboard/addNewBooking" method="POST">
+{{#if updatedBooking}}
+    <form class="ui stacked segment form" name="editBooking" action="/dashboard/editBooking/{{updatedBooking.bookingId}}" method="POST">
 {{/if}}
-{{#unless member}}
-    <form class="ui stacked segment form" name="addNewBooking" action="/trainerDashboard/addNewBooking" method="POST">
+{{#unless updatedBooking}}
+    <form class="ui stacked segment form" name="addNewBooking" action="/dashboard/addNewBooking" method="POST">
 {{/unless}}
 
     <div class="three fields">
         <div class="field">
-            {{#if member}}
                 <label> Trainer </label>
                 <select class="ui dropdown" name="trainerId">
                     {{#each trainerList}}
                         <option value="{{trainerId}}">{{firstName}} {{lastName}}</option>
                     {{/each}}
                 </select>
-            {{/if}}
-            {{#unless member}}
-                <label> Member </label>
-                <select class="ui dropdown" name="id">
-                    {{#each memberList}}
-                            <option value="{{id}}">{{firstName}} {{lastName}}</option>
-                    {{/each}}
-                </select>
-            {{/unless}}
         </div>
         <div class="field">
             <label> Date </label>
@@ -45,7 +35,12 @@
     </div>
     </div>
 
+{{#if updatedBooking}}
+    <button class="ui blue submit button"> Update Booking </button>
+{{/if}}
+{{#unless updatedBooking}}
     <button class="ui blue submit button"> Create Booking </button>
+{{/unless}}
 
 </form>
 

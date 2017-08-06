@@ -244,11 +244,29 @@ const dashboard = {
     const currentMember = accounts.getCurrentMember(request);
     const bookingId = request.params.bookingId;
     const updatedBooking = member.getBookingById(currentMember.id, bookingId);
+    const trainerList = trainer.getAllTrainers();
     const viewData = {
       updatedBooking: updatedBooking,
+      trainerList: trainerList,
     };
     logger.info(`Retrieving information for update to booking: ${bookingId}`);
-    response.render('updatedBooking', viewData);
+    response.render('updateBooking', viewData);
+  },
+
+  editBooking(request, response) {
+    const currentMember = accounts.getCurrentMember(request);
+    const bookingId = request.params.bookingId;
+    const editedBooking = member.getBookingById(currentMember.id, bookingId);
+    const trainerId = request.body.trainerId;
+    const newTrainer = trainer.getTrainerById(trainerId);
+    editedBooking.trainerId = trainerId;
+    editedBooking.trainerFirstName = newTrainer.firstName;
+    editedBooking.trainerLastName = newTrainer.lastName;
+    editedBooking.bookingDate = request.body.bookingDate;
+    editedBooking.bookingTime = request.body.bookingTime;
+    logger.info(`Editing booking ${bookingId} for ${currentMember.firstName}`);
+    member.save();//Saves info after update
+    response.redirect('/memberBookings');
   },
 };
 

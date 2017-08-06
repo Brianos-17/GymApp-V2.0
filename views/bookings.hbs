@@ -8,7 +8,9 @@
 
 <section class="ui raised segment">
     <h4>Add a new Booking</h4>
-    {{> new-booking}}
+    {{#if member}}
+        {{> new-booking-member}}
+    {{/if}}
 
     {{#if member}}
         <h4> {{member.firstName}}'s Current Bookings </h4>

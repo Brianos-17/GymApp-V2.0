@@ -1,7 +1,6 @@
-{{#if member}}
-    {{> member-menu id="updateBooking"}}
-{{/if}}
-{{#unless member}}
-    {{> trainer-menu id="updateBooking"}}
-{{/unless}}
-<!--Toggles navigation bars depending on who views the page-->
+ {{> member-menu id="updateBooking"}}
+
+ <section class="ui raised segment">
+     <h4> Update your Booking </h4>
+     {{> new-booking-member}}
+ </section>
