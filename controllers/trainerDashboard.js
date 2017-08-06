@@ -140,8 +140,10 @@ const trainerDashboard = {
   },
 
   booking(request, response) {
+    const trainer = accounts.getCurrentTrainer(request);
     const memberList = member.getAllMembers();
     const viewData = {
+      trainer: trainer,
       memberList: memberList,
     };
     response.render('bookings', viewData);
