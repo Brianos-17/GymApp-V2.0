@@ -1,8 +1,8 @@
 {{#if updatedBooking}}
-    <form class="ui stacked segment form" name="editBooking" action="/dashboard/editBooking/{{updatedBooking.bookingId}}" method="POST">
+    <form class="ui stacked segment form" name="editBooking" action="/trainerDashboard/editBooking/{{updatedBooking.bookingId}}" method="POST">
 {{/if}}
 {{#unless updatedBooking}}
-    <form class="ui stacked segment form" name="addNewBooking" action="/dashboard/addNewBooking" method="POST">
+    <form class="ui stacked segment form" name="addNewBooking" action="/trainerDashboard/addNewBooking" method="POST">
 {{/unless}}
 
     <div class="three fields">

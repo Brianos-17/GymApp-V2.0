@@ -46,5 +46,7 @@ router.post('/trainerDashboard/addNewClass', trainerDashboard.addNewClass);
 router.post('/trainerDashboard/editClass/:classId', trainerDashboard.editClass);
 router.post('/dashboard/addNewBooking', dashboard.addNewBooking);
 router.post('/dashboard/editBooking/:bookingId', dashboard.editBooking);
+router.post('/trainerDashboard/addNewBooking', trainerDashboard.addNewBooking);
+router.post('/trainerDashboard/editBooking/:bookingId', trainerDashboard.editBooking);
 
 module.exports = router;
