@@ -204,6 +204,14 @@ const trainerDashboard = {
     trainer.save();//Saves info after update
     response.redirect('/trainerBookings');
   },
+
+  goals(request, response) {
+    const currentTrainer = accounts.getCurrentTrainer(request);
+    const viewData = {
+      trainer: currentTrainer,
+    };
+    response.render('goals', viewData);
+  },
 };
 
 module.exports = trainerDashboard;

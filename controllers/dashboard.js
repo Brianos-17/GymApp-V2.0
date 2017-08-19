@@ -269,6 +269,14 @@ const dashboard = {
     member.save();//Saves info after update
     response.redirect('/memberBookings');
   },
+
+  goals(request, response) {
+    const currentMember = accounts.getCurrentMember(request);
+    const viewData = {
+      member: currentMember,
+    };
+    response.render('goals', viewData);
+  },
 };
 
 module.exports = dashboard;
