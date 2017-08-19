@@ -277,6 +277,17 @@ const dashboard = {
     };
     response.render('goals', viewData);
   },
+
+  addNewGoal(request, response) {
+    const currentMember = accounts.getCurrentMember(request);
+    const newGoal = {
+      goalId: uuid(),
+      targetArea: request.body.targetArea,
+      targetGoal: request.body.targetGoal,
+      goalDate: request.body.goalDate,
+      description: request.body.description,
+    };
+  },
 };
 
 module.exports = dashboard;
