@@ -1,0 +1,44 @@
+<form class="ui stacked segment form" name="addNewBooking" action="/dashboard/addNewGoal" method="POST">
+    <div class="three fields">
+        <div class="field">
+            <label> Measurement </label>
+            <select type="ui dropdown" name="goal-area">
+                <option vlaue="weight"> Weight </option>
+                <option value="chest"> Chest </option>
+                <option vlaue="thigh"> Thigh </option>
+                <option value="upperArm"> Upper Arm </option>
+                <option value="waist"> Waist </option>
+                <option value="hips"> Hips </option>
+            </select>
+        </div>
+        <div class="field">
+            <label> Target Goal </label>
+            <input placeholder="00.00" type="text" pattern="\d.*" name="goal-target">
+        </div>
+        <div class="field">
+            <label> Date </label>
+            <div class="ui calendar" id="goalDateCalendar">
+                <div class="ui input left icon">
+                    <i class="calendar icon"></i>
+                    <input type="text" placeholder="Date" name="goalDate">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="field">
+        <label> Description </label>
+        <textarea rows="2"></textarea>
+    </div>
+
+    <button class="ui blue submit button"> Set Goal </button>
+
+</form>
+
+<script>
+    $(function(){
+        $('#goalDateCalendar').calendar(
+                {type: 'date'}
+        );
+    });
+</script>
+<!--//code to allow calendar to popup, when selected, with dates -->
