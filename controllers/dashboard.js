@@ -288,9 +288,17 @@ const dashboard = {
       targetGoal: request.body.targetGoal,
       goalDate: request.body.goalDate,
       description: request.body.description,
-      status: "open",
+      status: 'open',
     };
     member.addGoal(currentMember.memberId, newGoal);
+    response.redirect('/goals');
+  },
+
+  removeGoal(request, response) {
+    const currentMember = accounts.getCurrentMember(request);
+    const goalId = request.params.goalId;
+    logger.info(`Removing Goal: ${goalId} from Member: ${currentMember.firstName}`);
+    member.removeGoal(currentMember.memberId, goalId);
     response.redirect('/goals');
   },
 };
