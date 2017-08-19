@@ -42,6 +42,7 @@ const accounts = {
     member.memberId = uuid();
     member.assessments = [];
     member.bookings = [];
+    member.goals = [];
     memberStore.addMember(member);
     logger.info(`registering ${member.email}`);
     response.redirect('/');

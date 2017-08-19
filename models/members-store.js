@@ -76,6 +76,12 @@ const memberStore = {
     this.store.save();
   },
 
+  addGoal(memberId, goal) {
+    const member = this.getMemberById(memberId);
+    member.goals.push(goal);
+    this.store.save();
+  },
+
   save() {
     this.store.save(); //Method used by controllers which saves the JSON object after they have altered data
   },
