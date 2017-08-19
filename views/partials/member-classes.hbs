@@ -1,0 +1,31 @@
+{{#each enrolledClass}}
+    <table class="ui table">
+        <div class="ui bulleted list">
+            <tbody>
+            <tr>
+                <td class="fourteen wide">
+
+                    <div class="ui accordian">
+                        <div class="title">
+                            <i class="dropdown icon"></i>
+                            {{className}}
+                        </div>
+                        <div class="content">
+                            <p class="transition hidden">
+                                <br>
+                                Difficulty: {{difficultyLevel}}
+                            </p>
+                        </div>
+                    </div>
+
+                </td>
+                    <td class="one wide right aligned">
+                        <a href="/dashboard/unEnroll/{{classId}}">
+                            <i class="large red remove user icon"></i>
+                        </a>
+                    </td>
+            </tr>
+            </tbody>
+        </div>
+    </table>
+{{/each}}

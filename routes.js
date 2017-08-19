@@ -18,18 +18,22 @@ router.get('/logout', accounts.logout);
 router.get('/about', about.index);
 router.get('/dashboard', dashboard.index);
 router.get('/account', dashboard.account);
+router.get('/memberClasses', dashboard.showClasses);
+router.get('/trainerClasses', trainerDashboard.showClasses);
+router.get('/memberBookings', dashboard.booking);
+router.get('/trainerBookings', trainerDashboard.booking);
+
 router.get('/dashboard/removeAssessment/:assessmentId', dashboard.removeAssessment);
 router.get('/trainerDashboard/:id/removeAssessment/:assessmentId', trainerDashboard.removeAssessment);
 router.get('/trainerDashboard', trainerDashboard.index);
 router.get('/trainerDashboard/deleteMember/:id', trainerDashboard.removeMember);
 router.get('/trainerDashboard/viewMemberAssessments/:id', trainerDashboard.viewMemberAssessments);
-router.get('/memberClasses', dashboard.showClasses);
-router.get('/classes', trainerDashboard.showClasses);
 router.get('/trainerDashboard/removeClass/:classId', trainerDashboard.removeClass);
 router.get('/trainerDashboard/updateClass/:classId', trainerDashboard.updateClass);
 router.get('/dashboard/enroll/:classId', dashboard.classEnrollment);
 router.get('/dashboard/:classId/enroll/:sessionId', dashboard.enrollInClass);
 router.get('/dashboard/:classId/enrollAll', dashboard.enrollAll);
+router.get('/dashboard/unEnroll/:classId', dashboard.classUnenrollment);
 
 router.post('/register', accounts.register);
 router.post('/authenticate', accounts.authenticate);
@@ -38,6 +42,7 @@ router.post('/memberAssessment/:id/updateComment/:assessmentId', trainerDashboar
 router.post('/updateProfile', dashboard.updateProfile);
 router.post('/trainerDashboard/addNewClass', trainerDashboard.addNewClass);
 router.post('/trainerDashboard/editClass/:classId', trainerDashboard.editClass);
+router.post('/dashboard/addNewBooking', dashboard.addNewBooking);
 
 module.exports = router;
 

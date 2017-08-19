@@ -6,6 +6,7 @@
 const logger = require('../utils/logger.js');
 const accounts = require('./accounts.js');
 const member = require('../models/members-store.js');
+const trainer = require('../models/trainer-store.js');
 const uuid = require('uuid');
 const analytics = require('../utils/analytics');
 const classes = require('../models/class-store.js');
@@ -97,9 +98,22 @@ const dashboard = {
   showClasses(request, response) {
     const member = accounts.getCurrentMember(request);
     const classList = classes.getAllClasses();
+    const enrolledClasses = [];
+    loop1: for (let i = 0; i < classList.length; i++) { //cycle through each class
+      loop2: for (let x = 0; x < classList[i].sessions.length; x++) { //cycle through each classes' sessions
+        loop3: for (let y = 0; y < classList[i].sessions[x].members.length; y++) { //cycle through each sessions' members
+          if (classList[i].sessions[x].members[y] === member.id) {
+            enrolledClasses.push(classList[i]);
+            break loop2;//break out of loop 2 so as to avoid re-adding the same class twice
+          }
+        }
+      }
+    }
+
     const viewData = {
       member: member,
       classList: classList,
+      enrolledClass: enrolledClasses,
     };
     logger.info('Rendering classes');
     response.render('classes', viewData);
@@ -114,6 +128,27 @@ const dashboard = {
       member: currentMember,
     };
     response.render('classEnrollment', viewData);
+  },
+
+  classUnenrollment(request, response) {
+    const classId = request.params.classId;
+    const chosenClass = classes.getClassById(classId);
+    const currentMember = accounts.getCurrentMember(request);
+    for (let i = 0; i < chosenClass.sessions.length; i++) {
+      let notEnrolledInThisSession = true;
+      for (let x = 0; x < chosenClass.sessions[i].members.length; x++) {
+        if (chosenClass.sessions[i].members[x] === currentMember.id) {
+          notEnrolledInThisSession = false;
+          break;
+        }
+      }
+
+    }
+    const viewData = {
+      chosenClass: chosenClass,
+      member: currentMember,
+    };
+    response.render('classUnenrollment', viewData);
   },
 
   enrollInClass(request, response) {
@@ -144,12 +179,13 @@ const dashboard = {
     const classId = request.params.classId;
     const currentClass = classes.getClassById(classId);
     const currentMember = accounts.getCurrentMember(request);
-    let notAlreadyEnrolled = true; //Boolean check to stop members from enrolling in a class more than once
-    for (let i = 0; i < currentClass.sessions.length; i++) {
+    for (let i = 0; i < currentClass.sessions.length; i++) { //cycles through each session
       let session = currentClass.sessions[i];
-      for (let x = 0; x < session.members.length; x++) {
+      let notAlreadyEnrolled = true; //Boolean check to stop members from enrolling in a class more than once
+      for (let x = 0; x < session.members.length; x++) { //cycles through each member in the session
         if (session.members[x] === currentMember.id) {
           notAlreadyEnrolled = false;
+          break; //breaks out of loop as soon as code determines that the current member is already enrolled
         }
       }
 
@@ -165,6 +201,35 @@ const dashboard = {
     }
 
     response.redirect('/memberClasses');
+  },
+
+  booking(request, response) {
+    const member = accounts.getCurrentMember(request);
+    const trainerList = trainer.getAllTrainers();
+    const bookingList = member.bookings;
+    const viewData = {
+      member: member,
+      trainerList: trainerList,
+      bookingList: bookingList,
+    };
+    response.render('bookings', viewData);
+  },
+
+  addNewBooking(request, response) {
+    const loggedInMember = accounts.getCurrentMember(request);
+    const memberId = loggedInMember.id;
+    const trainerId = request.body.trainerId;
+    const currentTrainer = trainer.getTrainerById(trainerId);
+    const newBooking = {
+      bookingId: uuid(),
+      trainerId: trainerId,
+      trainerFirstName: currentTrainer.firstName,
+      trainerLastName: currentTrainer.lastName,
+      bookingDate: request.body.bookingDate,
+      bookingTime: request.body.bookingTime,
+    };
+    member.addBooking(memberId, newBooking);
+    response.redirect('/memberBookings');
   },
 };
 

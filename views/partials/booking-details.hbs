@@ -1,0 +1,23 @@
+<table class="ui fixed center aligned table">
+    <thead>
+    <tr>
+        <th>Trainer</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Edit</th>
+    </tr>
+    </thead>
+    {{#each bookingList}}
+    <tbody>
+    <div class="ui bulleted list">
+        <td>{{trainerFirstName}} {{trainerLastName}}</td>
+        <td>{{bookingDate}}</td>
+        <td>{{bookingTime}}</td>
+        <td>
+            <i class="large blue edit icon"></i>
+            <i class="large red trash icon"></i>
+        </td>
+    </div>
+    </tbody>
+    {{/each}}
+</table>
