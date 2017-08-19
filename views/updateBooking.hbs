@@ -1,7 +1,14 @@
- {{> member-menu id="updateBooking"}}
+{{#if member}}
+    {{> member-menu id="updateBooking"}}
+{{else}}
+    {{> trainer-menu id="updateBooking"}}
+{{/if}}
 
  <section class="ui raised segment">
      <h4> Update your Booking </h4>
-     {{> new-booking-member}}
-     {{> new-booking-trainer}}
+     {{#if member}}
+         {{> new-booking-member}}
+     {{else}}
+         {{> new-booking-trainer}}
+     {{/if}}
  </section>

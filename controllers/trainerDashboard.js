@@ -172,8 +172,8 @@ const trainerDashboard = {
     const currentTrainer = accounts.getCurrentTrainer(request);
     const bookingId = request.params.bookingId;
     logger.info(`Removing booking ${bookingId} from ${currentTrainer.firstName}`);
-    trainer.removeBooking(currentTrainer.id, bookingId);
-    response.redirect('/memberBookings');
+    trainer.removeBooking(currentTrainer.trainerId, bookingId);
+    response.redirect('/trainerBookings');
   },
 
   updateBooking(request, response) {
@@ -192,7 +192,7 @@ const trainerDashboard = {
   editBooking(request, response) {
     const currentTrainer = accounts.getCurrentTrainer(request);
     const bookingId = request.params.bookingId;
-    const editedBooking = trainer.getBookingById(currentTrainer.id, bookingId);
+    const editedBooking = trainer.getBookingById(currentTrainer.trainerId, bookingId);
     const memberId = request.body.memberId;
     const newMember = member.getMemberById(memberId);
     editedBooking.memberId = memberId;
@@ -202,7 +202,7 @@ const trainerDashboard = {
     editedBooking.bookingTime = request.body.bookingTime;
     logger.info(`Editing booking ${bookingId} for ${currentTrainer.firstName}`);
     trainer.save();//Saves info after update
-    response.redirect('/memberBookings');
+    response.redirect('/trainerBookings');
   },
 };
 

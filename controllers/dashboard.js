@@ -246,6 +246,7 @@ const dashboard = {
     const updatedBooking = member.getBookingById(currentMember.memberId, bookingId);
     const trainerList = trainer.getAllTrainers();
     const viewData = {
+      member: currentMember,
       updatedBooking: updatedBooking,
       trainerList: trainerList,
     };

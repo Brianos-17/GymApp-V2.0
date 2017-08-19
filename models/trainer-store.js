@@ -36,6 +36,15 @@ const trainerStore = {
     this.store.save();
   },
 
+  getBookingById(trainerId, bookingId) {
+    const trainer = this.getTrainerById(trainerId);
+    for (let i = 0; i < trainer.bookings.length; i++) {
+      if (trainer.bookings[i].bookingId === bookingId) {
+        return trainer.bookings[i];
+      }
+    }
+  },
+
   removeBooking(trainerId, bookingId) {
     const trainer = this.getTrainerById(trainerId);
     _.remove(trainer.bookings, { bookingId: bookingId });

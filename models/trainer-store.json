@@ -9,17 +9,20 @@
       "trainerId": "4ad52597-6d98-4d80-8673-084be55a87a0",
       "bookings": [
         {
-          "bookingId": "1536e926-41da-4c6d-9c79-d46a64742e35",
-          "bookingDate": "August 8, 2017",
-          "bookingTime": "9:00 AM"
-        },
-        {
           "bookingId": "c21d3067-b2f4-4675-b307-29a3559d9548",
           "memberId": "3ad52697-6d98-4d80-8273-084de55a86c0",
           "memberFirstName": "Homer",
           "memberLastName": "Simpson",
           "bookingDate": "August 17, 2017",
-          "bookingTime": "1:00 PM"
+          "bookingTime": "2:00 PM"
+        },
+        {
+          "bookingId": "54cae4e1-a2e2-4323-aa04-eeaa14ed4013",
+          "memberId": "a25aaa9f-617e-4ebc-bca0-2a757ae48e37",
+          "memberFirstName": "Bart",
+          "memberLastName": "Simpson",
+          "bookingDate": "August 23, 2017",
+          "bookingTime": "4:00 PM"
         }
       ]
     },
