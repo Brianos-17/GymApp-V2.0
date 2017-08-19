@@ -55,7 +55,31 @@
           "bookingTime": "5:20 PM"
         }
       ],
-      "goals": []
+      "goals": [
+        {
+          "goalId": "b639781f-17d3-4943-9fe5-03e9f6aee131",
+          "targetArea": "Weight",
+          "targetGoal": "95.00",
+          "goalDate": "August 26, 2017",
+          "status": "open"
+        },
+        {
+          "goalId": "49f80ad3-9254-4be8-bba7-c25aff95a9c8",
+          "targetArea": "Weight",
+          "targetGoal": "95.00",
+          "goalDate": "August 31, 2017",
+          "description": "wefrghmjgfds",
+          "status": "open"
+        },
+        {
+          "goalId": "9f0bfc88-4f2b-40af-b52a-e886a13fd946",
+          "targetArea": "upperArm",
+          "targetGoal": "5",
+          "goalDate": "August 15, 2017",
+          "description": "ghjklDA@Svcyfjv dsfkjlsdnfkml;sajldfyavsbdn sfvhlbkjlgchxvbj.kldhfghjkfghjklkjhgfdsa bhewertyujnhbvz",
+          "status": "open"
+        }
+      ]
     },
     {
       "firstName": "Marge",

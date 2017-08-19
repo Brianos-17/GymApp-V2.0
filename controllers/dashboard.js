@@ -272,8 +272,10 @@ const dashboard = {
 
   showGoals(request, response) {
     const currentMember = accounts.getCurrentMember(request);
+    const goalList = currentMember.goals;
     const viewData = {
       member: currentMember,
+      goalList: goalList,
     };
     response.render('goals', viewData);
   },
@@ -286,8 +288,9 @@ const dashboard = {
       targetGoal: request.body.targetGoal,
       goalDate: request.body.goalDate,
       description: request.body.description,
+      status: "open",
     };
-    member.addGoal(currentMember.id, newGoal);
+    member.addGoal(currentMember.memberId, newGoal);
     response.redirect('/goals');
   },
 };

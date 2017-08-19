@@ -1,0 +1,27 @@
+<table class="ui fixed center aligned table">
+    <thead>
+    <tr>
+        <th> Area </th>
+        <th> Target </th>
+        <th> Description </th>
+        <th> Date </th>
+        <th> Status </th>
+        <th> Delete </th>
+    </tr>
+    </thead>
+    {{#each goalList}}
+    <tbody>
+        <div class="ui bulleted list">
+            <td>{{targetArea}}</td>
+            <td>{{targetGoal}}</td>
+            <td>{{description}}</td>
+            <td>{{goalDate}}</td>
+            <td>{{status}}</td>
+            <td>
+                <a href="/dashboard/removeGoal/{{goalId}}">
+                <i class="large red trash icon"></i></a>
+            </td>
+        </div>
+    </tbody>
+    {{/each}}
+</table>
