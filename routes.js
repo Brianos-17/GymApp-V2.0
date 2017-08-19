@@ -22,7 +22,7 @@ router.get('/memberClasses', dashboard.showClasses);
 router.get('/trainerClasses', trainerDashboard.showClasses);
 router.get('/memberBookings', dashboard.booking);
 router.get('/trainerBookings', trainerDashboard.booking);
-router.get('/goals', dashboard.goals);
+router.get('/goals', dashboard.showGoals);
 router.get('/trainerGoals', trainerDashboard.goals);
 
 router.get('/dashboard/removeAssessment/:assessmentId', dashboard.removeAssessment);

@@ -270,7 +270,7 @@ const dashboard = {
     response.redirect('/memberBookings');
   },
 
-  goals(request, response) {
+  showGoals(request, response) {
     const currentMember = accounts.getCurrentMember(request);
     const viewData = {
       member: currentMember,
@@ -287,6 +287,8 @@ const dashboard = {
       goalDate: request.body.goalDate,
       description: request.body.description,
     };
+    member.addGoal(currentMember.id, newGoal);
+    response.redirect('/goals');
   },
 };
 
