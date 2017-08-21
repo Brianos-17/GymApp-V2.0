@@ -37,7 +37,18 @@
           "updateComment": false
         }
       ],
-      "bookings": [],
+      "bookings": [
+        {
+          "bookingId": "29c43870-bcef-471d-bc61-3d7611b0db7f",
+          "trainerId": "1bd5638f-4e3a-4d90-5f78-1355a25a4d2e",
+          "memberFirstName": "Homer",
+          "memberLastName": "Simpson",
+          "trainerFirstName": "Natasha",
+          "trainerLastName": "Romanova",
+          "bookingDate": "August 29, 2017",
+          "bookingTime": "2:30 PM"
+        }
+      ],
       "goals": [
         {
           "goalId": "2277c47e-da20-4315-852c-03df1bcc99ba",

@@ -232,6 +232,14 @@ const trainerDashboard = {
     member.addGoal(memberId, newGoal);
     response.redirect('/trainerGoals');
   },
+
+  fitnessProgram(request, response) {
+    const currentTrainer = accounts.getCurrentTrainer(request);
+    const viewData = {
+      trainer: currentTrainer,
+    };
+    response.render('fitnessProgram', viewData);
+  },
 };
 
 module.exports = trainerDashboard;
