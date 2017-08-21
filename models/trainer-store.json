@@ -17,16 +17,6 @@
           "memberLastName": "Simpson",
           "bookingDate": "August 24, 2017",
           "bookingTime": "7:00 PM"
-        },
-        {
-          "bookingId": "29c43870-bcef-471d-bc61-3d7611b0db7f",
-          "trainerId": "4ad52597-6d98-4d80-8673-084be55a87a0",
-          "memberFirstName": "Homer",
-          "memberLastName": "Simpson",
-          "trainerFirstName": "Tony",
-          "trainerLastName": "Stark",
-          "bookingDate": "August 29, 2017",
-          "bookingTime": "2:30 PM"
         }
       ]
     },
