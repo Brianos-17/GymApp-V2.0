@@ -230,7 +230,7 @@ const trainerDashboard = {
       status: 'open',
     };
     member.addGoal(memberId, newGoal);
-    response.redirect('/goals');
+    response.redirect('/trainerGoals');
   },
 };
 

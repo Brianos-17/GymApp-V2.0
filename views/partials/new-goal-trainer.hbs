@@ -3,7 +3,7 @@
     <div class="three fields">
         <div class="field">
             <label> Member </label>
-            <select type="ui dropdown">
+            <select type="ui dropdown" name="memberId">
             {{#each memberList}}
                 <option value="{{memberId}}">{{firstName}} {{lastName}}</option>
             {{/each}}
@@ -37,7 +37,7 @@
         </div>
         <div class="field">
             <label> Description </label>
-            <textarea placeholder="Enter a brief description of your goal..." rows="2" name="description"></textarea>
+            <textarea placeholder="Enter a brief description of your goal..." rows="1" name="description"></textarea>
         </div>
     </div>
 

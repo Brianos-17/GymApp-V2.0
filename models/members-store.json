@@ -40,18 +40,19 @@
       "bookings": [],
       "goals": [
         {
-          "goalId": "b639781f-17d3-4943-9fe5-03e9f6aee131",
-          "targetArea": "Weight",
-          "targetGoal": "95.00",
-          "goalDate": "August 26, 2017",
-          "status": "open"
-        },
-        {
-          "goalId": "49f80ad3-9254-4be8-bba7-c25aff95a9c8",
+          "goalId": "2277c47e-da20-4315-852c-03df1bcc99ba",
           "targetArea": "Weight",
           "targetGoal": "95.00",
           "goalDate": "August 31, 2017",
-          "description": "wefrghmjgfds",
+          "description": "This is a test",
+          "status": "open"
+        },
+        {
+          "goalId": "ab4b061b-892d-4a7f-b85f-98af1d01909c",
+          "targetArea": "chest",
+          "targetGoal": "32.05",
+          "goalDate": "August 30, 2017",
+          "description": "This is also a test",
           "status": "open"
         }
       ]
@@ -94,7 +95,18 @@
           "updateComment": false
         }
       ],
-      "bookings": [],
+      "bookings": [
+        {
+          "bookingId": "d383b0d1-7da3-4ba4-b7d8-b4a4733abd56",
+          "memberId": "a25aaa9f-617e-4ebc-bca0-2a757ae48e37",
+          "trainerFirstName": "Tony",
+          "trainerLastName": "Stark",
+          "memberFirstName": "Bart",
+          "memberLastName": "Simpson",
+          "bookingDate": "August 24, 2017",
+          "bookingTime": "7:00 PM"
+        }
+      ],
       "goals": []
     }
   ]

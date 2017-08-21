@@ -7,7 +7,18 @@
       "password": "secret",
       "gender": "male",
       "trainerId": "4ad52597-6d98-4d80-8673-084be55a87a0",
-      "bookings": []
+      "bookings": [
+        {
+          "bookingId": "d383b0d1-7da3-4ba4-b7d8-b4a4733abd56",
+          "memberId": "a25aaa9f-617e-4ebc-bca0-2a757ae48e37",
+          "trainerFirstName": "Tony",
+          "trainerLastName": "Stark",
+          "memberFirstName": "Bart",
+          "memberLastName": "Simpson",
+          "bookingDate": "August 24, 2017",
+          "bookingTime": "7:00 PM"
+        }
+      ]
     },
     {
       "firstName": "Steve",
