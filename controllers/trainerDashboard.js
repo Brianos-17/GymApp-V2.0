@@ -159,12 +159,15 @@ const trainerDashboard = {
     const newBooking = {
       bookingId: uuid(),
       memberId: memberId,
+      trainerFirstName: loggedInTrainer.firstName,
+      trainerLastName: loggedInTrainer.lastName,
       memberFirstName: currentMember.firstName,
       memberLastName: currentMember.lastName,
       bookingDate: request.body.bookingDate,
       bookingTime: request.body.bookingTime,
     };
     trainer.addBooking(trainerId, newBooking);
+    member.addBooking(memberId, newBooking);
     response.redirect('/trainerBookings');
   },
 
@@ -213,6 +216,21 @@ const trainerDashboard = {
       memberList: memberList,
     };
     response.render('goals', viewData);
+  },
+
+  addNewGoal(request, response) {
+    const memberId = request.body.memberId;
+    logger.info(memberId);
+    const newGoal = {
+      goalId: uuid(),
+      targetArea: request.body.targetArea,
+      targetGoal: request.body.targetGoal,
+      goalDate: request.body.goalDate,
+      description: request.body.description,
+      status: 'open',
+    };
+    member.addGoal(memberId, newGoal);
+    response.redirect('/goals');
   },
 };
 

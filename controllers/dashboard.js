@@ -223,12 +223,15 @@ const dashboard = {
     const newBooking = {
       bookingId: uuid(),
       trainerId: trainerId,
+      memberFirstName: loggedInMember.firstName,
+      memberLastName: loggedInMember.lastName,
       trainerFirstName: currentTrainer.firstName,
       trainerLastName: currentTrainer.lastName,
       bookingDate: request.body.bookingDate,
       bookingTime: request.body.bookingTime,
     };
     member.addBooking(memberId, newBooking);
+    trainer.addBooking(trainerId, newBooking);
     response.redirect('/memberBookings');
   },
 
