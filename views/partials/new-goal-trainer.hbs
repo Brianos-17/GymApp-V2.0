@@ -1,6 +1,14 @@
-<form class="ui stacked segment form" name="addNewGoal" action="/dashboard/addNewGoal" method="POST">
+<form class="ui stacked segment form" name="addNewBooking" action="/trainerDashboard/addNewGoal" method="POST">
 
     <div class="three fields">
+        <div class="field">
+            <label> Member </label>
+            <select type="ui dropdown">
+            {{#each memberList}}
+                <option value="{{memberId}}">{{firstName}} {{lastName}}</option>
+            {{/each}}
+            </select>
+        </div>
         <div class="field">
             <label> Target Area </label>
             <select type="ui dropdown" name="targetArea">
@@ -16,6 +24,8 @@
             <label> Target Goal </label>
             <input placeholder="00.00" type="text" pattern="\d.*" name="targetGoal">
         </div>
+    </div>
+    <div class="two fields">
         <div class="field">
             <label> Date </label>
             <div class="ui calendar" id="goalDateCalendar">
@@ -25,10 +35,10 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="field">
-        <label> Description </label>
-        <textarea placeholder="Enter a brief description of your goal..." rows="2" name="description"></textarea>
+        <div class="field">
+            <label> Description </label>
+            <textarea placeholder="Enter a brief description of your goal..." rows="2" name="description"></textarea>
+        </div>
     </div>
 
     <button class="ui blue submit button"> Set Goal </button>

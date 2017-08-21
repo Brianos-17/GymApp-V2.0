@@ -207,8 +207,10 @@ const trainerDashboard = {
 
   goals(request, response) {
     const currentTrainer = accounts.getCurrentTrainer(request);
+    const memberList = member.getAllMembers();
     const viewData = {
       trainer: currentTrainer,
+      memberList: memberList,
     };
     response.render('goals', viewData);
   },
