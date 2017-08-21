@@ -8,13 +8,18 @@
 
 <section class="ui raised segment">
     <h4>Add a new Booking</h4>
-    {{> new-booking}}
+    {{#if member}}
+        {{> new-booking-member}}
+    {{/if}}
+    {{#unless member}}
+        {{> new-booking-trainer}}
+    {{/unless}}
 
     {{#if member}}
         <h4> {{member.firstName}}'s Current Bookings </h4>
     {{/if}}
     {{#unless member}}
-        <h4> {{trainer.firstName}}'s Current Bookings</h4>
+        <h4> {{trainer.firstName}}'s Current Bookings </h4>
     {{/unless}}
     {{> booking-details}}
 </section>

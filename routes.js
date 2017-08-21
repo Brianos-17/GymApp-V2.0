@@ -22,6 +22,8 @@ router.get('/memberClasses', dashboard.showClasses);
 router.get('/trainerClasses', trainerDashboard.showClasses);
 router.get('/memberBookings', dashboard.booking);
 router.get('/trainerBookings', trainerDashboard.booking);
+router.get('/goals', dashboard.showGoals);
+router.get('/trainerGoals', trainerDashboard.goals);
 
 router.get('/dashboard/removeAssessment/:assessmentId', dashboard.removeAssessment);
 router.get('/trainerDashboard/:id/removeAssessment/:assessmentId', trainerDashboard.removeAssessment);
@@ -34,6 +36,11 @@ router.get('/dashboard/enroll/:classId', dashboard.classEnrollment);
 router.get('/dashboard/:classId/enroll/:sessionId', dashboard.enrollInClass);
 router.get('/dashboard/:classId/enrollAll', dashboard.enrollAll);
 router.get('/dashboard/unEnroll/:classId', dashboard.classUnenrollment);
+router.get('/dashboard/removeBooking/:bookingId', dashboard.removeBooking);
+router.get('/dashboard/updateBooking/:bookingId', dashboard.updateBooking);
+router.get('/trainerDashboard/removeBooking/:bookingId', trainerDashboard.removeBooking);
+router.get('/trainerDashboard/updateBooking/:bookingId', trainerDashboard.updateBooking);
+router.get('/dashboard/removeGoal/:goalId', dashboard.removeGoal);
 
 router.post('/register', accounts.register);
 router.post('/authenticate', accounts.authenticate);
@@ -43,7 +50,10 @@ router.post('/updateProfile', dashboard.updateProfile);
 router.post('/trainerDashboard/addNewClass', trainerDashboard.addNewClass);
 router.post('/trainerDashboard/editClass/:classId', trainerDashboard.editClass);
 router.post('/dashboard/addNewBooking', dashboard.addNewBooking);
+router.post('/dashboard/editBooking/:bookingId', dashboard.editBooking);
+router.post('/trainerDashboard/addNewBooking', trainerDashboard.addNewBooking);
+router.post('/trainerDashboard/editBooking/:bookingId', trainerDashboard.editBooking);
+router.post('/dashboard/addNewGoal', dashboard.addNewGoal);
+router.post('/trainerDashboard/addNewGoal', trainerDashboard.addNewGoal);
 
 module.exports = router;
-
-

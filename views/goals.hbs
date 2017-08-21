@@ -1,0 +1,16 @@
+{{#if member}}
+    {{> member-menu id="goals"}}
+{{else}}
+    {{> trainer-menu id="goals"}}
+{{/if}}
+<!--Toggles navigation bars depending on who views the page-->
+
+<section class="ui raised segment">
+    <h4>Add a new Goal</h4>
+    {{#if member}}
+        {{> new-goal-member}}
+        {{> goal-details}}
+    {{else}}
+        {{> new-goal-trainer}}
+    {{/if}}
+</section>

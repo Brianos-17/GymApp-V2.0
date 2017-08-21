@@ -1,0 +1,62 @@
+{{#if updatedBooking}}
+    <form class="ui stacked segment form" name="editBooking" action="/trainerDashboard/editBooking/{{updatedBooking.bookingId}}" method="POST">
+{{/if}}
+{{#unless updatedBooking}}
+    <form class="ui stacked segment form" name="addNewBooking" action="/trainerDashboard/addNewBooking" method="POST">
+{{/unless}}
+
+    <div class="three fields">
+        <div class="field">
+            <label> Member </label>
+            <select class="ui dropdown" name="memberId">
+                {{#each memberList}}
+                    <option value="{{memberId}}">{{firstName}} {{lastName}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="field">
+            <label> Date </label>
+            <div class="ui calendar" id="bookingDateCalendar">
+                <div class="ui input left icon">
+                    <i class="calendar icon"></i>
+                    <input type="text" placeholder="Date" name="bookingDate">
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <label> Time </label>
+            <div class="ui calendar" id="bookingTimeCalendar">
+                <div class="ui input left icon">
+                    <i class="time icon"></i>
+                    <input type="text" placeholder="Time" name="bookingTime">
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+{{#if updatedBooking}}
+        <button class="ui blue submit button"> Update Booking </button>
+{{/if}}
+{{#unless updatedBooking}}
+        <button class="ui blue submit button"> Create Booking </button>
+{{/unless}}
+
+</form>
+
+    <script>
+        $(function(){
+            $('#bookingDateCalendar').calendar(
+                    {type: 'date'}
+            );
+        });
+    </script>
+    <!--//code to allow calendar to popup, when selected, with dates -->
+    <script>
+        $(function() {
+            $('#bookingTimeCalendar').calendar(
+                    {type: 'time'}
+            );
+        });
+    </script>
+    <!--//code to allow calendar to popup, when selected, with times -->

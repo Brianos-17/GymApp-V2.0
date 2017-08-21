@@ -29,6 +29,31 @@ const trainerStore = {
     trainer.members.push(members);
     this.store.save();
   },
+
+  addBooking(trainerId, booking) {
+    const trainer = this.getTrainerById(trainerId);
+    trainer.bookings.push(booking);
+    this.store.save();
+  },
+
+  getBookingById(trainerId, bookingId) {
+    const trainer = this.getTrainerById(trainerId);
+    for (let i = 0; i < trainer.bookings.length; i++) {
+      if (trainer.bookings[i].bookingId === bookingId) {
+        return trainer.bookings[i];
+      }
+    }
+  },
+
+  removeBooking(trainerId, bookingId) {
+    const trainer = this.getTrainerById(trainerId);
+    _.remove(trainer.bookings, { bookingId: bookingId });
+    this.store.save();
+  },
+
+  save() {
+    this.store.save(); //Method used by controllers which saves the JSON object after they have altered data
+  },
 };
 
 module.exports = trainerStore;

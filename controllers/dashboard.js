@@ -35,7 +35,7 @@ const dashboard = {
 
   addAssessment(request, response) {
     const loggedInMember = accounts.getCurrentMember(request);
-    const memberId = loggedInMember.id;
+    const memberId = loggedInMember.memberId;
     const newAssessment = {
       assessmentId: uuid(),
       date: new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''), //Retrieved from https://stackoverflow.com/questions/10645994/node-js-how-to-format-a-date-string-in-utc
@@ -59,7 +59,7 @@ const dashboard = {
   removeAssessment(request, response) {
     const assessmentId = request.params.assessmentId;
     const loggedInMember = accounts.getCurrentMember(request);
-    member.removeAssessment(loggedInMember.id, assessmentId);
+    member.removeAssessment(loggedInMember.memberId, assessmentId);
     logger.debug(`Deleting Assessment ${assessmentId} for ${loggedInMember.firstName}`);
     response.redirect('/dashboard');
 
@@ -102,7 +102,7 @@ const dashboard = {
     loop1: for (let i = 0; i < classList.length; i++) { //cycle through each class
       loop2: for (let x = 0; x < classList[i].sessions.length; x++) { //cycle through each classes' sessions
         loop3: for (let y = 0; y < classList[i].sessions[x].members.length; y++) { //cycle through each sessions' members
-          if (classList[i].sessions[x].members[y] === member.id) {
+          if (classList[i].sessions[x].members[y] === member.memberId) {
             enrolledClasses.push(classList[i]);
             break loop2;//break out of loop 2 so as to avoid re-adding the same class twice
           }
@@ -137,7 +137,7 @@ const dashboard = {
     for (let i = 0; i < chosenClass.sessions.length; i++) {
       let notEnrolledInThisSession = true;
       for (let x = 0; x < chosenClass.sessions[i].members.length; x++) {
-        if (chosenClass.sessions[i].members[x] === currentMember.id) {
+        if (chosenClass.sessions[i].members[x] === currentMember.memberId) {
           notEnrolledInThisSession = false;
           break;
         }
@@ -158,7 +158,7 @@ const dashboard = {
     const currentMember = accounts.getCurrentMember(request);
     let notAlreadyEnrolled = true; //Boolean check to stop members from enrolling in a class more than once
     for (let i = 0; i < currentSession.members.length; i++) {
-      if (currentSession.members[i] === currentMember.id) {
+      if (currentSession.members[i] === currentMember.memberId) {
         notAlreadyEnrolled = false;
       }
     }
@@ -166,7 +166,7 @@ const dashboard = {
     if ((notAlreadyEnrolled) && (currentSession.currentCapacity < currentSession.maxCapacity)) {
       currentSession.currentCapacity += 1;
       logger.debug(`Enrolling ${currentMember.firstName}`);
-      currentSession.members.push(currentMember.id);//Add member Id to session to keep track of enrollment and allow for boolean check
+      currentSession.members.push(currentMember.memberId);//Add member Id to session to keep track of enrollment and allow for boolean check
       classes.save();
     } else {
       logger.debug('Unable to enroll');
@@ -183,7 +183,7 @@ const dashboard = {
       let session = currentClass.sessions[i];
       let notAlreadyEnrolled = true; //Boolean check to stop members from enrolling in a class more than once
       for (let x = 0; x < session.members.length; x++) { //cycles through each member in the session
-        if (session.members[x] === currentMember.id) {
+        if (session.members[x] === currentMember.memberId) {
           notAlreadyEnrolled = false;
           break; //breaks out of loop as soon as code determines that the current member is already enrolled
         }
@@ -192,7 +192,7 @@ const dashboard = {
       if ((notAlreadyEnrolled) && (session.currentCapacity < session.maxCapacity)) {
         session.currentCapacity += 1;
         logger.debug(`Enrolling ${currentMember.firstName} in ${currentClass.className} on ${currentClass.sessions[i].date}`);
-        session.members.push(currentMember.id);
+        session.members.push(currentMember.memberId);
         //Add member Id to session to keep track of enrollment and allow for boolean check
         classes.save();
       } else {
@@ -217,19 +217,92 @@ const dashboard = {
 
   addNewBooking(request, response) {
     const loggedInMember = accounts.getCurrentMember(request);
-    const memberId = loggedInMember.id;
+    const memberId = loggedInMember.memberId;
     const trainerId = request.body.trainerId;
     const currentTrainer = trainer.getTrainerById(trainerId);
     const newBooking = {
       bookingId: uuid(),
       trainerId: trainerId,
+      memberFirstName: loggedInMember.firstName,
+      memberLastName: loggedInMember.lastName,
       trainerFirstName: currentTrainer.firstName,
       trainerLastName: currentTrainer.lastName,
       bookingDate: request.body.bookingDate,
       bookingTime: request.body.bookingTime,
     };
     member.addBooking(memberId, newBooking);
+    trainer.addBooking(trainerId, newBooking);
     response.redirect('/memberBookings');
+  },
+
+  removeBooking(request, response) {
+    const currentMember = accounts.getCurrentMember(request);
+    const bookingId = request.params.bookingId;
+    logger.info(`Removing booking ${bookingId} from ${currentMember.firstName}`);
+    member.removeBooking(currentMember.memberId, bookingId);
+    response.redirect('/memberBookings');
+  },
+
+  updateBooking(request, response) {
+    const currentMember = accounts.getCurrentMember(request);
+    const bookingId = request.params.bookingId;
+    const updatedBooking = member.getBookingById(currentMember.memberId, bookingId);
+    const trainerList = trainer.getAllTrainers();
+    const viewData = {
+      member: currentMember,
+      updatedBooking: updatedBooking,
+      trainerList: trainerList,
+    };
+    logger.info(`Retrieving information for update to booking: ${bookingId}`);
+    response.render('updateBooking', viewData);
+  },
+
+  editBooking(request, response) {
+    const currentMember = accounts.getCurrentMember(request);
+    const bookingId = request.params.bookingId;
+    const editedBooking = member.getBookingById(currentMember.memberId, bookingId);
+    const trainerId = request.body.trainerId;
+    const newTrainer = trainer.getTrainerById(trainerId);
+    editedBooking.trainerId = trainerId;
+    editedBooking.trainerFirstName = newTrainer.firstName;
+    editedBooking.trainerLastName = newTrainer.lastName;
+    editedBooking.bookingDate = request.body.bookingDate;
+    editedBooking.bookingTime = request.body.bookingTime;
+    logger.info(`Editing booking ${bookingId} for ${currentMember.firstName}`);
+    member.save();//Saves info after update
+    response.redirect('/memberBookings');
+  },
+
+  showGoals(request, response) {
+    const currentMember = accounts.getCurrentMember(request);
+    const goalList = currentMember.goals;
+    const viewData = {
+      member: currentMember,
+      goalList: goalList,
+    };
+    response.render('goals', viewData);
+  },
+
+  addNewGoal(request, response) {
+    const currentMember = accounts.getCurrentMember(request);
+    const newGoal = {
+      goalId: uuid(),
+      targetArea: request.body.targetArea,
+      targetGoal: request.body.targetGoal,
+      goalDate: request.body.goalDate,
+      description: request.body.description,
+      status: 'open',
+    };
+    member.addGoal(currentMember.memberId, newGoal);
+    response.redirect('/goals');
+  },
+
+  removeGoal(request, response) {
+    const currentMember = accounts.getCurrentMember(request);
+    const goalId = request.params.goalId;
+    logger.info(`Removing Goal: ${goalId} from Member: ${currentMember.firstName}`);
+    member.removeGoal(currentMember.memberId, goalId);
+    response.redirect('/goals');
   },
 };
 

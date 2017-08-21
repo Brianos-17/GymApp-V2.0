@@ -1,7 +1,14 @@
 <table class="ui fixed center aligned table">
     <thead>
     <tr>
-        <th>Trainer</th>
+        <th>
+            {{#if member}}
+                Trainer
+            {{/if}}
+            {{#unless member}}
+                Member
+            {{/unless}}
+        </th>
         <th>Date</th>
         <th>Time</th>
         <th>Edit</th>
@@ -10,12 +17,29 @@
     {{#each bookingList}}
     <tbody>
     <div class="ui bulleted list">
-        <td>{{trainerFirstName}} {{trainerLastName}}</td>
+        <td>
+            {{#if ../member}}
+                {{trainerFirstName}} {{trainerLastName}}
+            {{/if}}
+            {{#unless ../member}}
+                {{memberFirstName}} {{memberLastName}}
+            {{/unless}}
+        </td>
         <td>{{bookingDate}}</td>
         <td>{{bookingTime}}</td>
         <td>
-            <i class="large blue edit icon"></i>
-            <i class="large red trash icon"></i>
+            {{#if ../member}}
+                <a href="/dashboard/updateBooking/{{bookingId}}">
+                    <i class="large blue edit icon"></i></a>
+                <a href="/dashboard/removeBooking/{{bookingId}}">
+                    <i class="large red trash icon"></i></a>
+            {{/if}}
+            {{#unless ../member}}
+                <a href="/trainerDashboard/updateBooking/{{bookingId}}">
+                    <i class="large blue edit icon"></i></a>
+                <a href="/trainerDashboard/removeBooking/{{bookingId}}">
+                    <i class="large red trash icon"></i></a>
+            {{/unless}}
         </td>
     </div>
     </tbody>
