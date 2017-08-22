@@ -247,9 +247,10 @@ const trainerDashboard = {
   },
 
   addNewProgram(request, response) {
+    const memberId = request.body.memberId;
     const newProgram = {
       programId: uuid(),
-      memberId: request.body.memberId,
+      memberId: memberId,
       session1: request.body.session1,
       session2: request.body.session2,
       session3: request.body.session3,
@@ -257,7 +258,7 @@ const trainerDashboard = {
       session5: request.body.session5,
     };
     program.addProgram(newProgram);
-    logger.info(`Assigning member ${memberId} new fitness program ${newProgram.programId}`);
+    logger.debug(`Assigning member ${memberId} new fitness program ${newProgram.programId}`);
     response.redirect('/trainerFitnessProgram');
   },
 };
