@@ -4,10 +4,9 @@
         <th>
             {{#if member}}
                 Trainer
-            {{/if}}
-            {{#unless member}}
+            {{else}}
                 Member
-            {{/unless}}
+            {{/if}}
         </th>
         <th>Date</th>
         <th>Time</th>
@@ -20,10 +19,9 @@
         <td>
             {{#if ../member}}
                 {{trainerFirstName}} {{trainerLastName}}
-            {{/if}}
-            {{#unless ../member}}
+            {{else}}
                 {{memberFirstName}} {{memberLastName}}
-            {{/unless}}
+            {{/if}}
         </td>
         <td>{{bookingDate}}</td>
         <td>{{bookingTime}}</td>

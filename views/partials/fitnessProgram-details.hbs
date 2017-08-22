@@ -1,0 +1,31 @@
+{{#each programList}}
+    <table class="ui fixed center aligned table">
+    <thead>
+    <tr>
+        <th> Member </th>
+        <th> Session 1 </th>
+        <th> Session 2 </th>
+        <th> Session 3 </th>
+        <th> Session 4 </th>
+        <th> Session 5 </th>
+        <th> Edit </th>
+    </tr>
+    </thead>
+        <tbody>
+        <div class="ui bulleted list">
+            <td>{{../firstName}} {{../lastName}}</td>
+            <td>{{session1}}</td>
+            <td>{{session2}}</td>
+            <td>{{session3}}</td>
+            <td>{{session4}}</td>
+            <td>{{session5}}</td>
+            <td>
+                <a href="/trainerDashboard/updateProgram/{{programId}}">
+                    <i class="large blue edit icon"></i></a>
+                <a href="/trainerDashboard/removeProgram/{{programId}}">
+                    <i class="large red trash icon"></i></a>
+            </td>
+        </div>
+        </tbody>
+</table>
+{{/each}}

@@ -43,7 +43,6 @@ const accounts = {
     member.assessments = [];
     member.bookings = [];
     member.goals = [];
-    member.programs = [];
     memberStore.addMember(member);
     logger.info(`registering ${member.email}`);
     response.redirect('/');
