@@ -88,6 +88,18 @@ const memberStore = {
     this.store.save();
   },
 
+  addProgram(memberId, program) {
+    const member = this.getMemberById(memberId);
+    member.programs.push(program);
+    this.store.save();
+  },
+
+  removeProgram(memberId, programId) {
+    const member = this.getMemberById(memberId);
+    _.remove(member.programs, { programId: programId });
+    this.store.save();
+  },
+
   save() {
     this.store.save(); //Method used by controllers which saves the JSON object after they have altered data
   },
