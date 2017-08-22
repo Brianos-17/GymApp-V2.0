@@ -266,6 +266,13 @@ const trainerDashboard = {
     logger.debug(`Assigning member ${memberId} new fitness program ${newProgram.programId}`);
     response.redirect('/trainerFitnessProgram');
   },
+
+  removeProgram(request, response) {
+    const programId = request.params.programId;
+    program.removeProgram(programId);
+    logger.info(`Removing fitness program: ${programId}`);
+    response.redirect('/trainerFitnessProgram');
+  },
 };
 
 module.exports = trainerDashboard;

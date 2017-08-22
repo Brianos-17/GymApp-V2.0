@@ -1,5 +1,4 @@
-{{#each programList}}
-    <table class="ui fixed center aligned table">
+<table class="ui fixed center aligned table">
     <thead>
     <tr>
         <th> Member </th>
@@ -11,6 +10,7 @@
         <th> Edit </th>
     </tr>
     </thead>
+    {{#each programList}}
         <tbody>
         <div class="ui bulleted list">
             <td>{{memberFirstName}} {{memberLastName}}</td>
@@ -27,5 +27,5 @@
             </td>
         </div>
         </tbody>
+    {{/each}}
 </table>
-{{/each}}

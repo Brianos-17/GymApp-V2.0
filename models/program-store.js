@@ -21,8 +21,8 @@ const programStore = {
   },
 
   removeProgram(programId) {
-    const removedClass = this.getClassById(programId);
-    this.store.remove(this.collection, removedClass);
+    const removedProgram = this.getProgramById(programId);
+    this.store.remove(this.collection, removedProgram);
     this.store.save();
   },
 };
