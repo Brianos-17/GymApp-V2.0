@@ -23,7 +23,8 @@ router.get('/memberBookings', dashboard.booking);
 router.get('/trainerBookings', trainerDashboard.booking);
 router.get('/goals', dashboard.showGoals);
 router.get('/trainerGoals', trainerDashboard.goals);
-router.get('/trainerFitnessProgram', trainerDashboard.fitnessProgram);
+router.get('/trainerFitnessPrograms', trainerDashboard.fitnessProgram);
+router.get('/memberFitnessPrograms', dashboard.fitnessProgram);
 
 router.get('/dashboard/removeAssessment/:assessmentId', dashboard.removeAssessment);
 router.get('/trainerDashboard/:id/removeAssessment/:assessmentId', trainerDashboard.removeAssessment);

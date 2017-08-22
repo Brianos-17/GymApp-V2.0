@@ -278,11 +278,13 @@ const trainerDashboard = {
     const programId = request.params.programId;
     const updatedProgram = program.getProgramById(programId);
     const memberList = member.getAllMembers();
+    const classList = classes.getAllClasses();
     const viewData = {
       updatedProgram: updatedProgram,
       memberList: memberList,
+      classList: classList,
     };
-    response.render();
+    response.render('updateFitnessProgram', viewData);
   },
 
   editProgram(request, response) {

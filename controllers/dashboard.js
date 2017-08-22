@@ -7,6 +7,7 @@ const logger = require('../utils/logger.js');
 const accounts = require('./accounts.js');
 const member = require('../models/members-store.js');
 const trainer = require('../models/trainer-store.js');
+const program = require('../models/program-store.js');
 const uuid = require('uuid');
 const analytics = require('../utils/analytics');
 const classes = require('../models/class-store.js');
@@ -303,6 +304,11 @@ const dashboard = {
     logger.info(`Removing Goal: ${goalId} from Member: ${currentMember.firstName}`);
     member.removeGoal(currentMember.memberId, goalId);
     response.redirect('/goals');
+  },
+
+  fitnessProgram(request, response) {
+    const currentMember = accounts.getCurrentMember(request);
+    const programList = program.
   },
 };
 
