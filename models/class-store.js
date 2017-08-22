@@ -37,7 +37,7 @@ const classStore = {
 
   save() {
     this.store.save();
-  }
+  },
 };
 
 module.exports = classStore;

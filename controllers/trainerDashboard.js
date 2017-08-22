@@ -9,6 +9,7 @@ const analytics = require('../utils/analytics.js');
 const member = require('../models/members-store.js');
 const trainer = require('../models/trainer-store.js');
 const classes = require('../models/class-store.js');
+const program = require('../models/program-store.js');
 const uuid = require('uuid');
 
 const trainerDashboard = {
@@ -246,16 +247,16 @@ const trainerDashboard = {
   },
 
   addNewProgram(request, response) {
-    const memberId = request.body.memberId;
     const newProgram = {
       programId: uuid(),
+      memberId: request.body.memberId,
       session1: request.body.session1,
       session2: request.body.session2,
       session3: request.body.session3,
       session4: request.body.session4,
       session5: request.body.session5,
     };
-    member.addProgram(memberId, newProgram);
+    program.addProgram(newProgram);
     logger.info(`Assigning member ${memberId} new fitness program ${newProgram.programId}`);
     response.redirect('/trainerFitnessProgram');
   },
