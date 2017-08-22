@@ -1,4 +1,8 @@
-<form class="ui stacked segment form" name="addNewProgram" action="/trainerDashboard/addNewProgram" method="POST">
+{{#if updatedProgram}}
+    <form class="ui stacked segment form" name="editProgram" action="/trainerDashboard/editProgram/{{updatedProgram.programId}}" method="POST">
+{{else}}
+    <form class="ui stacked segment form" name="addNewProgram" action="/trainerDashboard/addNewProgram" method="POST">
+{{/if}}
 
     <div class="three fields">
 

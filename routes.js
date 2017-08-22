@@ -58,5 +58,6 @@ router.post('/trainerDashboard/editBooking/:bookingId', trainerDashboard.editBoo
 router.post('/dashboard/addNewGoal', dashboard.addNewGoal);
 router.post('/trainerDashboard/addNewGoal', trainerDashboard.addNewGoal);
 router.post('/trainerDashboard/addNewProgram', trainerDashboard.addNewProgram);
+router.post('/trainerDashboard/editProgram/:programId', trainerDashboard.editProgram);
 
 module.exports = router;

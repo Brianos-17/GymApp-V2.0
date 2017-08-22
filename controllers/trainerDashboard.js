@@ -284,6 +284,23 @@ const trainerDashboard = {
     };
     response.render();
   },
+
+  editProgram(request, response) {
+    const programId = request.params.programId;
+    const editedProgram = program.getProgramById(programId);
+    const memberId = request.body.memberId;
+    const newMember = member.getMemberById(memberId);
+    editedProgram.memberId = memberId;
+    editedProgram.memberFirstName = newMember.firstName;
+    editedProgram.memberLastName = newMember.lastName;
+    editedProgram.session1 = request.body.session1;
+    editedProgram.session2 = request.body.session2;
+    editedProgram.session3 = request.body.session3;
+    editedProgram.session4 = request.body.session4;
+    editedProgram.session5 = request.body.session5;
+    program.save();
+    response.redirect('/trainerFitnessProgram');
+  },
 };
 
 module.exports = trainerDashboard;

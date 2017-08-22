@@ -25,6 +25,10 @@ const programStore = {
     this.store.remove(this.collection, removedProgram);
     this.store.save();
   },
+
+  save() {
+    this.store.save();
+  },
 };
 
 module.exports = programStore;
