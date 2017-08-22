@@ -238,19 +238,24 @@ const trainerDashboard = {
     const currentTrainer = accounts.getCurrentTrainer(request);
     const classList = classes.getAllClasses();
     const memberList = member.getAllMembers();
+    const programList = program.getAllPrograms();
     const viewData = {
       trainer: currentTrainer,
       classList: classList,
       memberList: memberList,
+      programList: programList,
     };
     response.render('fitnessProgram', viewData);
   },
 
   addNewProgram(request, response) {
     const memberId = request.body.memberId;
+    const currentMember = member.getMemberById(memberId);
     const newProgram = {
       programId: uuid(),
       memberId: memberId,
+      memberFirstName: currentMember.firstName,
+      memberLastName: currentMember.lastName,
       session1: request.body.session1,
       session2: request.body.session2,
       session3: request.body.session3,

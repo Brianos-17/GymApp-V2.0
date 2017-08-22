@@ -1,0 +1,21 @@
+{
+  "programs": [
+    {
+      "programId": "80bdc745-98ad-4a2f-a094-e600ef596fea",
+      "memberId": "3ad52697-6d98-4d80-8273-084de55a86c0",
+      "memberFirstName": "Homer",
+      "memberLastName": "Simpson",
+      "session1": "Leg Press",
+      "session2": [
+        "Free Weights",
+        "Yoga"
+      ],
+      "session3": "Rowing Machine",
+      "session4": [
+        "Treadmill",
+        "HIT"
+      ],
+      "session5": "Rowing Machine"
+    }
+  ]
+}
