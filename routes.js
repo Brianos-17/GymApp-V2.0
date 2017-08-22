@@ -42,6 +42,7 @@ router.get('/trainerDashboard/removeBooking/:bookingId', trainerDashboard.remove
 router.get('/trainerDashboard/updateBooking/:bookingId', trainerDashboard.updateBooking);
 router.get('/dashboard/removeGoal/:goalId', dashboard.removeGoal);
 router.get('/trainerDashboard/removeProgram/:programId', trainerDashboard.removeProgram);
+router.get('/trainerDashboard/updateProgram/:programId', trainerDashboard.updateProgram);
 
 router.post('/register', accounts.register);
 router.post('/authenticate', accounts.authenticate);

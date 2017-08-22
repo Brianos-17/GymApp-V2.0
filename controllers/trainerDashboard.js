@@ -273,6 +273,17 @@ const trainerDashboard = {
     logger.info(`Removing fitness program: ${programId}`);
     response.redirect('/trainerFitnessProgram');
   },
+
+  updateProgram(request, response) {
+    const programId = request.params.programId;
+    const updatedProgram = program.getProgramById(programId);
+    const memberList = member.getAllMembers();
+    const viewData = {
+      updatedProgram: updatedProgram,
+      memberList: memberList,
+    };
+    response.render();
+  },
 };
 
 module.exports = trainerDashboard;
