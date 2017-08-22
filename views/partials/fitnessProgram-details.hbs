@@ -7,7 +7,9 @@
         <th> Session 3 </th>
         <th> Session 4 </th>
         <th> Session 5 </th>
-        <th> Edit </th>
+        {{#if trainer}}
+            <th> Edit </th>
+        {{/if}}
     </tr>
     </thead>
     {{#each programList}}
@@ -19,12 +21,14 @@
             <td>{{session3}}</td>
             <td>{{session4}}</td>
             <td>{{session5}}</td>
-            <td>
-                <a href="/trainerDashboard/updateProgram/{{programId}}">
-                    <i class="large blue edit icon"></i></a>
-                <a href="/trainerDashboard/removeProgram/{{programId}}">
-                    <i class="large red trash icon"></i></a>
-            </td>
+            {{#if ../trainer}}
+                <td>
+                    <a href="/trainerDashboard/updateProgram/{{programId}}">
+                        <i class="large blue edit icon"></i></a>
+                    <a href="/trainerDashboard/removeProgram/{{programId}}">
+                        <i class="large red trash icon"></i></a>
+                </td>
+            {{/if}}
         </div>
         </tbody>
     {{/each}}
