@@ -255,7 +255,8 @@ const trainerDashboard = {
       session4: request.body.session4,
       session5: request.body.session5,
     };
-    logger.info(newProgram);
+    member.addProgram(memberId, newProgram);
+    logger.info(`Assigning member ${memberId} new fitness program ${newProgram.programId}`);
     response.redirect('/trainerFitnessProgram');
   },
 };
