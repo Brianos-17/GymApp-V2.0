@@ -236,11 +236,25 @@ const trainerDashboard = {
   fitnessProgram(request, response) {
     const currentTrainer = accounts.getCurrentTrainer(request);
     const classList = classes.getAllClasses();
+    const memberList = member.getAllMembers();
     const viewData = {
       trainer: currentTrainer,
       classList: classList,
+      memberList: memberList,
     };
     response.render('fitnessProgram', viewData);
+  },
+
+  addNewProgram(request, response) {
+    const newProgram = {
+      programId: uuid(),
+      // session1:,
+      // session2:,
+      // session3:,
+      // session4:,
+      // session5:,
+    };
+    response.redirect('/trainerFitnessProgram');
   },
 };
 
