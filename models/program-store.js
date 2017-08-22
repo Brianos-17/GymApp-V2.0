@@ -15,6 +15,10 @@ const programStore = {
     return this.store.findOneBy(this.collection, { programId: programId });
   },
 
+  getProgramByMemberId(memberId) {
+    return this.store.findAll(this.collection, { memberId: memberId });
+  },
+
   addProgram(newProgram) {
     this.store.add(this.collection, newProgram);
     this.store.save();
