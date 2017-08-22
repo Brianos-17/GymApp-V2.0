@@ -1,28 +1,99 @@
 <form class="ui stacked segment form" name="addNewProgram" action="/trainerDashboard/addNewProgram" method="POST">
+
     <div class="three fields">
+
         <div class="field">
             <label>Session 1</label>
-            <select class="ui dropdown" name="session1">
+            <select class="ui fluid dropdown" multiple="" name="session1">
+                <optgroup label="Standard Exercises">
+                    <option value="">Test</option>
+                    <option value="1">Free Weights</option>
+                    <option value="2">Rowing Machine</option>
+                    <option value="3">Treadmill</option>
+                    <option value="4">Leg Press</option>
+                    <option value="5">Bike</option>
+                </optgroup>
+                <optgroup label="Classes">
+                    {{#each classList}}
+                        <option value="{{classId}}">{{className}}</option>
+                    {{/each}}
+                </optgroup>
             </select>
         </div>
         <div class="field">
             <label>Session 2</label>
-            <select class="ui dropdown" name="session2"></select>
+            <select class="ui dropdown" name="session2">
+                <optgroup label="Standard Exercises">
+                    <option value="1">Free Weights</option>
+                    <option value="2">Rowing Machine</option>
+                    <option value="3">Treadmill</option>
+                    <option value="4">Leg Press</option>
+                    <option value="5">Bike</option>
+                </optgroup>
+                <optgroup label="Classes">
+                    {{#each classList}}
+                        <option value="{{classId}}">{{className}}</option>
+                    {{/each}}
+                </optgroup>
+            </select>
         </div>
         <div class="field">
             <label>Session 3</label>
-            <select class="ui dropdown" name="session3"></select>
+            <select class="ui dropdown" name="session3">
+                <optgroup label="Standard Exercises">
+                    <option value="1">Free Weights</option>
+                    <option value="2">Rowing Machine</option>
+                    <option value="3">Treadmill</option>
+                    <option value="4">Leg Press</option>
+                    <option value="5">Bike</option>
+                </optgroup>
+                <optgroup label="Classes">
+                    {{#each classList}}
+                        <option value="{{classId}}">{{className}}</option>
+                    {{/each}}
+                </optgroup>
+            </select>
         </div>
     </div>
     <div class="three fields">
         <div class="field">
             <label>Session 4</label>
-            <select class="ui dropdown" name="session4"></select>
+            <select class="ui dropdown" name="session4">
+                <optgroup label="Standard Exercises">
+                    <option value="1">Free Weights</option>
+                    <option value="2">Rowing Machine</option>
+                    <option value="3">Treadmill</option>
+                    <option value="4">Leg Press</option>
+                    <option value="5">Bike</option>
+                </optgroup>
+                <optgroup label="Classes">
+                    {{#each classList}}
+                        <option value="{{classId}}">{{className}}</option>
+                    {{/each}}
+                </optgroup>
+            </select>
         </div>
         <div class="field">
             <label>Session 5</label>
-            <select class="ui dropdown" name="session5"></select>
+            <select class="ui dropdown" name="session5">
+                <optgroup label="Standard Exercises">
+                    <option value="1">Free Weights</option>
+                    <option value="2">Rowing Machine</option>
+                    <option value="3">Treadmill</option>
+                    <option value="4">Leg Press</option>
+                    <option value="5">Bike</option>
+                </optgroup>
+                <optgroup label="Classes">
+                    {{#each classList}}
+                        <option value="{{classId}}">{{className}}</option>
+                    {{/each}}
+                </optgroup>
+            </select>
         </div>
     </div>
     <button class="ui blue submit button">Create</button>
 </form>
+
+<script>$(".ui.fluid.dropdown").dropdown({
+})
+</script>

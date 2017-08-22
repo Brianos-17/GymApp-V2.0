@@ -235,8 +235,10 @@ const trainerDashboard = {
 
   fitnessProgram(request, response) {
     const currentTrainer = accounts.getCurrentTrainer(request);
+    const classList = classes.getAllClasses();
     const viewData = {
       trainer: currentTrainer,
+      classList: classList,
     };
     response.render('fitnessProgram', viewData);
   },
