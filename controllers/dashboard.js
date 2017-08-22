@@ -308,7 +308,12 @@ const dashboard = {
 
   fitnessProgram(request, response) {
     const currentMember = accounts.getCurrentMember(request);
-    const programList = program.
+    const programList = program.getProgramByMemberId(currentMember.memberId);
+    logger.info(programList);
+    const viewData = {
+      programList: programList,
+    };
+    response.render('fitnessProgram', viewData);
   },
 };
 

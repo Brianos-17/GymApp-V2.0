@@ -264,14 +264,14 @@ const trainerDashboard = {
     };
     program.addProgram(newProgram);
     logger.debug(`Assigning member ${memberId} new fitness program ${newProgram.programId}`);
-    response.redirect('/trainerFitnessProgram');
+    response.redirect('/trainerFitnessPrograms');
   },
 
   removeProgram(request, response) {
     const programId = request.params.programId;
     program.removeProgram(programId);
     logger.info(`Removing fitness program: ${programId}`);
-    response.redirect('/trainerFitnessProgram');
+    response.redirect('/trainerFitnessPrograms');
   },
 
   updateProgram(request, response) {
@@ -301,7 +301,7 @@ const trainerDashboard = {
     editedProgram.session4 = request.body.session4;
     editedProgram.session5 = request.body.session5;
     program.save();
-    response.redirect('/trainerFitnessProgram');
+    response.redirect('/trainerFitnessPrograms');
   },
 };
 

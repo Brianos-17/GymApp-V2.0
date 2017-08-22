@@ -16,7 +16,7 @@ const programStore = {
   },
 
   getProgramByMemberId(memberId) {
-    return this.store.findAll(this.collection, { memberId: memberId });
+    return this.store.findBy(this.collection, { memberId: memberId });
   },
 
   addProgram(newProgram) {
