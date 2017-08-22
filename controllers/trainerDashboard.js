@@ -246,14 +246,16 @@ const trainerDashboard = {
   },
 
   addNewProgram(request, response) {
+    const memberId = request.body.memberId;
     const newProgram = {
       programId: uuid(),
-      // session1:,
-      // session2:,
-      // session3:,
-      // session4:,
-      // session5:,
+      session1: request.body.session1,
+      session2: request.body.session2,
+      session3: request.body.session3,
+      session4: request.body.session4,
+      session5: request.body.session5,
     };
+    logger.info(newProgram);
     response.redirect('/trainerFitnessProgram');
   },
 };

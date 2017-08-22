@@ -66,7 +66,8 @@
           "description": "This is also a test",
           "status": "open"
         }
-      ]
+      ],
+      "programs": []
     },
     {
       "firstName": "Marge",
@@ -79,7 +80,8 @@
       "memberId": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
       "assessments": [],
       "bookings": [],
-      "goals": []
+      "goals": [],
+      "programs": []
     },
     {
       "firstName": "Bart",
@@ -118,7 +120,8 @@
           "bookingTime": "7:00 PM"
         }
       ],
-      "goals": []
+      "goals": [],
+      "programs": []
     }
   ]
 }
