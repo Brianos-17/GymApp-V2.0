@@ -71,7 +71,7 @@ const memberStore = {
   },
 
   getAllBookings(memberId) {
-    const member = this.getTrainerById(memberId);
+    const member = this.getMemberById(memberId);
     return member.bookings;
   },
 

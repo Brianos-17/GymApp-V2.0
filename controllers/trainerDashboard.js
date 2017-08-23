@@ -161,6 +161,7 @@ const trainerDashboard = {
     const newBooking = {
       bookingId: uuid(),
       memberId: memberId,
+      trainerId: trainerId,
       trainerFirstName: loggedInTrainer.firstName,
       trainerLastName: loggedInTrainer.lastName,
       memberFirstName: currentMember.firstName,
@@ -185,7 +186,7 @@ const trainerDashboard = {
       logger.info(`Unfortunately ${currentMember.firstName} is already booked at this time`);
     }
 
-    response.redirect('/memberBookings');
+    response.redirect('/trainerBookings');
   },
 
   removeBooking(request, response) {

@@ -260,6 +260,7 @@ const dashboard = {
     const newBooking = {
       bookingId: uuid(),
       trainerId: trainerId,
+      memberId: memberId,
       memberFirstName: loggedInMember.firstName,
       memberLastName: loggedInMember.lastName,
       trainerFirstName: currentTrainer.firstName,

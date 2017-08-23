@@ -9,34 +9,15 @@
       "trainerId": "4ad52597-6d98-4d80-8673-084be55a87a0",
       "bookings": [
         {
-          "bookingId": "d383b0d1-7da3-4ba4-b7d8-b4a4733abd56",
-          "memberId": "a25aaa9f-617e-4ebc-bca0-2a757ae48e37",
-          "trainerFirstName": "Tony",
-          "trainerLastName": "Stark",
-          "memberFirstName": "Bart",
-          "memberLastName": "Simpson",
-          "bookingDate": "August 24, 2017",
-          "bookingTime": "7:00 PM"
-        },
-        {
-          "bookingId": "7ebbe2de-b9e5-427d-b8a9-f3d2241aab7d",
+          "bookingId": "786f6a39-6d5b-42d2-994c-61e86a9d4ec6",
+          "memberId": "3ad52697-6d98-4d80-8273-084de55a86c0",
           "trainerId": "4ad52597-6d98-4d80-8673-084be55a87a0",
-          "memberFirstName": "Lisa",
-          "memberLastName": "Simpson",
           "trainerFirstName": "Tony",
           "trainerLastName": "Stark",
-          "bookingDate": "August 31, 2017",
-          "bookingTime": "12:00 PM"
-        },
-        {
-          "bookingId": "380d3c8b-f644-428a-a5b6-a4c0d7627279",
-          "trainerId": "4ad52597-6d98-4d80-8673-084be55a87a0",
-          "memberFirstName": "Lisa",
+          "memberFirstName": "Homer",
           "memberLastName": "Simpson",
-          "trainerFirstName": "Tony",
-          "trainerLastName": "Stark",
-          "bookingDate": "August 21, 2017",
-          "bookingTime": "12:00 AM"
+          "bookingDate": "August 16, 2017",
+          "bookingTime": "2:00 PM"
         }
       ]
     },
@@ -56,18 +37,7 @@
       "password": "secret",
       "gender": "female",
       "trainerId": "1bd5638f-4e3a-4d90-5f78-1355a25a4d2e",
-      "bookings": [
-        {
-          "bookingId": "319f9b4e-5029-48b6-adaa-7e6e01bf46d6",
-          "trainerId": "1bd5638f-4e3a-4d90-5f78-1355a25a4d2e",
-          "memberFirstName": "Lisa",
-          "memberLastName": "Simpson",
-          "trainerFirstName": "Natasha",
-          "trainerLastName": "Romanova",
-          "bookingDate": "August 31, 2017",
-          "bookingTime": "5:00 PM"
-        }
-      ]
+      "bookings": []
     }
   ]
 }

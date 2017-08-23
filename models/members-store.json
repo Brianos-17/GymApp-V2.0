@@ -91,14 +91,15 @@
       ],
       "bookings": [
         {
-          "bookingId": "29c43870-bcef-471d-bc61-3d7611b0db7f",
-          "trainerId": "1bd5638f-4e3a-4d90-5f78-1355a25a4d2e",
+          "bookingId": "786f6a39-6d5b-42d2-994c-61e86a9d4ec6",
+          "memberId": "3ad52697-6d98-4d80-8273-084de55a86c0",
+          "trainerId": "4ad52597-6d98-4d80-8673-084be55a87a0",
+          "trainerFirstName": "Tony",
+          "trainerLastName": "Stark",
           "memberFirstName": "Homer",
           "memberLastName": "Simpson",
-          "trainerFirstName": "Natasha",
-          "trainerLastName": "Romanova",
-          "bookingDate": "August 29, 2017",
-          "bookingTime": "2:30 PM"
+          "bookingDate": "August 16, 2017",
+          "bookingTime": "2:00 PM"
         }
       ],
       "goals": [
@@ -172,38 +173,7 @@
       "startingWeight": "65",
       "memberId": "02a827cf-dc9b-4778-81ad-38b4f0b97339",
       "assessments": [],
-      "bookings": [
-        {
-          "bookingId": "7ebbe2de-b9e5-427d-b8a9-f3d2241aab7d",
-          "trainerId": "4ad52597-6d98-4d80-8673-084be55a87a0",
-          "memberFirstName": "Lisa",
-          "memberLastName": "Simpson",
-          "trainerFirstName": "Tony",
-          "trainerLastName": "Stark",
-          "bookingDate": "August 31, 2017",
-          "bookingTime": "12:00 PM"
-        },
-        {
-          "bookingId": "380d3c8b-f644-428a-a5b6-a4c0d7627279",
-          "trainerId": "4ad52597-6d98-4d80-8673-084be55a87a0",
-          "memberFirstName": "Lisa",
-          "memberLastName": "Simpson",
-          "trainerFirstName": "Tony",
-          "trainerLastName": "Stark",
-          "bookingDate": "August 21, 2017",
-          "bookingTime": "12:00 AM"
-        },
-        {
-          "bookingId": "319f9b4e-5029-48b6-adaa-7e6e01bf46d6",
-          "trainerId": "1bd5638f-4e3a-4d90-5f78-1355a25a4d2e",
-          "memberFirstName": "Lisa",
-          "memberLastName": "Simpson",
-          "trainerFirstName": "Natasha",
-          "trainerLastName": "Romanova",
-          "bookingDate": "August 31, 2017",
-          "bookingTime": "5:00 PM"
-        }
-      ],
+      "bookings": [],
       "goals": []
     }
   ]
