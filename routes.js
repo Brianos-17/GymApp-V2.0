@@ -39,7 +39,7 @@ router.get('/dashboard/:classId/enrollAll', dashboard.enrollAll);
 router.get('/dashboard/unEnroll/:classId', dashboard.classUnenrollment);
 router.get('/dashboard/:classId/unenroll/:sessionId', dashboard.unenrollInSession);
 router.get('/dashboard/:classId/unenrollAll', dashboard.unenrollAll);
-router.get('/dashboard/removeBooking/:bookingId', dashboard.removeBooking);
+router.get('/dashboard/:trainerId/removeBooking/:bookingId', dashboard.removeBooking);
 router.get('/dashboard/updateBooking/:bookingId', dashboard.updateBooking);
 router.get('/trainerDashboard/removeBooking/:bookingId', trainerDashboard.removeBooking);
 router.get('/trainerDashboard/updateBooking/:bookingId', trainerDashboard.updateBooking);
