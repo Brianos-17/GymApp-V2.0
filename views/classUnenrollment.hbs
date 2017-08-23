@@ -10,7 +10,7 @@
                     Date: {{date}} &nbsp; Time: {{../chosenClass.classTime}} &nbsp; Capacity: {{currentCapacity}}/{{maxCapacity}}
                 </td>
                 <td class="one wide right aligned">
-                    <a href="/dashboard/{{../chosenClass.classId}}/enroll/{{sessionId}}">
+                    <a href="/dashboard/{{../chosenClass.classId}}/unenroll/{{sessionId}}">
                         <button class="ui red submit button">Unenroll</button></a>
                 </td>
             </tr>
@@ -18,7 +18,7 @@
         <tr>
             <td></td>
             <td class="one wide right aligned">
-                <a href="/dashboard/{{chosenClass.classId}}/enrollAll">
+                <a href="/dashboard/{{chosenClass.classId}}/unenrollAll">
                     <button class="ui red submit button">Unenroll All</button></a>
             </td>
         </tr>

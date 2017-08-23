@@ -154,7 +154,7 @@ const dashboard = {
     response.render('classUnenrollment', viewData);
   },
 
-  enrollInClass(request, response) {
+  enrollInSession(request, response) {
     const sessionId = request.params.sessionId;
     const classId = request.params.classId;
     const currentSession = classes.getSessionById(classId, sessionId);
@@ -202,6 +202,23 @@ const dashboard = {
       }
     }
 
+    response.redirect('/memberClasses');
+  },
+
+  unenrollInSession(request, response) {
+    const classId = request.params.classId;
+    const sessionId = request.params.sessionId;
+    const currentSession = classes.getSessionById(classId, sessionId);
+    const currentMember = accounts.getCurrentMember(request);
+    for (let i = 0; i < currentSession.members.length; i++) {
+      if (currentSession.members[i] === currentMember.memberId) {
+        currentSession.members.splice(currentSession.members[i], 1);
+        currentSession.currentCapacity -= 1;
+      }
+    }
+
+    logger.debug(`Unenrolling ${currentMember.firstName}`);
+    classes.save();
     response.redirect('/memberClasses');
   },
 
