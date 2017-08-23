@@ -315,8 +315,8 @@ const dashboard = {
   editBooking(request, response) {
     const currentMember = accounts.getCurrentMember(request);
     const bookingId = request.params.bookingId;
-    const editedBooking = member.getBookingById(currentMember.memberId, bookingId);
     const trainerId = request.body.trainerId;
+    const editedBooking = member.getBookingById(currentMember.memberId, bookingId);
     const newTrainer = trainer.getTrainerById(trainerId);
     editedBooking.trainerId = trainerId;
     editedBooking.trainerFirstName = newTrainer.firstName;

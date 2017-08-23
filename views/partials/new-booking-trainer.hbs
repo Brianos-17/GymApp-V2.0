@@ -1,18 +1,21 @@
 {{#if updatedBooking}}
     <form class="ui stacked segment form" name="editBooking" action="/trainerDashboard/editBooking/{{updatedBooking.bookingId}}" method="POST">
-{{/if}}
-{{#unless updatedBooking}}
+{{else}}
     <form class="ui stacked segment form" name="addNewBooking" action="/trainerDashboard/addNewBooking" method="POST">
-{{/unless}}
+{{/if}}
 
     <div class="three fields">
         <div class="field">
             <label> Member </label>
+            {{#if updatedBooking}}
+                <input placeholder="{{updatedBooking.memberFirstName}} {{updatedBooking.memberLastName}}" readonly="">
+            {{else}}
             <select class="ui fluid dropdown" name="memberId">
                 {{#each memberList}}
                     <option value="{{memberId}}">{{firstName}} {{lastName}}</option>
                 {{/each}}
             </select>
+            {{/if}}
         </div>
         <div class="field">
             <label> Date </label>

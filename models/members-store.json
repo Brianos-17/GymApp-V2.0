@@ -131,7 +131,19 @@
       "startingWeight": "65",
       "memberId": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
       "assessments": [],
-      "bookings": [],
+      "bookings": [
+        {
+          "bookingId": "8d495e7d-e2a6-43c1-98c0-f59e9cfe9a3f",
+          "memberId": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
+          "trainerId": "1bd5638f-4e3a-4d90-5f78-1355a25a4d2e",
+          "trainerFirstName": "Natasha",
+          "trainerLastName": "Romanova",
+          "memberFirstName": "Marge",
+          "memberLastName": "Simpson",
+          "bookingDate": "August 30, 2017",
+          "bookingTime": "6:00 PM"
+        }
+      ],
       "goals": []
     },
     {
