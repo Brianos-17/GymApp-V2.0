@@ -3,7 +3,7 @@
     <div class="three fields">
         <div class="field">
             <label> Member </label>
-            <select type="ui dropdown" name="memberId">
+            <select class="ui fluid dropdown" name="memberId">
             {{#each memberList}}
                 <option value="{{memberId}}">{{firstName}} {{lastName}}</option>
             {{/each}}
@@ -11,7 +11,7 @@
         </div>
         <div class="field">
             <label> Target Area </label>
-            <select type="ui dropdown" name="targetArea">
+            <select class="ui fluid dropdown" name="targetArea">
                 <option vlaue="weight"> Weight </option>
                 <option value="chest"> Chest </option>
                 <option vlaue="thigh"> Thigh </option>
@@ -44,6 +44,10 @@
     <button class="ui blue submit button"> Set Goal </button>
 
 </form>
+
+<script>$(".ui.fluid.dropdown").dropdown({
+})
+</script>
 
 <script>
     $(function(){

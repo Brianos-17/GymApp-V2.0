@@ -119,6 +119,20 @@
         }
       ],
       "goals": []
+    },
+    {
+      "firstName": "Lisa",
+      "lastName": "Simpson",
+      "email": "lisa@simpson.com",
+      "password": "secret",
+      "passwordValid": "secret",
+      "gender": "female",
+      "height": "1.2",
+      "startingWeight": "65",
+      "memberId": "02a827cf-dc9b-4778-81ad-38b4f0b97339",
+      "assessments": [],
+      "bookings": [],
+      "goals": []
     }
   ]
 }

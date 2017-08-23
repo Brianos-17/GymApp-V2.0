@@ -8,7 +8,7 @@
     <div class="three fields">
         <div class="field">
             <label> Member </label>
-            <select class="ui dropdown" name="memberId">
+            <select class="ui fluid dropdown" name="memberId">
                 {{#each memberList}}
                     <option value="{{memberId}}">{{firstName}} {{lastName}}</option>
                 {{/each}}
@@ -43,6 +43,10 @@
 {{/unless}}
 
 </form>
+
+    <script>$(".ui.fluid.dropdown").dropdown({
+    })
+    </script>
 
     <script>
         $(function(){
