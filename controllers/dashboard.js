@@ -14,23 +14,32 @@ const classes = require('../models/class-store.js');
 
 const dashboard = {
   index(request, response) {
-    logger.info('rendering dashboard');
     const loggedInMember = accounts.getCurrentMember(request);
     const bmi = analytics.calculateBMI(loggedInMember);
     const idealBodyWeight = analytics.idealBodyWeight(loggedInMember);
+    const goalList = loggedInMember.goals;
+    let goalPrompt = true;//Boolean check to see if the member has any open goals
+    for (let i = 0; i < goalList.length; i++) {
+      if ((goalList[i].status === 'open') || (goalList[i].status === 'awaiting processing')) {
+        goalPrompt = false;
+      }
+    }
+
     const viewData = {
       title: 'Member Dashboard',
       member: loggedInMember,
       bmi: bmi,
       bmiCategory: analytics.BMICategory(bmi),
       idealBodyWeight: idealBodyWeight,
+      goalPrompt: goalPrompt,
     };
     logger.info(`rendering assessments for ${loggedInMember.firstName}`);
-    const list = loggedInMember.assessments; //toggles boolean to disallow members view update comment section
+    const list = loggedInMember.assessments; //toggles boolean to disallow members view the update comment section
     for (let i = 0; i < list.length; i++) {
       list[i].updateComment = false;
     }
 
+    logger.info('rendering dashboard');
     response.render('dashboard', viewData);
   },
 

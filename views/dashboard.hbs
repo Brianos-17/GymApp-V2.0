@@ -1,6 +1,13 @@
 {{> member-menu id = "dashboard"}}
 
 <section class="ui raised segment">
+    {{#if goalPrompt}}
+    <div class="ui center aligned middle aligned grid">
+        <br>
+        <h4 class="ui dividing red header">{{member.firstName}} you currently have no open goals!
+            We recommend you set yourself a target!</h4>
+    </div>
+    {{/if}}
     {{> member-details}}
     {{> new-assessment}}
     {{> assessment-details}}
