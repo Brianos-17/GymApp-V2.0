@@ -69,7 +69,7 @@ const analytics = {
   },
 
   trend(member) {
-    let trend = 'green';
+    let trend = '';
     const idealBMI = 22;
     const list = member.assessments;
     if (list.length === 1) {

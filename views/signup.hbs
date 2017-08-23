@@ -67,3 +67,14 @@
 <script>$(".ui.fluid.dropdown").dropdown({
 })
 </script>
+
+<script>
+    function validatePassword() {
+        var passwordValid = document.forms["signup"]["passwordValid"].value;
+        var password = document.forms["signup"]["password"].value;
+        if(passwordValid !== password) {
+            alert("Your password validation must match your password");
+            return false;
+        }
+    }
+</script>
