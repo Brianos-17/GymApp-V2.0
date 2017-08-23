@@ -8,6 +8,13 @@
             We recommend you set yourself a target!</h4>
     </div>
     {{/if}}
+    {{#if assessmentPrompt}}
+        <div class="ui center aligned middle aligned grid">
+            <br>
+            <h4 class="ui dividing red header">{{member.firstName}} you have goals which are awaiting processing!
+                We recommend you book an assessment with a Trainer of your choice!</h4>
+        </div>
+    {{/if}}
     {{> member-details}}
     {{> new-assessment}}
     {{> assessment-details}}

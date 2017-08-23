@@ -30,50 +30,52 @@ const dashboard = {
         if (daysTillGoalIsDue < 0) {//Checks if the goal is due or overdue
           const area = goalList[i].targetArea;
           const target = parseInt(goalList[i].targetGoal);
-          const latestAssessment = loggedInMember.assessments[0];
-          const assessmentCheck = (new Date(latestAssessment.assessmentDate) - new Date);//Checks how long ago the last assessment was
-          const daysSinceLastAssessment = ((((assessmentCheck / 1000) / 60) / 60) / 24);//Calculates this time in days
-          if ((daysSinceLastAssessment < 0) && (daysSinceLastAssessment > -3)) {//Will perform check if assessment was done recently
-            if (area === 'weight') {
-              if ((target < (latestAssessment.weight + 2)) || (target > (latestAssessment.weight - 2))) {
-                goalList[i].status = 'Achieved';
-              } else {
-                goalList[i].status = 'Missed';
+          if (loggedInMember.assessments.length > 0) {
+            const latestAssessment = loggedInMember.assessments[0];
+            const assessmentCheck = (new Date(latestAssessment.assessmentDate) - new Date);//Checks how long ago the last assessment was
+            const daysSinceLastAssessment = ((((assessmentCheck / 1000) / 60) / 60) / 24);//Calculates this time in days
+            if ((daysSinceLastAssessment < 0) && (daysSinceLastAssessment > -3)) {//Will perform check if assessment was done recently
+              if (area === 'weight') {
+                if ((target < (latestAssessment.weight + 2)) || (target > (latestAssessment.weight - 2))) {
+                  goalList[i].status = 'Achieved';
+                } else {
+                  goalList[i].status = 'Missed';
+                }
+              } else if (area === 'chest') {
+                if ((target < (latestAssessment.chest + 1)) || (target > (latestAssessment.chest - 1))) {
+                  goalList[i].status = 'Achieved';
+                } else {
+                  goalList[i].status = 'Missed';
+                }
+              } else if (area === 'thigh') {
+                if ((target < (latestAssessment.thigh + 1)) || (target > (latestAssessment.thigh - 1))) {
+                  goalList[i].status = 'Achieved';
+                } else {
+                  goalList[i].status = 'Missed';
+                }
+              } else if (area === 'upperArm') {
+                if ((target < (latestAssessment.upperArm + 1)) || (target > (latestAssessment.upperArm - 1))) {
+                  goalList[i].status = 'Achieved';
+                } else {
+                  goalList[i].status = 'Missed';
+                }
+              } else if (area === 'waist') {
+                if ((target < (latestAssessment.waist + 1)) || (target > (latestAssessment.waist - 1))) {
+                  goalList[i].status = 'Achieved';
+                } else {
+                  goalList[i].status = 'Missed';
+                }
+              } else if (area === 'hips') {
+                if ((target < (latestAssessment.hips + 1)) || (target > (latestAssessment.hips - 1))) {
+                  goalList[i].status = 'Achieved';
+                } else {
+                  goalList[i].status = 'Missed';
+                }
               }
-            } else if (area === 'chest') {
-              if ((target < (latestAssessment.chest + 1)) || (target > (latestAssessment.chest - 1))) {
-                goalList[i].status = 'Achieved';
-              } else {
-                goalList[i].status = 'Missed';
-              }
-            } else if (area === 'thigh') {
-              if ((target < (latestAssessment.thigh + 1)) || (target > (latestAssessment.thigh - 1))) {
-                goalList[i].status = 'Achieved';
-              } else {
-                goalList[i].status = 'Missed';
-              }
-            } else if (area === 'upperArm') {
-              if ((target < (latestAssessment.upperArm + 1)) || (target > (latestAssessment.upperArm - 1))) {
-                goalList[i].status = 'Achieved';
-              } else {
-                goalList[i].status = 'Missed';
-              }
-            } else if (area === 'waist') {
-              if ((target < (latestAssessment.waist + 1)) || (target > (latestAssessment.waist - 1))) {
-                goalList[i].status = 'Achieved';
-              } else {
-                goalList[i].status = 'Missed';
-              }
-            } else if (area === 'hips') {
-              if ((target < (latestAssessment.hips + 1)) || (target > (latestAssessment.hips - 1))) {
-                goalList[i].status = 'Achieved';
-              } else {
-                goalList[i].status = 'Missed';
-              }
+            } else if (daysSinceLastAssessment < -3) {
+              goalList[i].status = 'Awaiting processing';
+              assessmentPrompt = true;
             }
-          } else if (daysSinceLastAssessment < -3) {
-            goalList[i].status = 'Awaiting processing';
-            assessmentPrompt = true;
           }
         }
       }
@@ -86,11 +88,16 @@ const dashboard = {
       bmiCategory: analytics.BMICategory(bmi),
       idealBodyWeight: idealBodyWeight,
       goalPrompt: goalPrompt,
+      assessmentPrompt: assessmentPrompt,
     };
     logger.info(`rendering assessments for ${loggedInMember.firstName}`);
     const list = loggedInMember.assessments; //toggles boolean to disallow members view the update comment section
     for (let i = 0; i < list.length; i++) {
       list[i].updateComment = false;
+    }
+
+    if (loggedInMember.assessments.length > 0) {
+      analytics.trend(loggedInMember);//Performs the trend check only if member has previous assessments
     }
 
     logger.info('rendering dashboard');
@@ -116,7 +123,6 @@ const dashboard = {
     };
     logger.debug(`Adding new assessment for ${loggedInMember.firstName}`);
     member.addAssessment(memberId, newAssessment);
-    analytics.trend(loggedInMember);
     response.redirect('/dashboard');
   },
 
