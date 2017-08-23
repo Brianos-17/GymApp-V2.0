@@ -1,8 +1,7 @@
-{{#unless trainer}}
-    {{> member-menu id="classes"}}
-{{/unless}}
 {{#if trainer}}
     {{> trainer-menu id="classes"}}
+{{else}}
+    {{> member-menu id="classes"}}
 {{/if}}
 <!--Toggles navigation bars depending on who views the page-->
 
@@ -10,12 +9,10 @@
     {{#if trainer}}
         <h4> Add New Class </h4>
         {{> new-class}}
-    {{/if}}
-
-    {{#unless trainer}}
+    {{else}}
         <h4>{{member.firstName}}'s Current Classes</h4>
         {{> member-classes}}
-    {{/unless}}
+    {{/if}}
 
     <h4>List of Available Classes</h4>
     {{> classList}}

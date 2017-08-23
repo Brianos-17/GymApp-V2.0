@@ -7,29 +7,100 @@ const logger = require('../utils/logger.js');
 const accounts = require('./accounts.js');
 const member = require('../models/members-store.js');
 const trainer = require('../models/trainer-store.js');
+const program = require('../models/program-store.js');
 const uuid = require('uuid');
 const analytics = require('../utils/analytics');
 const classes = require('../models/class-store.js');
 
 const dashboard = {
   index(request, response) {
-    logger.info('rendering dashboard');
     const loggedInMember = accounts.getCurrentMember(request);
     const bmi = analytics.calculateBMI(loggedInMember);
     const idealBodyWeight = analytics.idealBodyWeight(loggedInMember);
+    const goalList = loggedInMember.goals;
+    let goalPrompt = true;//Boolean check to see if the member has any open goals and whether a prompt should be given
+    let assessmentPrompt = false;//Boolean to prompt member to have an assessment if a goal has been waiting for over 3 days
+    logger.debug('Checking status of goals');
+    for (let i = 0; i < goalList.length; i++) {
+      if ((goalList[i].status === 'Open') || (goalList[i].status === 'Awaiting processing')) {
+        goalPrompt = false;//Turns off prompt
+        const timeRemaining = (new Date(goalList[i].goalDate) - new Date);
+        //Divide milliseconds by 1000 to get seconds, then 60 for minutes, 60 for hours and 24 for days
+        const daysTillGoalIsDue = ((((timeRemaining / 1000) / 60) / 60) / 24);
+        if (daysTillGoalIsDue < 0) {//Checks if the goal is due or overdue
+          const area = goalList[i].targetArea;
+          const target = parseInt(goalList[i].targetGoal);
+          if (loggedInMember.assessments.length > 0) {
+            const latestAssessment = loggedInMember.assessments[0];
+            const assessmentCheck = (new Date(latestAssessment.assessmentDate) - new Date);//Checks how long ago the last assessment was
+            const daysSinceLastAssessment = ((((assessmentCheck / 1000) / 60) / 60) / 24);//Calculates this time in days
+            if ((daysSinceLastAssessment < 0) && (daysSinceLastAssessment > -3)) {//Will perform check if assessment was done recently
+              if (area === 'weight') {
+                if ((target < (latestAssessment.weight + 2)) || (target > (latestAssessment.weight - 2))) {
+                  goalList[i].status = 'Achieved';
+                } else {
+                  goalList[i].status = 'Missed';
+                }
+              } else if (area === 'chest') {
+                if ((target < (latestAssessment.chest + 1)) || (target > (latestAssessment.chest - 1))) {
+                  goalList[i].status = 'Achieved';
+                } else {
+                  goalList[i].status = 'Missed';
+                }
+              } else if (area === 'thigh') {
+                if ((target < (latestAssessment.thigh + 1)) || (target > (latestAssessment.thigh - 1))) {
+                  goalList[i].status = 'Achieved';
+                } else {
+                  goalList[i].status = 'Missed';
+                }
+              } else if (area === 'upperArm') {
+                if ((target < (latestAssessment.upperArm + 1)) || (target > (latestAssessment.upperArm - 1))) {
+                  goalList[i].status = 'Achieved';
+                } else {
+                  goalList[i].status = 'Missed';
+                }
+              } else if (area === 'waist') {
+                if ((target < (latestAssessment.waist + 1)) || (target > (latestAssessment.waist - 1))) {
+                  goalList[i].status = 'Achieved';
+                } else {
+                  goalList[i].status = 'Missed';
+                }
+              } else if (area === 'hips') {
+                if ((target < (latestAssessment.hips + 1)) || (target > (latestAssessment.hips - 1))) {
+                  goalList[i].status = 'Achieved';
+                } else {
+                  goalList[i].status = 'Missed';
+                }
+              }
+            } else if (daysSinceLastAssessment < -3) {
+              goalList[i].status = 'Awaiting processing';
+              assessmentPrompt = true;
+            }
+          }
+        }
+      }
+    }
+
     const viewData = {
       title: 'Member Dashboard',
       member: loggedInMember,
       bmi: bmi,
       bmiCategory: analytics.BMICategory(bmi),
       idealBodyWeight: idealBodyWeight,
+      goalPrompt: goalPrompt,
+      assessmentPrompt: assessmentPrompt,
     };
     logger.info(`rendering assessments for ${loggedInMember.firstName}`);
-    const list = loggedInMember.assessments; //toggles boolean to disallow members view update comment section
+    const list = loggedInMember.assessments; //toggles boolean to disallow members view the update comment section
     for (let i = 0; i < list.length; i++) {
       list[i].updateComment = false;
     }
 
+    if (loggedInMember.assessments.length > 0) {
+      analytics.trend(loggedInMember);//Performs the trend check only if member has previous assessments
+    }
+
+    logger.info('rendering dashboard');
     response.render('dashboard', viewData);
   },
 
@@ -38,7 +109,7 @@ const dashboard = {
     const memberId = loggedInMember.memberId;
     const newAssessment = {
       assessmentId: uuid(),
-      date: new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''), //Retrieved from https://stackoverflow.com/questions/10645994/node-js-how-to-format-a-date-string-in-utc
+      assessmentDate: new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''), //Retrieved from https://stackoverflow.com/questions/10645994/node-js-how-to-format-a-date-string-in-utc
       //Returns date in simple ISO format, replaces unnecessary characters with spaces to make format readable
       weight: request.body.weight,
       chest: request.body.chest,
@@ -50,9 +121,8 @@ const dashboard = {
       comment: '',
       updateComment: false,//boolean to toggle update comment section on and off for members and trainers
     };
-    logger.debug(`Adding new assessment for ${loggedInMember.firstName}`, newAssessment);
+    logger.debug(`Adding new assessment for ${loggedInMember.firstName}`);
     member.addAssessment(memberId, newAssessment);
-    analytics.trend(loggedInMember);
     response.redirect('/dashboard');
   },
 
@@ -134,24 +204,26 @@ const dashboard = {
     const classId = request.params.classId;
     const chosenClass = classes.getClassById(classId);
     const currentMember = accounts.getCurrentMember(request);
+    const unenrollSessions = [];
     for (let i = 0; i < chosenClass.sessions.length; i++) {
-      let notEnrolledInThisSession = true;
       for (let x = 0; x < chosenClass.sessions[i].members.length; x++) {
         if (chosenClass.sessions[i].members[x] === currentMember.memberId) {
-          notEnrolledInThisSession = false;
+          unenrollSessions.push(chosenClass.sessions[i]);
           break;
         }
       }
 
     }
+
     const viewData = {
       chosenClass: chosenClass,
       member: currentMember,
+      unenrollSessions: unenrollSessions,
     };
     response.render('classUnenrollment', viewData);
   },
 
-  enrollInClass(request, response) {
+  enrollInSession(request, response) {
     const sessionId = request.params.sessionId;
     const classId = request.params.classId;
     const currentSession = classes.getSessionById(classId, sessionId);
@@ -192,14 +264,47 @@ const dashboard = {
       if ((notAlreadyEnrolled) && (session.currentCapacity < session.maxCapacity)) {
         session.currentCapacity += 1;
         logger.debug(`Enrolling ${currentMember.firstName} in ${currentClass.className} on ${currentClass.sessions[i].date}`);
-        session.members.push(currentMember.memberId);
-        //Add member Id to session to keep track of enrollment and allow for boolean check
+        session.members.push(currentMember.memberId);//Add member Id to session to keep track of enrollment and allow for boolean check
         classes.save();
       } else {
         logger.info('Unable to enroll in current session');
       }
     }
 
+    response.redirect('/memberClasses');
+  },
+
+  unenrollInSession(request, response) {
+    const classId = request.params.classId;
+    const sessionId = request.params.sessionId;
+    const currentSession = classes.getSessionById(classId, sessionId);
+    const currentMember = accounts.getCurrentMember(request);
+    for (let i = 0; i < currentSession.members.length; i++) {
+      if (currentSession.members[i] === currentMember.memberId) {
+        currentSession.members.splice(currentSession.members[i], 1);
+        currentSession.currentCapacity -= 1;
+      }
+    }
+
+    logger.debug(`Unenrolling ${currentMember.firstName}`);
+    classes.save();
+    response.redirect('/memberClasses');
+  },
+
+  unenrollAll(request, response) {
+    const classId = request.params.classId;
+    const currentClass = classes.getClassById(classId);
+    const currentMember = accounts.getCurrentMember(request);
+    for (let i = 0; i < currentClass.sessions.length; i++) { //Checks each session of the current class
+      for (let x = 0; x < currentClass.sessions[i].members.length; x++) { //Checks each member of the current session
+        if (currentClass.sessions[i].members[x] === currentMember.memberId) {
+          currentClass.sessions[i].members.splice(currentClass.sessions[i].members[x], 1);
+          currentClass.sessions[i].currentCapacity -= 1;
+        }
+      }
+    }
+
+    classes.save();
     response.redirect('/memberClasses');
   },
 
@@ -212,6 +317,7 @@ const dashboard = {
       trainerList: trainerList,
       bookingList: bookingList,
     };
+    logger.debug('Rendering bookings');
     response.render('bookings', viewData);
   },
 
@@ -223,6 +329,7 @@ const dashboard = {
     const newBooking = {
       bookingId: uuid(),
       trainerId: trainerId,
+      memberId: memberId,
       memberFirstName: loggedInMember.firstName,
       memberLastName: loggedInMember.lastName,
       trainerFirstName: currentTrainer.firstName,
@@ -230,16 +337,33 @@ const dashboard = {
       bookingDate: request.body.bookingDate,
       bookingTime: request.body.bookingTime,
     };
-    member.addBooking(memberId, newBooking);
-    trainer.addBooking(trainerId, newBooking);
+    const trainerBookings = trainer.getAllBookings(trainerId);
+    let trainerFree = true; //Boolean check to see if trainer is free at this time
+    for (let i = 0; i < trainerBookings.length; i++) {
+      if ((newBooking.bookingDate === trainerBookings[i].bookingDate) &&
+          (newBooking.bookingTime === trainerBookings[i].bookingTime)) { //Checks to see if trainer is already booked at this date & time
+        trainerFree = false;
+        break;
+      }
+    }
+
+    if (trainerFree) {
+      member.addBooking(memberId, newBooking);
+      trainer.addBooking(trainerId, newBooking);
+    } else {
+      logger.info(`Unfortunately ${currentTrainer.firstName} is already booked at this time`);
+    }
+
     response.redirect('/memberBookings');
   },
 
   removeBooking(request, response) {
     const currentMember = accounts.getCurrentMember(request);
+    const trainerId = request.params.trainerId;
     const bookingId = request.params.bookingId;
-    logger.info(`Removing booking ${bookingId} from ${currentMember.firstName}`);
     member.removeBooking(currentMember.memberId, bookingId);
+    trainer.removeBooking(trainerId, bookingId); //Removes from both the trainer and member
+    logger.info(`Removing booking ${bookingId} from ${currentMember.firstName}`);
     response.redirect('/memberBookings');
   },
 
@@ -260,16 +384,16 @@ const dashboard = {
   editBooking(request, response) {
     const currentMember = accounts.getCurrentMember(request);
     const bookingId = request.params.bookingId;
-    const editedBooking = member.getBookingById(currentMember.memberId, bookingId);
-    const trainerId = request.body.trainerId;
-    const newTrainer = trainer.getTrainerById(trainerId);
-    editedBooking.trainerId = trainerId;
-    editedBooking.trainerFirstName = newTrainer.firstName;
-    editedBooking.trainerLastName = newTrainer.lastName;
-    editedBooking.bookingDate = request.body.bookingDate;
-    editedBooking.bookingTime = request.body.bookingTime;
+    const trainerId = request.params.trainerId;
+    const editedBooking1 = member.getBookingById(currentMember.memberId, bookingId);
+    editedBooking1.bookingDate = request.body.bookingDate;
+    editedBooking1.bookingTime = request.body.bookingTime;
+    const editedBooking2 = trainer.getBookingById(trainerId, bookingId);
+    editedBooking2.bookingDate = request.body.bookingDate;
+    editedBooking2.bookingTime = request.body.bookingTime;
     logger.info(`Editing booking ${bookingId} for ${currentMember.firstName}`);
     member.save();//Saves info after update
+    trainer.save();
     response.redirect('/memberBookings');
   },
 
@@ -291,7 +415,7 @@ const dashboard = {
       targetGoal: request.body.targetGoal,
       goalDate: request.body.goalDate,
       description: request.body.description,
-      status: 'open',
+      status: 'Open',
     };
     member.addGoal(currentMember.memberId, newGoal);
     response.redirect('/goals');
@@ -303,6 +427,16 @@ const dashboard = {
     logger.info(`Removing Goal: ${goalId} from Member: ${currentMember.firstName}`);
     member.removeGoal(currentMember.memberId, goalId);
     response.redirect('/goals');
+  },
+
+  fitnessProgram(request, response) {
+    const currentMember = accounts.getCurrentMember(request);
+    const programList = program.getProgramByMemberId(currentMember.memberId);
+    logger.info(programList);
+    const viewData = {
+      programList: programList,
+    };
+    response.render('fitnessProgram', viewData);
   },
 };
 

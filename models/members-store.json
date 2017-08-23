@@ -11,8 +11,21 @@
       "memberId": "3ad52697-6d98-4d80-8273-084de55a86c0",
       "assessments": [
         {
+          "assessmentId": "02f58839-e769-43cc-b121-2b5867e2d54c",
+          "assessmentDate": "2017-08-23 17:45:33",
+          "weight": "80",
+          "chest": "8",
+          "thigh": "12",
+          "upperArm": "12",
+          "waist": "12",
+          "hips": "12",
+          "trend": "green",
+          "comment": "",
+          "updateComment": false
+        },
+        {
           "assessmentId": "30321e24-0d5c-48f1-a50c-f073e32d30cf",
-          "date": "2017-07-10 17:15:35",
+          "assessmentDate": "2017-07-10 17:15:35",
           "weight": "345",
           "chest": "3456",
           "thigh": "2345",
@@ -25,7 +38,7 @@
         },
         {
           "assessmentId": "30441e24-0d5f-48f1-a70c-f073e32d30ce",
-          "date": "2017-04-17 13:22:34",
+          "assessmentDate": "2017-04-17 13:22:34",
           "weight": "123.3",
           "chest": "45.0",
           "thigh": "12.5",
@@ -37,7 +50,19 @@
           "updateComment": false
         }
       ],
-      "bookings": [],
+      "bookings": [
+        {
+          "bookingId": "786f6a39-6d5b-42d2-994c-61e86a9d4ec6",
+          "memberId": "3ad52697-6d98-4d80-8273-084de55a86c0",
+          "trainerId": "4ad52597-6d98-4d80-8673-084be55a87a0",
+          "trainerFirstName": "Tony",
+          "trainerLastName": "Stark",
+          "memberFirstName": "Homer",
+          "memberLastName": "Simpson",
+          "bookingDate": "August 16, 2017",
+          "bookingTime": "2:00 PM"
+        }
+      ],
       "goals": [
         {
           "goalId": "2277c47e-da20-4315-852c-03df1bcc99ba",
@@ -45,7 +70,7 @@
           "targetGoal": "95.00",
           "goalDate": "August 31, 2017",
           "description": "This is a test",
-          "status": "open"
+          "status": "Open"
         },
         {
           "goalId": "ab4b061b-892d-4a7f-b85f-98af1d01909c",
@@ -53,7 +78,7 @@
           "targetGoal": "32.05",
           "goalDate": "August 30, 2017",
           "description": "This is also a test",
-          "status": "open"
+          "status": "Open"
         }
       ]
     },
@@ -66,9 +91,52 @@
       "height": "1.6",
       "startingWeight": "65",
       "memberId": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
-      "assessments": [],
-      "bookings": [],
-      "goals": []
+      "assessments": [
+        {
+          "assessmentId": "0fa65b16-699b-473f-913e-5f84dae7191a",
+          "assessmentDate": "2017-08-23 17:29:43",
+          "weight": "50",
+          "chest": "0",
+          "thigh": "0",
+          "upperArm": "0",
+          "waist": "0",
+          "hips": "0",
+          "trend": "green",
+          "comment": "",
+          "updateComment": false
+        }
+      ],
+      "bookings": [
+        {
+          "bookingId": "8d495e7d-e2a6-43c1-98c0-f59e9cfe9a3f",
+          "memberId": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
+          "trainerId": "1bd5638f-4e3a-4d90-5f78-1355a25a4d2e",
+          "trainerFirstName": "Natasha",
+          "trainerLastName": "Romanova",
+          "memberFirstName": "Marge",
+          "memberLastName": "Simpson",
+          "bookingDate": "August 30, 2017",
+          "bookingTime": "6:00 PM"
+        }
+      ],
+      "goals": [
+        {
+          "goalId": "3b292ad9-e885-4263-b77d-6ca1779546cd",
+          "targetArea": "weight",
+          "targetGoal": "50",
+          "goalDate": "August 24, 2017",
+          "description": "",
+          "status": "Open"
+        },
+        {
+          "goalId": "5128efe2-5341-4d33-bb91-d8ebea27e933",
+          "targetArea": "weight",
+          "targetGoal": "50",
+          "goalDate": "August 1, 2017",
+          "description": "",
+          "status": "Achieved"
+        }
+      ]
     },
     {
       "firstName": "Bart",
@@ -80,33 +148,22 @@
       "height": "1.3",
       "startingWeight": "59",
       "memberId": "a25aaa9f-617e-4ebc-bca0-2a757ae48e37",
-      "assessments": [
-        {
-          "assessmentId": "18246a25-b9e8-4aba-ab3c-7921cb4c538b",
-          "date": "2017-07-22 12:48:16",
-          "weight": "1",
-          "chest": "1",
-          "thigh": "1",
-          "upperArm": "1",
-          "waist": "1",
-          "hips": "1",
-          "trend": "",
-          "comment": "",
-          "updateComment": false
-        }
-      ],
-      "bookings": [
-        {
-          "bookingId": "d383b0d1-7da3-4ba4-b7d8-b4a4733abd56",
-          "memberId": "a25aaa9f-617e-4ebc-bca0-2a757ae48e37",
-          "trainerFirstName": "Tony",
-          "trainerLastName": "Stark",
-          "memberFirstName": "Bart",
-          "memberLastName": "Simpson",
-          "bookingDate": "August 24, 2017",
-          "bookingTime": "7:00 PM"
-        }
-      ],
+      "assessments": [],
+      "bookings": [],
+      "goals": []
+    },
+    {
+      "firstName": "Lisa",
+      "lastName": "Simpson",
+      "email": "lisa@simpson.com",
+      "password": "secret",
+      "passwordValid": "secret",
+      "gender": "female",
+      "height": "1.2",
+      "startingWeight": "65",
+      "memberId": "02a827cf-dc9b-4778-81ad-38b4f0b97339",
+      "assessments": [],
+      "bookings": [],
       "goals": []
     }
   ]

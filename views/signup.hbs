@@ -34,8 +34,8 @@
 
             <div class="field">
                 <label> Gender </label>
-                <select class="ui dropdown" name="gender">
-                    <option value=""> Unspecified </option>
+                <select class="ui fluid dropdown" name="gender">
+                    <option value=""> Please choose an option </option>
                     <option value="male"> Male</option>
                     <option value="female"> Female</option>
                 </select>
@@ -59,7 +59,22 @@
 
     </div>
     <div class="column">
-        <!--<img class="ui image" src="../../public/images/Sign_Up.png">-->
+        <img class="ui image" src="http://res.cloudinary.com/dlswdhwpl/image/upload/v1503514000/SignUp-page_guaqpt.png" alt="Sign Up icon">
     </div>
 
 </div>
+
+<script>$(".ui.fluid.dropdown").dropdown({
+})
+</script>
+
+<script>
+    function validatePassword() {
+        var passwordValid = document.forms["signup"]["passwordValid"].value;
+        var password = document.forms["signup"]["password"].value;
+        if(passwordValid !== password) {
+            alert("Your password validation must match your password");
+            return false;
+        }
+    }
+</script>

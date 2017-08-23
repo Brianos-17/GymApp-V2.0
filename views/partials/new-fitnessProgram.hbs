@@ -1,0 +1,97 @@
+{{#if updatedProgram}}
+    <form class="ui stacked segment form" name="editProgram" action="/trainerDashboard/editProgram/{{updatedProgram.programId}}" method="POST">
+{{else}}
+    <form class="ui stacked segment form" name="addNewProgram" action="/trainerDashboard/addNewProgram" method="POST">
+{{/if}}
+
+    <div class="three fields">
+
+        <div class="field">
+            <label>Member</label>
+            <select class="ui fluid dropdown" name="memberId">
+                <option value="">Choose a member</option>
+                {{#each memberList}}
+                    <option value="{{memberId}}">{{firstName}} {{lastName}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="field">
+            <label>Session 1</label>
+            <select class="ui fluid dropdown" multiple="" name="session1">
+                <option value="">Choose a program</option>
+                <option value="Free Weights">Free Weights</option>
+                <option value="Rowing Machine">Rowing Machine</option>
+                <option value="Treadmill">Treadmill</option>
+                <option value="Leg Press">Leg Press</option>
+                <option value="Bike">Bike</option>
+                {{#each classList}}
+                    <option value="{{className}}">{{className}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="field">
+            <label>Session 2</label>
+            <select class="ui fluid dropdown" multiple="" name="session2">
+                <option value="">Choose a program</option>
+                <option value="Free Weights">Free Weights</option>
+                <option value="Rowing Machine">Rowing Machine</option>
+                <option value="Treadmill">Treadmill</option>
+                <option value="Leg Press">Leg Press</option>
+                <option value="Bike">Bike</option>
+                {{#each classList}}
+                    <option value="{{className}}">{{className}}</option>
+                {{/each}}
+            </select>
+        </div>
+    </div>
+    <div class="three fields">
+        <div class="field">
+            <label>Session 3</label>
+            <select class="ui fluid dropdown" multiple="" name="session3">
+                <option value="">Choose a program</option>
+                <option value="Free Weights">Free Weights</option>
+                <option value="Rowing Machine">Rowing Machine</option>
+                <option value="Treadmill">Treadmill</option>
+                <option value="Leg Press">Leg Press</option>
+                <option value="Bike">Bike</option>
+                {{#each classList}}
+                    <option value="{{className}}">{{className}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="field">
+            <label>Session 4</label>
+            <select class="ui fluid dropdown" multiple="" name="session4">
+                <option value="">Choose a program</option>
+                <option value="Free Weights">Free Weights</option>
+                <option value="Rowing Machine">Rowing Machine</option>
+                <option value="Treadmill">Treadmill</option>
+                <option value="Leg Press">Leg Press</option>
+                <option value="Bike">Bike</option>
+                {{#each classList}}
+                    <option value="{{className}}">{{className}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="field">
+            <label>Session 5</label>
+            <select class="ui fluid dropdown" multiple="" name="session5">
+                <option value="">Choose a program</option>
+                <option value="Free Weights">Free Weights</option>
+                <option value="Rowing Machine">Rowing Machine</option>
+                <option value="Treadmill">Treadmill</option>
+                <option value="Leg Press">Leg Press</option>
+                <option value="Bike">Bike</option>
+                {{#each classList}}
+                    <option value="{{className}}">{{className}}</option>
+                {{/each}}
+            </select>
+        </div>
+    </div>
+    <button class="ui blue submit button">Create</button>
+</form>
+
+<script>$(".ui.fluid.dropdown").dropdown({
+})
+</script>

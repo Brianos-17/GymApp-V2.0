@@ -1,9 +1,8 @@
 {{#if updatedClass}}
     <form class="ui stacked segment form" name="editClass" action="/trainerDashboard/editClass/{{updatedClass.classId}}" method="POST">
-{{/if}}
-{{#unless updatedClass}}
+{{else}}
     <form class="ui stacked segment form" name="addNewClass" action="/trainerDashboard/addNewClass" method="POST">
-{{/unless}}
+{{/if}}
 <!--toggles views depending on whether trainer is adding or editing class-->
 
     <div class="three fields">
@@ -13,8 +12,7 @@
         </div>
         <div class="field">
             <label> Capacity </label>
-            <select class="ui dropdown" name="maxCapacity">
-                <option value="0"> 0 </option>
+            <select class="ui fluid dropdown" name="maxCapacity">
                 <option value="1"> 1 </option>
                 <option value="2"> 2 </option>
                 <option value="3"> 3 </option>
@@ -49,7 +47,7 @@
         </div>
         <div class="field">
             <label> Difficulty </label>
-            <select class="ui dropdown" name="difficultyLevel">
+            <select class="ui fluid dropdown" name="difficultyLevel">
                 <option value="Beginner"> Beginner </option>
                 <option value="Intermediary"> Intermediary </option>
                 <option value="Advanced"> Advanced </option>
@@ -59,7 +57,7 @@
     <div class="three fields">
         <div class="field">
             <label> Duration </label>
-            <select class="ui dropdown" name="duration">
+            <select class="ui fluid dropdown" name="duration">
                 <option value="1"> 1 Week </option>
                 <option value="2"> 2 Weeks </option>
                 <option value="3"> 3 Weeks </option>
@@ -98,6 +96,8 @@
 {{/unless}}
     <!--toggles views depending on whether trainer is adding or editing class-->
 
+</form>
+
     <script>
         $(function(){
             $('#startDateCalendar').calendar(
@@ -114,4 +114,7 @@
         });
     </script>
     <!--//code to allow calendar to popup when selected with times -->
-</form>
+
+    <script>$(".ui.fluid.dropdown").dropdown({
+    })
+    </script>

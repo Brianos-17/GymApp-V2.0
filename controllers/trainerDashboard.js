@@ -9,6 +9,7 @@ const analytics = require('../utils/analytics.js');
 const member = require('../models/members-store.js');
 const trainer = require('../models/trainer-store.js');
 const classes = require('../models/class-store.js');
+const program = require('../models/program-store.js');
 const uuid = require('uuid');
 
 const trainerDashboard = {
@@ -148,6 +149,7 @@ const trainerDashboard = {
       memberList: memberList,
       bookingList: bookingList,
     };
+    logger.debug('Rendering bookings');
     response.render('bookings', viewData);
   },
 
@@ -159,6 +161,7 @@ const trainerDashboard = {
     const newBooking = {
       bookingId: uuid(),
       memberId: memberId,
+      trainerId: trainerId,
       trainerFirstName: loggedInTrainer.firstName,
       trainerLastName: loggedInTrainer.lastName,
       memberFirstName: currentMember.firstName,
@@ -166,16 +169,33 @@ const trainerDashboard = {
       bookingDate: request.body.bookingDate,
       bookingTime: request.body.bookingTime,
     };
-    trainer.addBooking(trainerId, newBooking);
-    member.addBooking(memberId, newBooking);
+    const memberBookings = member.getAllBookings(memberId);
+    let memberFree = true;//Boolean check to see if member is already booked
+    for (let i = 0; i < memberBookings.length; i++) {
+      if ((newBooking.bookingDate === memberBookings[i].bookingDate) &&
+          (newBooking.bookingTime === memberBookings[i].bookingTime)) { //Checks to see if member is already booked at this date & time
+        memberFree = false;
+        break;
+      }
+    }
+
+    if (memberFree) {
+      member.addBooking(memberId, newBooking);
+      trainer.addBooking(trainerId, newBooking);
+    } else {
+      logger.info(`Unfortunately ${currentMember.firstName} is already booked at this time`);
+    }
+
     response.redirect('/trainerBookings');
   },
 
   removeBooking(request, response) {
     const currentTrainer = accounts.getCurrentTrainer(request);
     const bookingId = request.params.bookingId;
-    logger.info(`Removing booking ${bookingId} from ${currentTrainer.firstName}`);
+    const memberId = request.params.memberId;
     trainer.removeBooking(currentTrainer.trainerId, bookingId);
+    member.removeBooking(memberId, bookingId); //Removes from both the trainer and member
+    logger.info(`Removing booking ${bookingId} from ${currentTrainer.firstName}`);
     response.redirect('/trainerBookings');
   },
 
@@ -195,16 +215,16 @@ const trainerDashboard = {
   editBooking(request, response) {
     const currentTrainer = accounts.getCurrentTrainer(request);
     const bookingId = request.params.bookingId;
-    const editedBooking = trainer.getBookingById(currentTrainer.trainerId, bookingId);
     const memberId = request.body.memberId;
-    const newMember = member.getMemberById(memberId);
-    editedBooking.memberId = memberId;
-    editedBooking.memberFirstName = newMember.firstName;
-    editedBooking.memberLastName = newMember.lastName;
-    editedBooking.bookingDate = request.body.bookingDate;
-    editedBooking.bookingTime = request.body.bookingTime;
+    const editedBooking1 = trainer.getBookingById(currentTrainer.trainerId, bookingId);
+    editedBooking1.bookingDate = request.body.bookingDate;
+    editedBooking1.bookingTime = request.body.bookingTime;
+    const editedBooking2 = member.getBookingById(memberId, bookingId);
+    editedBooking2.bookingDate = request.body.bookingDate;
+    editedBooking2.bookingTime = request.body.bookingTime;
     logger.info(`Editing booking ${bookingId} for ${currentTrainer.firstName}`);
     trainer.save();//Saves info after update
+    member.save();
     response.redirect('/trainerBookings');
   },
 
@@ -227,10 +247,80 @@ const trainerDashboard = {
       targetGoal: request.body.targetGoal,
       goalDate: request.body.goalDate,
       description: request.body.description,
-      status: 'open',
+      status: 'Open',
     };
     member.addGoal(memberId, newGoal);
     response.redirect('/trainerGoals');
+  },
+
+  fitnessProgram(request, response) {
+    const currentTrainer = accounts.getCurrentTrainer(request);
+    const classList = classes.getAllClasses();
+    const memberList = member.getAllMembers();
+    const programList = program.getAllPrograms();
+    const viewData = {
+      trainer: currentTrainer,
+      classList: classList,
+      memberList: memberList,
+      programList: programList,
+    };
+    response.render('fitnessProgram', viewData);
+  },
+
+  addNewProgram(request, response) {
+    const memberId = request.body.memberId;
+    const currentMember = member.getMemberById(memberId);
+    const newProgram = {
+      programId: uuid(),
+      memberId: memberId,
+      memberFirstName: currentMember.firstName,
+      memberLastName: currentMember.lastName,
+      session1: request.body.session1,
+      session2: request.body.session2,
+      session3: request.body.session3,
+      session4: request.body.session4,
+      session5: request.body.session5,
+    };
+    program.addProgram(newProgram);
+    logger.debug(`Assigning member ${memberId} new fitness program ${newProgram.programId}`);
+    response.redirect('/trainerFitnessPrograms');
+  },
+
+  removeProgram(request, response) {
+    const programId = request.params.programId;
+    program.removeProgram(programId);
+    logger.info(`Removing fitness program: ${programId}`);
+    response.redirect('/trainerFitnessPrograms');
+  },
+
+  updateProgram(request, response) {
+    const programId = request.params.programId;
+    const updatedProgram = program.getProgramById(programId);
+    const memberList = member.getAllMembers();
+    const classList = classes.getAllClasses();
+    const viewData = {
+      updatedProgram: updatedProgram,
+      memberList: memberList,
+      classList: classList,
+    };
+    response.render('updateFitnessProgram', viewData);
+  },
+
+  editProgram(request, response) {
+    const programId = request.params.programId;
+    const editedProgram = program.getProgramById(programId);
+    const memberId = request.body.memberId;
+    const newMember = member.getMemberById(memberId);
+    editedProgram.memberId = memberId;
+    editedProgram.memberFirstName = newMember.firstName;
+    editedProgram.memberLastName = newMember.lastName;
+    editedProgram.session1 = request.body.session1;
+    editedProgram.session2 = request.body.session2;
+    editedProgram.session3 = request.body.session3;
+    editedProgram.session4 = request.body.session4;
+    editedProgram.session5 = request.body.session5;
+    program.save();
+    response.redirect('/trainerFitnessPrograms');
   },
 };
 

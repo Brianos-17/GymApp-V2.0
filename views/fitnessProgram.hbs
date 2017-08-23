@@ -1,0 +1,15 @@
+{{#if trainer}}
+    {{> trainer-menu id="fitnessProgram"}}
+{{else}}
+    {{> member-menu id="fitnessProgram"}}
+{{/if}}
+
+<section class="ui raised segment">
+    {{#if trainer}}
+        <h4>Create a new Fitness Program</h4>
+        {{> new-fitnessProgram}}
+    {{/if}}
+
+    <h4>Current Fitness Programs</h4>
+    {{> fitnessProgram-details}}
+</section>

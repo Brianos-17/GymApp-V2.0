@@ -1,0 +1,38 @@
+{
+  "programs": [
+    {
+      "programId": "4fc711bd-b285-40ce-a9d3-80d180a2d05b",
+      "memberId": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
+      "memberFirstName": "Marge",
+      "memberLastName": "Simpson",
+      "session1": [
+        "Free Weights",
+        "Treadmill"
+      ],
+      "session2": [
+        "Leg Press",
+        "HIT"
+      ],
+      "session3": "Spin",
+      "session4": "Bike",
+      "session5": "Free Weights"
+    },
+    {
+      "programId": "7e53d15b-c679-4e1b-9e6c-4dd313e3de5c",
+      "memberId": "3ad52697-6d98-4d80-8273-084de55a86c0",
+      "memberFirstName": "Homer",
+      "memberLastName": "Simpson",
+      "session1": "Yoga",
+      "session2": [
+        "Rowing Machine",
+        "Leg Press"
+      ],
+      "session3": "HIT",
+      "session4": [
+        "Rowing Machine",
+        "Treadmill"
+      ],
+      "session5": "Free Weights"
+    }
+  ]
+}

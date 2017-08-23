@@ -4,10 +4,9 @@
         <th>
             {{#if member}}
                 Trainer
-            {{/if}}
-            {{#unless member}}
+            {{else}}
                 Member
-            {{/unless}}
+            {{/if}}
         </th>
         <th>Date</th>
         <th>Time</th>
@@ -20,26 +19,24 @@
         <td>
             {{#if ../member}}
                 {{trainerFirstName}} {{trainerLastName}}
-            {{/if}}
-            {{#unless ../member}}
+            {{else}}
                 {{memberFirstName}} {{memberLastName}}
-            {{/unless}}
+            {{/if}}
         </td>
         <td>{{bookingDate}}</td>
         <td>{{bookingTime}}</td>
         <td>
             {{#if ../member}}
-                <a href="/dashboard/updateBooking/{{bookingId}}">
+                <a href="/dashboard/{{trainerId}}/updateBooking/{{bookingId}}">
                     <i class="large blue edit icon"></i></a>
-                <a href="/dashboard/removeBooking/{{bookingId}}">
+                <a href="/dashboard/{{trainerId}}/removeBooking/{{bookingId}}">
+                    <i class="large red trash icon"></i></a>
+            {{else}}
+                <a href="/trainerDashboard/{{memberId}}/updateBooking/{{bookingId}}">
+                    <i class="large blue edit icon"></i></a>
+                <a href="/trainerDashboard/{{memberId}}/removeBooking/{{bookingId}}">
                     <i class="large red trash icon"></i></a>
             {{/if}}
-            {{#unless ../member}}
-                <a href="/trainerDashboard/updateBooking/{{bookingId}}">
-                    <i class="large blue edit icon"></i></a>
-                <a href="/trainerDashboard/removeBooking/{{bookingId}}">
-                    <i class="large red trash icon"></i></a>
-            {{/unless}}
         </td>
     </div>
     </tbody>

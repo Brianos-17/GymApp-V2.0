@@ -1,0 +1,35 @@
+<table class="ui fixed center aligned table">
+    <thead>
+    <tr>
+        <th> Member </th>
+        <th> Session 1 </th>
+        <th> Session 2 </th>
+        <th> Session 3 </th>
+        <th> Session 4 </th>
+        <th> Session 5 </th>
+        {{#if trainer}}
+            <th> Edit </th>
+        {{/if}}
+    </tr>
+    </thead>
+    {{#each programList}}
+        <tbody>
+        <div class="ui bulleted list">
+            <td>{{memberFirstName}} {{memberLastName}}</td>
+            <td>{{session1}}</td>
+            <td>{{session2}}</td>
+            <td>{{session3}}</td>
+            <td>{{session4}}</td>
+            <td>{{session5}}</td>
+            {{#if ../trainer}}
+                <td>
+                    <a href="/trainerDashboard/updateProgram/{{programId}}">
+                        <i class="large blue edit icon"></i></a>
+                    <a href="/trainerDashboard/removeProgram/{{programId}}">
+                        <i class="large red trash icon"></i></a>
+                </td>
+            {{/if}}
+        </div>
+        </tbody>
+    {{/each}}
+</table>

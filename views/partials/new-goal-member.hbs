@@ -3,10 +3,11 @@
     <div class="three fields">
         <div class="field">
             <label> Target Area </label>
-            <select type="ui dropdown" name="targetArea">
-                <option vlaue="weight"> Weight </option>
+            <select class="ui fluid dropdown" name="targetArea">
+                <option value="">Please choose an option</option>
+                <option value="weight"> Weight </option>
                 <option value="chest"> Chest </option>
-                <option vlaue="thigh"> Thigh </option>
+                <option value="thigh"> Thigh </option>
                 <option value="upperArm"> Upper Arm </option>
                 <option value="waist"> Waist </option>
                 <option value="hips"> Hips </option>
@@ -34,6 +35,10 @@
     <button class="ui blue submit button"> Set Goal </button>
 
 </form>
+
+<script>$(".ui.fluid.dropdown").dropdown({
+})
+</script>
 
 <script>
     $(function(){

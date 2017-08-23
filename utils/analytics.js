@@ -7,7 +7,7 @@ const accounts = require('../controllers/accounts');
 const analytics = {
   calculateBMI(member) {
     const list = member.assessments;
-    if (list > 0) {
+    if (list.length > 0) {
       const latestAssessment = list[0];//Check first assessment as all new ones are being added to start, not end
       return (latestAssessment.weight / (member.height * member.height)).toFixed(2);//rounds number to 2 decimal places
     } else {
@@ -17,21 +17,21 @@ const analytics = {
 
   BMICategory(bmi) {
     if (bmi < 15) {
-      return 'VERY SEVERELY UNDERWEIGHT';
+      return 'Very Severely Underweight';
     } else if ((bmi >= 15) && (bmi < 16)) {
-      return 'SEVERELY UNDERWEIGHT';
+      return 'Severely Underweight';
     } else if ((bmi >= 16) && (bmi < 18.5)) {
-      return 'UNDERWEIGHT';
+      return 'Underweight';
     } else if ((bmi >= 18.5) && (bmi < 25)) {
-      return 'NORMAL';
+      return 'Normal';
     } else if ((bmi >= 25) && (bmi < 30)) {
-      return 'OVERWEIGHT';
+      return 'Overweight';
     } else if ((bmi >= 30) && (bmi < 35)) {
-      return 'MODERATELY OBESE';
+      return 'Moderately Obese';
     } else if ((bmi >= 35) && (bmi < 40)) {
-      return 'SEVERELY OBESE';
+      return 'Severely Obese';
     } else {
-      return 'VERY SEVERELY OBESE';
+      return 'Very Severely Obese';
     }
   },
 
@@ -69,7 +69,7 @@ const analytics = {
   },
 
   trend(member) {
-    let trend = 'green';
+    let trend = '';
     const idealBMI = 22;
     const list = member.assessments;
     if (list.length === 1) {
@@ -87,8 +87,6 @@ const analytics = {
       } else {
         trend = 'red';
       }
-    } else {
-      trend = 'black';
     }
 
     list[0].trend = trend;
