@@ -222,6 +222,23 @@ const dashboard = {
     response.redirect('/memberClasses');
   },
 
+  unenrollAll(request, response) {
+    const classId = request.params.classId;
+    const currentClass = classes.getClassById(classId);
+    const currentMember = accounts.getCurrentMember(request);
+    for (let i = 0; i < currentClass.sessions.length; i++) { //Checks each session of the current class
+      for (let x = 0; x < currentClass.sessions[i].members.length; x++) { //Checks each member of the current session
+        if (currentClass.sessions[i].members[x] === currentMember.memberId) {
+          currentClass.sessions[i].members.splice(currentClass.sessions[i].members[x], 1);
+          currentClass.sessions[i].currentCapacity -= 1;
+        }
+      }
+    }
+
+    classes.save();
+    response.redirect('/memberClasses');
+  },
+
   booking(request, response) {
     const member = accounts.getCurrentMember(request);
     const trainerList = trainer.getAllTrainers();
