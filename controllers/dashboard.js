@@ -135,19 +135,21 @@ const dashboard = {
     const classId = request.params.classId;
     const chosenClass = classes.getClassById(classId);
     const currentMember = accounts.getCurrentMember(request);
+    const unenrollSessions = [];
     for (let i = 0; i < chosenClass.sessions.length; i++) {
-      let notEnrolledInThisSession = true;
       for (let x = 0; x < chosenClass.sessions[i].members.length; x++) {
         if (chosenClass.sessions[i].members[x] === currentMember.memberId) {
-          notEnrolledInThisSession = false;
+          unenrollSessions.push(chosenClass.sessions[i]);
           break;
         }
       }
 
     }
+
     const viewData = {
       chosenClass: chosenClass,
       member: currentMember,
+      unenrollSessions: unenrollSessions,
     };
     response.render('classUnenrollment', viewData);
   },
@@ -193,8 +195,7 @@ const dashboard = {
       if ((notAlreadyEnrolled) && (session.currentCapacity < session.maxCapacity)) {
         session.currentCapacity += 1;
         logger.debug(`Enrolling ${currentMember.firstName} in ${currentClass.className} on ${currentClass.sessions[i].date}`);
-        session.members.push(currentMember.memberId);
-        //Add member Id to session to keep track of enrollment and allow for boolean check
+        session.members.push(currentMember.memberId);//Add member Id to session to keep track of enrollment and allow for boolean check
         classes.save();
       } else {
         logger.info('Unable to enroll in current session');
