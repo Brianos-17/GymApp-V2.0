@@ -56,7 +56,18 @@
       "password": "secret",
       "gender": "female",
       "trainerId": "1bd5638f-4e3a-4d90-5f78-1355a25a4d2e",
-      "bookings": []
+      "bookings": [
+        {
+          "bookingId": "319f9b4e-5029-48b6-adaa-7e6e01bf46d6",
+          "trainerId": "1bd5638f-4e3a-4d90-5f78-1355a25a4d2e",
+          "memberFirstName": "Lisa",
+          "memberLastName": "Simpson",
+          "trainerFirstName": "Natasha",
+          "trainerLastName": "Romanova",
+          "bookingDate": "August 31, 2017",
+          "bookingTime": "5:00 PM"
+        }
+      ]
     }
   ]
 }

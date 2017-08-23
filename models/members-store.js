@@ -70,6 +70,11 @@ const memberStore = {
     }
   },
 
+  getAllBookings(memberId) {
+    const member = this.getTrainerById(memberId);
+    return member.bookings;
+  },
+
   removeBooking(memberId, bookingId) {
     const member = this.getMemberById(memberId);
     _.remove(member.bookings, { bookingId: bookingId });
