@@ -7,7 +7,7 @@ const accounts = require('../controllers/accounts');
 const analytics = {
   calculateBMI(member) {
     const list = member.assessments;
-    if (list > 0) {
+    if (list.length > 0) {
       const latestAssessment = list[0];//Check first assessment as all new ones are being added to start, not end
       return (latestAssessment.weight / (member.height * member.height)).toFixed(2);//rounds number to 2 decimal places
     } else {
@@ -87,8 +87,6 @@ const analytics = {
       } else {
         trend = 'red';
       }
-    } else {
-      trend = 'black';
     }
 
     list[0].trend = trend;

@@ -11,6 +11,32 @@
       "memberId": "3ad52697-6d98-4d80-8273-084de55a86c0",
       "assessments": [
         {
+          "assessmentId": "1bf31d7b-651f-410b-b052-f77b1b210349",
+          "date": "2017-08-23 10:32:43",
+          "weight": "79",
+          "chest": "0",
+          "thigh": "0",
+          "upperArm": "0",
+          "waist": "0",
+          "hips": "0",
+          "trend": "",
+          "comment": "",
+          "updateComment": false
+        },
+        {
+          "assessmentId": "e1a02305-a12e-44d9-87b2-6b976b42b800",
+          "date": "2017-08-23 10:32:36",
+          "weight": "50",
+          "chest": "0",
+          "thigh": "0",
+          "upperArm": "0",
+          "waist": "0",
+          "hips": "0",
+          "trend": "green",
+          "comment": "",
+          "updateComment": false
+        },
+        {
           "assessmentId": "30321e24-0d5c-48f1-a50c-f073e32d30cf",
           "date": "2017-07-10 17:15:35",
           "weight": "345",

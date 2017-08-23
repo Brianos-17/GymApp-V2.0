@@ -51,7 +51,7 @@ const dashboard = {
       comment: '',
       updateComment: false,//boolean to toggle update comment section on and off for members and trainers
     };
-    logger.debug(`Adding new assessment for ${loggedInMember.firstName}`, newAssessment);
+    logger.debug(`Adding new assessment for ${loggedInMember.firstName}`);
     member.addAssessment(memberId, newAssessment);
     analytics.trend(loggedInMember);
     response.redirect('/dashboard');
