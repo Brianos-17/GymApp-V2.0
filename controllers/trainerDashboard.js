@@ -247,7 +247,7 @@ const trainerDashboard = {
       targetGoal: request.body.targetGoal,
       goalDate: request.body.goalDate,
       description: request.body.description,
-      status: 'open',
+      status: 'Open',
     };
     member.addGoal(memberId, newGoal);
     response.redirect('/trainerGoals');
