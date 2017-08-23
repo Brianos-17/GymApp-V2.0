@@ -172,7 +172,28 @@
       "startingWeight": "65",
       "memberId": "02a827cf-dc9b-4778-81ad-38b4f0b97339",
       "assessments": [],
-      "bookings": [],
+      "bookings": [
+        {
+          "bookingId": "7ebbe2de-b9e5-427d-b8a9-f3d2241aab7d",
+          "trainerId": "4ad52597-6d98-4d80-8673-084be55a87a0",
+          "memberFirstName": "Lisa",
+          "memberLastName": "Simpson",
+          "trainerFirstName": "Tony",
+          "trainerLastName": "Stark",
+          "bookingDate": "August 31, 2017",
+          "bookingTime": "12:00 PM"
+        },
+        {
+          "bookingId": "380d3c8b-f644-428a-a5b6-a4c0d7627279",
+          "trainerId": "4ad52597-6d98-4d80-8673-084be55a87a0",
+          "memberFirstName": "Lisa",
+          "memberLastName": "Simpson",
+          "trainerFirstName": "Tony",
+          "trainerLastName": "Stark",
+          "bookingDate": "August 21, 2017",
+          "bookingTime": "12:00 AM"
+        }
+      ],
       "goals": []
     }
   ]

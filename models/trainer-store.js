@@ -45,6 +45,11 @@ const trainerStore = {
     }
   },
 
+  getAllBookings(trainerId) {
+    const trainer = this.getTrainerById(trainerId);
+    return trainer.bookings;
+  },
+
   removeBooking(trainerId, bookingId) {
     const trainer = this.getTrainerById(trainerId);
     _.remove(trainer.bookings, { bookingId: bookingId });

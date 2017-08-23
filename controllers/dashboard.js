@@ -248,6 +248,7 @@ const dashboard = {
       trainerList: trainerList,
       bookingList: bookingList,
     };
+    logger.debug('Rendering bookings');
     response.render('bookings', viewData);
   },
 
@@ -266,8 +267,23 @@ const dashboard = {
       bookingDate: request.body.bookingDate,
       bookingTime: request.body.bookingTime,
     };
-    member.addBooking(memberId, newBooking);
-    trainer.addBooking(trainerId, newBooking);
+    const trainerBookings = trainer.getAllBookings(trainerId);
+    let trainerFree = true; //Boolean cheack to see if trainer is free at this time
+    for (let i = 0; i < trainerBookings.length; i++) {
+      if ((newBooking.bookingDate === trainerBookings[i].bookingDate) &&
+          (newBooking.bookingTime === trainerBookings[i].bookingTime)) { //Checks to see if trainer is already booked at this date & time
+        trainerFree = false;
+        break;
+      }
+    }
+
+    if (trainerFree) {
+      member.addBooking(memberId, newBooking);
+      trainer.addBooking(trainerId, newBooking);
+    } else {
+      logger.info(`Unfortunately ${currentTrainer.firstName} is already booked at this time`);
+    }
+
     response.redirect('/memberBookings');
   },
 
