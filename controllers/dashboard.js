@@ -275,9 +275,9 @@ const dashboard = {
     const currentMember = accounts.getCurrentMember(request);
     const trainerId = request.params.trainerId;
     const bookingId = request.params.bookingId;
-    logger.info(`Removing booking ${bookingId} from ${currentMember.firstName}`);
     member.removeBooking(currentMember.memberId, bookingId);
-    trainer.removeBooking(trainerId, bookingId);
+    trainer.removeBooking(trainerId, bookingId); //Removes from both the trainer and member
+    logger.info(`Removing booking ${bookingId} from ${currentMember.firstName}`);
     response.redirect('/memberBookings');
   },
 

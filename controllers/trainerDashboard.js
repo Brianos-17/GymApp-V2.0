@@ -175,8 +175,10 @@ const trainerDashboard = {
   removeBooking(request, response) {
     const currentTrainer = accounts.getCurrentTrainer(request);
     const bookingId = request.params.bookingId;
-    logger.info(`Removing booking ${bookingId} from ${currentTrainer.firstName}`);
+    const memberId = request.params.memberId;
     trainer.removeBooking(currentTrainer.trainerId, bookingId);
+    member.removeBooking(memberId, bookingId); //Removes from both the trainer and member
+    logger.info(`Removing booking ${bookingId} from ${currentTrainer.firstName}`);
     response.redirect('/trainerBookings');
   },
 
