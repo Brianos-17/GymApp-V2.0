@@ -215,16 +215,16 @@ const trainerDashboard = {
   editBooking(request, response) {
     const currentTrainer = accounts.getCurrentTrainer(request);
     const bookingId = request.params.bookingId;
-    const editedBooking = trainer.getBookingById(currentTrainer.trainerId, bookingId);
     const memberId = request.body.memberId;
-    const newMember = member.getMemberById(memberId);
-    editedBooking.memberId = memberId;
-    editedBooking.memberFirstName = newMember.firstName;
-    editedBooking.memberLastName = newMember.lastName;
-    editedBooking.bookingDate = request.body.bookingDate;
-    editedBooking.bookingTime = request.body.bookingTime;
+    const editedBooking1 = trainer.getBookingById(currentTrainer.trainerId, bookingId);
+    editedBooking1.bookingDate = request.body.bookingDate;
+    editedBooking1.bookingTime = request.body.bookingTime;
+    const editedBooking2 = member.getBookingById(memberId, bookingId);
+    editedBooking2.bookingDate = request.body.bookingDate;
+    editedBooking2.bookingTime = request.body.bookingTime;
     logger.info(`Editing booking ${bookingId} for ${currentTrainer.firstName}`);
     trainer.save();//Saves info after update
+    member.save();
     response.redirect('/trainerBookings');
   },
 
