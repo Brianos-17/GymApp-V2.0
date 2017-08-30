@@ -24,55 +24,57 @@ const dashboard = {
     for (let i = 0; i < goalList.length; i++) {
       if ((goalList[i].status === 'Open') || (goalList[i].status === 'Awaiting processing')) {
         goalPrompt = false;//Turns off prompt
-        const timeRemaining = (new Date(goalList[i].goalDate) - new Date);
+        const timeRemaining = (new Date(goalList[i].goalDate) - new Date);//Calculates goal date - today in milliseconds
         //Divide milliseconds by 1000 to get seconds, then 60 for minutes, 60 for hours and 24 for days
         const daysTillGoalIsDue = ((((timeRemaining / 1000) / 60) / 60) / 24);
-        if (daysTillGoalIsDue < 0) {//Checks if the goal is due or overdue
+        if (daysTillGoalIsDue <= 0) {//Checks if the goal is due or overdue
           const area = goalList[i].targetArea;
           const target = parseInt(goalList[i].targetGoal);
           if (loggedInMember.assessments.length > 0) {
             const latestAssessment = loggedInMember.assessments[0];
             const assessmentCheck = (new Date(latestAssessment.assessmentDate) - new Date);//Checks how long ago the last assessment was
             const daysSinceLastAssessment = ((((assessmentCheck / 1000) / 60) / 60) / 24);//Calculates this time in days
-            if ((daysSinceLastAssessment < 0) && (daysSinceLastAssessment > -3)) {//Will perform check if assessment was done recently
+            if ((daysSinceLastAssessment < 0) && (daysSinceLastAssessment > (-3))) {//Will perform check if assessment was done recently
               if (area === 'weight') {
-                if ((target < (latestAssessment.weight + 2)) || (target > (latestAssessment.weight - 2))) {
-                  goalList[i].status = 'Achieved';
+                logger.info(target);
+                logger.info(parseInt(latestAssessment.weight + 2));
+                if ((target < (parseInt(latestAssessment.weight + 2))) || (target > (parseInt(latestAssessment.weight - 2)))) {
+                  goalList[i].status = 'What';
                 } else {
                   goalList[i].status = 'Missed';
                 }
               } else if (area === 'chest') {
-                if ((target < (latestAssessment.chest + 1)) || (target > (latestAssessment.chest - 1))) {
+                if ((target < (parseInt(latestAssessment.chest + 1))) || (target > (parseInt(latestAssessment.chest - 1)))) {
                   goalList[i].status = 'Achieved';
                 } else {
                   goalList[i].status = 'Missed';
                 }
               } else if (area === 'thigh') {
-                if ((target < (latestAssessment.thigh + 1)) || (target > (latestAssessment.thigh - 1))) {
+                if ((target < (parseInt(latestAssessment.thigh + 1))) || (target > (parseInt(latestAssessment.thigh - 1)))) {
                   goalList[i].status = 'Achieved';
                 } else {
                   goalList[i].status = 'Missed';
                 }
               } else if (area === 'upperArm') {
-                if ((target < (latestAssessment.upperArm + 1)) || (target > (latestAssessment.upperArm - 1))) {
+                if ((target < (parseInt(latestAssessment.upperArm + 1))) || (target > (parseInt(latestAssessment.upperArm - 1)))) {
                   goalList[i].status = 'Achieved';
                 } else {
                   goalList[i].status = 'Missed';
                 }
               } else if (area === 'waist') {
-                if ((target < (latestAssessment.waist + 1)) || (target > (latestAssessment.waist - 1))) {
+                if ((target < (parseInt(latestAssessment.waist + 1))) || (target > (parseInt(latestAssessment.waist - 1)))) {
                   goalList[i].status = 'Achieved';
                 } else {
                   goalList[i].status = 'Missed';
                 }
               } else if (area === 'hips') {
-                if ((target < (latestAssessment.hips + 1)) || (target > (latestAssessment.hips - 1))) {
+                if ((target < (parseInt(latestAssessment.hips + 1))) || (target > (parseInt(latestAssessment.hips - 1)))) {
                   goalList[i].status = 'Achieved';
                 } else {
                   goalList[i].status = 'Missed';
                 }
               }
-            } else if (daysSinceLastAssessment < -3) {
+            } else if (daysSinceLastAssessment < (-3)) {
               goalList[i].status = 'Awaiting processing';
               assessmentPrompt = true;
             }

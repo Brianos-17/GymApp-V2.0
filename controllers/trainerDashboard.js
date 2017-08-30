@@ -107,14 +107,14 @@ const trainerDashboard = {
     }
 
     classes.addClasses(newClass);
-    response.redirect('/classes');
+    response.redirect('/trainerClasses');
   },
 
   removeClass(request, response) {
     const classId = request.params.classId;
     logger.debug(`Deleting class ${classId}`);
     classes.removeClass(classId);
-    response.redirect('/classes');
+    response.redirect('/trainerClasses');
   },
 
   updateClass(request, response) {
@@ -137,7 +137,7 @@ const trainerDashboard = {
     editedClass.classTime = request.body.classTime;
     editedClass.startDate = request.body.startDate;
     classes.save();
-    response.redirect('/classes');
+    response.redirect('/trainerClasses');
   },
 
   booking(request, response) {
