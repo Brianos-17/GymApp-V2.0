@@ -113,12 +113,12 @@ const dashboard = {
       assessmentId: uuid(),
       assessmentDate: new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''), //Retrieved from https://stackoverflow.com/questions/10645994/node-js-how-to-format-a-date-string-in-utc
       //Returns date in simple ISO format, replaces unnecessary characters with spaces to make format readable
-      weight: request.body.weight,
-      chest: request.body.chest,
-      thigh: request.body.thigh,
-      upperArm: request.body.upperArm,
-      waist: request.body.waist,
-      hips: request.body.hips,
+      weight: parseInt(request.body.weight, 10),
+      chest: parseInt(request.body.chest, 10),
+      thigh: parseInt(request.body.thigh, 10),
+      upperArm: parseInt(request.body.upperArm, 10),
+      waist: parseInt(request.body.waist, 10),
+      hips: parseInt(request.body.hips, 10),
       trend: '',
       comment: '',
       updateComment: false,//boolean to toggle update comment section on and off for members and trainers
