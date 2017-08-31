@@ -73,7 +73,7 @@
           "targetGoal": 300,
           "goalDate": "August 2, 2017",
           "description": "test",
-          "status": "Open"
+          "status": "Missed"
         }
       ]
     },
@@ -86,7 +86,21 @@
       "height": "1.6",
       "startingWeight": "65",
       "memberId": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
-      "assessments": [],
+      "assessments": [
+        {
+          "assessmentId": "64e97b1b-035a-416c-bdc0-39361d9eda24",
+          "assessmentDate": "2017-08-31 21:30:47",
+          "weight": 45,
+          "chest": 7,
+          "thigh": 7,
+          "upperArm": 7,
+          "waist": 7,
+          "hips": 7,
+          "trend": "red",
+          "comment": "",
+          "updateComment": false
+        }
+      ],
       "bookings": [
         {
           "bookingId": "8d495e7d-e2a6-43c1-98c0-f59e9cfe9a3f",
@@ -100,7 +114,24 @@
           "bookingTime": "6:00 PM"
         }
       ],
-      "goals": []
+      "goals": [
+        {
+          "goalId": "0ad57fa0-6f4c-4c18-8aea-6197d3703434",
+          "targetArea": "weight",
+          "targetGoal": 444,
+          "goalDate": "April 3, 2017",
+          "description": "",
+          "status": "Missed"
+        },
+        {
+          "goalId": "10ff9092-76bc-4482-a78b-04821bcbe6a2",
+          "targetArea": "thigh",
+          "targetGoal": 4567,
+          "goalDate": "August 8, 2017",
+          "description": "",
+          "status": "Open"
+        }
+      ]
     },
     {
       "firstName": "Bart",

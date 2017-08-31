@@ -21,23 +21,23 @@ const dashboard = {
     let goalPrompt = true;//Boolean check to see if the member has any open goals and whether a prompt should be given
     let assessmentPrompt = false;//Boolean to prompt member to have an assessment if a goal has been waiting for over 3 days
     logger.debug('Checking status of goals');
+
     for (let i = 0; i < goalList.length; i++) {
       if ((goalList[i].status === 'Open') || (goalList[i].status === 'Awaiting processing')) {
         goalPrompt = false;//Turns off prompt
         const timeRemaining = (new Date(goalList[i].goalDate) - new Date);//Calculates goal date - today in milliseconds
         //Divide milliseconds by 1000 to get seconds, then 60 for minutes, 60 for hours and 24 for days
         const daysTillGoalIsDue = ((((timeRemaining / 1000) / 60) / 60) / 24);
-        if (daysTillGoalIsDue <= 0) {//Checks if the goal is due or overdue
+        if (daysTillGoalIsDue <= 0) {//Checks if the goal is due
           const area = goalList[i].targetArea;
           const target = goalList[i].targetGoal;
           if (loggedInMember.assessments.length > 0) {
             const latestAssessment = loggedInMember.assessments[0];
             const assessmentCheck = (new Date(latestAssessment.assessmentDate) - new Date);//Checks how long ago the last assessment was
             const daysSinceLastAssessment = ((((assessmentCheck / 1000) / 60) / 60) / 24);//Calculates this time in days
-            if ((daysSinceLastAssessment < 0) && (daysSinceLastAssessment > (-3))) {//Will perform check if assessment was done recently
+            logger.info(assessmentCheck);
+            if ((daysSinceLastAssessment <= 0) && (daysSinceLastAssessment >= (-3))) {//Will perform check if assessment was done recently
               if (area === 'weight') {
-                logger.info(target);
-                logger.info(latestAssessment.weight + 2);
                 if ((target < (latestAssessment.weight + 2)) && (target > (latestAssessment.weight - 2))) {
                   goalList[i].status = 'Achieved';
                 } else {
@@ -74,10 +74,13 @@ const dashboard = {
                   goalList[i].status = 'Missed';
                 }
               }
-            } else if (daysSinceLastAssessment < (-3)) {
+            } else {
               goalList[i].status = 'Awaiting processing';
               assessmentPrompt = true;
             }
+          } else {
+            goalList[i].status = 'Awaiting processing';
+            assessmentPrompt = true;
           }
         }
       }
@@ -113,7 +116,7 @@ const dashboard = {
       assessmentId: uuid(),
       assessmentDate: new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''), //Retrieved from https://stackoverflow.com/questions/10645994/node-js-how-to-format-a-date-string-in-utc
       //Returns date in simple ISO format, replaces unnecessary characters with spaces to make format readable
-      weight: parseInt(request.body.weight, 10),
+      weight: parseInt(request.body.weight, 10),//Converts string input to int base 10
       chest: parseInt(request.body.chest, 10),
       thigh: parseInt(request.body.thigh, 10),
       upperArm: parseInt(request.body.upperArm, 10),
