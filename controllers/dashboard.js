@@ -29,7 +29,7 @@ const dashboard = {
         const daysTillGoalIsDue = ((((timeRemaining / 1000) / 60) / 60) / 24);
         if (daysTillGoalIsDue <= 0) {//Checks if the goal is due or overdue
           const area = goalList[i].targetArea;
-          const target = parseInt(goalList[i].targetGoal);
+          const target = goalList[i].targetGoal;
           if (loggedInMember.assessments.length > 0) {
             const latestAssessment = loggedInMember.assessments[0];
             const assessmentCheck = (new Date(latestAssessment.assessmentDate) - new Date);//Checks how long ago the last assessment was
@@ -37,38 +37,38 @@ const dashboard = {
             if ((daysSinceLastAssessment < 0) && (daysSinceLastAssessment > (-3))) {//Will perform check if assessment was done recently
               if (area === 'weight') {
                 logger.info(target);
-                logger.info(parseInt(latestAssessment.weight + 2));
-                if ((target < (parseInt(latestAssessment.weight + 2))) || (target > (parseInt(latestAssessment.weight - 2)))) {
-                  goalList[i].status = 'What';
+                logger.info(latestAssessment.weight + 2);
+                if ((target < (latestAssessment.weight + 2)) && (target > (latestAssessment.weight - 2))) {
+                  goalList[i].status = 'Achieved';
                 } else {
                   goalList[i].status = 'Missed';
                 }
               } else if (area === 'chest') {
-                if ((target < (parseInt(latestAssessment.chest + 1))) || (target > (parseInt(latestAssessment.chest - 1)))) {
+                if ((target < (latestAssessment.chest + 1)) && (target > (latestAssessment.chest - 1))) {
                   goalList[i].status = 'Achieved';
                 } else {
                   goalList[i].status = 'Missed';
                 }
               } else if (area === 'thigh') {
-                if ((target < (parseInt(latestAssessment.thigh + 1))) || (target > (parseInt(latestAssessment.thigh - 1)))) {
+                if ((target < (latestAssessment.thigh + 1)) && (target > (latestAssessment.thigh - 1))) {
                   goalList[i].status = 'Achieved';
                 } else {
                   goalList[i].status = 'Missed';
                 }
               } else if (area === 'upperArm') {
-                if ((target < (parseInt(latestAssessment.upperArm + 1))) || (target > (parseInt(latestAssessment.upperArm - 1)))) {
+                if ((target < (latestAssessment.upperArm + 1)) && (target > (latestAssessment.upperArm - 1))) {
                   goalList[i].status = 'Achieved';
                 } else {
                   goalList[i].status = 'Missed';
                 }
               } else if (area === 'waist') {
-                if ((target < (parseInt(latestAssessment.waist + 1))) || (target > (parseInt(latestAssessment.waist - 1)))) {
+                if ((target < (latestAssessment.waist + 1)) && (target > (latestAssessment.waist - 1))) {
                   goalList[i].status = 'Achieved';
                 } else {
                   goalList[i].status = 'Missed';
                 }
               } else if (area === 'hips') {
-                if ((target < (parseInt(latestAssessment.hips + 1))) || (target > (parseInt(latestAssessment.hips - 1)))) {
+                if ((target < (latestAssessment.hips + 1)) && (target > (latestAssessment.hips - 1))) {
                   goalList[i].status = 'Achieved';
                 } else {
                   goalList[i].status = 'Missed';
@@ -414,7 +414,7 @@ const dashboard = {
     const newGoal = {
       goalId: uuid(),
       targetArea: request.body.targetArea,
-      targetGoal: request.body.targetGoal,
+      targetGoal: parseInt(request.body.targetGoal, 10),//Converts to int of base 10
       goalDate: request.body.goalDate,
       description: request.body.description,
       status: 'Open',

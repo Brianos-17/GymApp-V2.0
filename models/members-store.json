@@ -11,6 +11,19 @@
       "memberId": "3ad52697-6d98-4d80-8273-084de55a86c0",
       "assessments": [
         {
+          "assessmentId": "2f072350-d7a0-4ce0-ad64-0e314d58f16f",
+          "assessmentDate": "2017-08-31 17:03:40",
+          "weight": "200",
+          "chest": "0",
+          "thigh": "0",
+          "upperArm": "0",
+          "waist": "0",
+          "hips": "0",
+          "trend": "",
+          "comment": "",
+          "updateComment": false
+        },
+        {
           "assessmentId": "30321e24-0d5c-48f1-a50c-f073e32d30cf",
           "assessmentDate": "2017-07-10 17:15:35",
           "weight": "345",
@@ -52,20 +65,20 @@
       ],
       "goals": [
         {
-          "goalId": "2277c47e-da20-4315-852c-03df1bcc99ba",
-          "targetArea": "Weight",
-          "targetGoal": "95.00",
-          "goalDate": "August 31, 2017",
-          "description": "This is a test",
+          "goalId": "26baddf6-6b8d-4e74-979b-28a4fd1a8cb3",
+          "targetArea": "waist",
+          "targetGoal": 25,
+          "goalDate": "September 12, 2017",
+          "description": "sdf",
           "status": "Open"
         },
         {
-          "goalId": "ab4b061b-892d-4a7f-b85f-98af1d01909c",
-          "targetArea": "chest",
-          "targetGoal": "32.05",
-          "goalDate": "August 30, 2017",
-          "description": "This is also a test",
-          "status": "Achieved"
+          "goalId": "bc3994bb-07d2-4ce4-a83d-e5532f3669c6",
+          "targetArea": "weight",
+          "targetGoal": 120,
+          "goalDate": "August 13, 2017",
+          "description": "",
+          "status": "Awaiting processing"
         }
       ]
     },
@@ -119,32 +132,7 @@
           "bookingTime": "6:00 PM"
         }
       ],
-      "goals": [
-        {
-          "goalId": "cbc28862-7ae1-45eb-a7ac-49ab830b5fc2",
-          "targetArea": "weight",
-          "targetGoal": "444",
-          "goalDate": "August 31, 2017",
-          "description": "",
-          "status": "Open"
-        },
-        {
-          "goalId": "dc3c2d4b-dda1-4d13-a471-5b91768ce93e",
-          "targetArea": "chest",
-          "targetGoal": "444",
-          "goalDate": "July 5, 2017",
-          "description": "",
-          "status": "Achieved"
-        },
-        {
-          "goalId": "77da3a6c-5b3d-4f2f-8e12-fdd35cd4951b",
-          "targetArea": "weight",
-          "targetGoal": "999",
-          "goalDate": "August 14, 2017",
-          "description": "",
-          "status": "Open"
-        }
-      ]
+      "goals": []
     },
     {
       "firstName": "Bart",

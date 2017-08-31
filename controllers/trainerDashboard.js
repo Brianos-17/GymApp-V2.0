@@ -100,7 +100,7 @@ const trainerDashboard = {
         sessionId: uuid(),
         date: date.toISOString().substring(0, 10),//substring to only get date and remove timestamp
         currentCapacity: 0,
-        maxCapacity: parseInt(request.body.maxCapacity, 10),//Converts string to int
+        maxCapacity: parseInt(request.body.maxCapacity, 10),//Converts string to int of base 10 i.e. decimal
         members: [],//Array of members in order to keep track of who has enrolled in each session
       };
       newClass.sessions.push(session);
@@ -244,7 +244,7 @@ const trainerDashboard = {
     const newGoal = {
       goalId: uuid(),
       targetArea: request.body.targetArea,
-      targetGoal: request.body.targetGoal,
+      targetGoal: parseInt(request.body.targetGoal, 10),//Converts to int of base 10
       goalDate: request.body.goalDate,
       description: request.body.description,
       status: 'Open',
