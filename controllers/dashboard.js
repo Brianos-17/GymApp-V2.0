@@ -21,61 +21,66 @@ const dashboard = {
     let goalPrompt = true;//Boolean check to see if the member has any open goals and whether a prompt should be given
     let assessmentPrompt = false;//Boolean to prompt member to have an assessment if a goal has been waiting for over 3 days
     logger.debug('Checking status of goals');
+
     for (let i = 0; i < goalList.length; i++) {
       if ((goalList[i].status === 'Open') || (goalList[i].status === 'Awaiting processing')) {
         goalPrompt = false;//Turns off prompt
-        const timeRemaining = (new Date(goalList[i].goalDate) - new Date);
+        const timeRemaining = (new Date(goalList[i].goalDate) - new Date);//Calculates goal date - today in milliseconds
         //Divide milliseconds by 1000 to get seconds, then 60 for minutes, 60 for hours and 24 for days
         const daysTillGoalIsDue = ((((timeRemaining / 1000) / 60) / 60) / 24);
-        if (daysTillGoalIsDue < 0) {//Checks if the goal is due or overdue
+        if (daysTillGoalIsDue <= 0) {//Checks if the goal is due
           const area = goalList[i].targetArea;
-          const target = parseInt(goalList[i].targetGoal);
+          const target = goalList[i].targetGoal;
           if (loggedInMember.assessments.length > 0) {
             const latestAssessment = loggedInMember.assessments[0];
             const assessmentCheck = (new Date(latestAssessment.assessmentDate) - new Date);//Checks how long ago the last assessment was
             const daysSinceLastAssessment = ((((assessmentCheck / 1000) / 60) / 60) / 24);//Calculates this time in days
-            if ((daysSinceLastAssessment < 0) && (daysSinceLastAssessment > -3)) {//Will perform check if assessment was done recently
+            logger.info(assessmentCheck);
+            if ((daysSinceLastAssessment <= 0) && (daysSinceLastAssessment >= (-3))) {//Will perform check if assessment was done recently
               if (area === 'weight') {
-                if ((target < (latestAssessment.weight + 2)) || (target > (latestAssessment.weight - 2))) {
+                if ((target < (latestAssessment.weight + 2)) && (target > (latestAssessment.weight - 2))) {
                   goalList[i].status = 'Achieved';
                 } else {
                   goalList[i].status = 'Missed';
                 }
               } else if (area === 'chest') {
-                if ((target < (latestAssessment.chest + 1)) || (target > (latestAssessment.chest - 1))) {
+                if ((target < (latestAssessment.chest + 1)) && (target > (latestAssessment.chest - 1))) {
                   goalList[i].status = 'Achieved';
                 } else {
                   goalList[i].status = 'Missed';
                 }
               } else if (area === 'thigh') {
-                if ((target < (latestAssessment.thigh + 1)) || (target > (latestAssessment.thigh - 1))) {
+                if ((target < (latestAssessment.thigh + 1)) && (target > (latestAssessment.thigh - 1))) {
                   goalList[i].status = 'Achieved';
                 } else {
                   goalList[i].status = 'Missed';
                 }
               } else if (area === 'upperArm') {
-                if ((target < (latestAssessment.upperArm + 1)) || (target > (latestAssessment.upperArm - 1))) {
+                if ((target < (latestAssessment.upperArm + 1)) && (target > (latestAssessment.upperArm - 1))) {
                   goalList[i].status = 'Achieved';
                 } else {
                   goalList[i].status = 'Missed';
                 }
               } else if (area === 'waist') {
-                if ((target < (latestAssessment.waist + 1)) || (target > (latestAssessment.waist - 1))) {
+                if ((target < (latestAssessment.waist + 1)) && (target > (latestAssessment.waist - 1))) {
                   goalList[i].status = 'Achieved';
                 } else {
                   goalList[i].status = 'Missed';
                 }
               } else if (area === 'hips') {
-                if ((target < (latestAssessment.hips + 1)) || (target > (latestAssessment.hips - 1))) {
+                if ((target < (latestAssessment.hips + 1)) && (target > (latestAssessment.hips - 1))) {
                   goalList[i].status = 'Achieved';
                 } else {
                   goalList[i].status = 'Missed';
                 }
               }
-            } else if (daysSinceLastAssessment < -3) {
+            } else {
               goalList[i].status = 'Awaiting processing';
               assessmentPrompt = true;
             }
+          } else {
+            goalList[i].status = 'Awaiting processing';
+            assessmentPrompt = true;
           }
         }
       }
@@ -111,12 +116,12 @@ const dashboard = {
       assessmentId: uuid(),
       assessmentDate: new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''), //Retrieved from https://stackoverflow.com/questions/10645994/node-js-how-to-format-a-date-string-in-utc
       //Returns date in simple ISO format, replaces unnecessary characters with spaces to make format readable
-      weight: request.body.weight,
-      chest: request.body.chest,
-      thigh: request.body.thigh,
-      upperArm: request.body.upperArm,
-      waist: request.body.waist,
-      hips: request.body.hips,
+      weight: parseInt(request.body.weight, 10),//Converts string input to int base 10
+      chest: parseInt(request.body.chest, 10),
+      thigh: parseInt(request.body.thigh, 10),
+      upperArm: parseInt(request.body.upperArm, 10),
+      waist: parseInt(request.body.waist, 10),
+      hips: parseInt(request.body.hips, 10),
       trend: '',
       comment: '',
       updateComment: false,//boolean to toggle update comment section on and off for members and trainers
@@ -384,11 +389,10 @@ const dashboard = {
   editBooking(request, response) {
     const currentMember = accounts.getCurrentMember(request);
     const bookingId = request.params.bookingId;
-    const trainerId = request.params.trainerId;
     const editedBooking1 = member.getBookingById(currentMember.memberId, bookingId);
     editedBooking1.bookingDate = request.body.bookingDate;
     editedBooking1.bookingTime = request.body.bookingTime;
-    const editedBooking2 = trainer.getBookingById(trainerId, bookingId);
+    const editedBooking2 = trainer.getBookingById(request.body.newTrainerId, bookingId);
     editedBooking2.bookingDate = request.body.bookingDate;
     editedBooking2.bookingTime = request.body.bookingTime;
     logger.info(`Editing booking ${bookingId} for ${currentMember.firstName}`);
@@ -412,7 +416,7 @@ const dashboard = {
     const newGoal = {
       goalId: uuid(),
       targetArea: request.body.targetArea,
-      targetGoal: request.body.targetGoal,
+      targetGoal: parseInt(request.body.targetGoal, 10),//Converts to int of base 10
       goalDate: request.body.goalDate,
       description: request.body.description,
       status: 'Open',

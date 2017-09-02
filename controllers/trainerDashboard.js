@@ -49,7 +49,7 @@ const trainerDashboard = {
   removeMember(request, response) {
     const memberId = request.params.memberId; //Retrieves members id from the #each loop in member-list.hbs
     logger.debug(`Deleting member ${memberId}`);
-    member.removeMember(id);
+    member.removeMember(memberId);
     response.redirect('/trainerDashboard');
   },
 
@@ -100,21 +100,21 @@ const trainerDashboard = {
         sessionId: uuid(),
         date: date.toISOString().substring(0, 10),//substring to only get date and remove timestamp
         currentCapacity: 0,
-        maxCapacity: parseInt(request.body.maxCapacity, 10),//Converts string to int
+        maxCapacity: parseInt(request.body.maxCapacity, 10),//Converts string to int of base 10 i.e. decimal
         members: [],//Array of members in order to keep track of who has enrolled in each session
       };
       newClass.sessions.push(session);
     }
 
     classes.addClasses(newClass);
-    response.redirect('/classes');
+    response.redirect('/trainerClasses');
   },
 
   removeClass(request, response) {
     const classId = request.params.classId;
     logger.debug(`Deleting class ${classId}`);
     classes.removeClass(classId);
-    response.redirect('/classes');
+    response.redirect('/trainerClasses');
   },
 
   updateClass(request, response) {
@@ -137,7 +137,7 @@ const trainerDashboard = {
     editedClass.classTime = request.body.classTime;
     editedClass.startDate = request.body.startDate;
     classes.save();
-    response.redirect('/classes');
+    response.redirect('/trainerClasses');
   },
 
   booking(request, response) {
@@ -215,11 +215,10 @@ const trainerDashboard = {
   editBooking(request, response) {
     const currentTrainer = accounts.getCurrentTrainer(request);
     const bookingId = request.params.bookingId;
-    const memberId = request.body.memberId;
     const editedBooking1 = trainer.getBookingById(currentTrainer.trainerId, bookingId);
     editedBooking1.bookingDate = request.body.bookingDate;
     editedBooking1.bookingTime = request.body.bookingTime;
-    const editedBooking2 = member.getBookingById(memberId, bookingId);
+    const editedBooking2 = member.getBookingById(request.body.newMemberId, bookingId);
     editedBooking2.bookingDate = request.body.bookingDate;
     editedBooking2.bookingTime = request.body.bookingTime;
     logger.info(`Editing booking ${bookingId} for ${currentTrainer.firstName}`);
@@ -244,7 +243,7 @@ const trainerDashboard = {
     const newGoal = {
       goalId: uuid(),
       targetArea: request.body.targetArea,
-      targetGoal: request.body.targetGoal,
+      targetGoal: parseInt(request.body.targetGoal, 10),//Converts to int of base 10
       goalDate: request.body.goalDate,
       description: request.body.description,
       status: 'Open',

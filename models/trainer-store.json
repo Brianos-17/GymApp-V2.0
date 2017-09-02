@@ -7,19 +7,7 @@
       "password": "secret",
       "gender": "male",
       "trainerId": "4ad52597-6d98-4d80-8673-084be55a87a0",
-      "bookings": [
-        {
-          "bookingId": "786f6a39-6d5b-42d2-994c-61e86a9d4ec6",
-          "memberId": "3ad52697-6d98-4d80-8273-084de55a86c0",
-          "trainerId": "4ad52597-6d98-4d80-8673-084be55a87a0",
-          "trainerFirstName": "Tony",
-          "trainerLastName": "Stark",
-          "memberFirstName": "Homer",
-          "memberLastName": "Simpson",
-          "bookingDate": "August 16, 2017",
-          "bookingTime": "2:00 PM"
-        }
-      ]
+      "bookings": []
     },
     {
       "firstName": "Steve",
@@ -28,7 +16,19 @@
       "password": "secret",
       "gender": "male",
       "trainerId": "4ad52337-6e17-4d80-8f78-084be25a4ad7",
-      "bookings": []
+      "bookings": [
+        {
+          "bookingId": "ebb3c768-9901-4067-ad4a-31296a327def",
+          "trainerId": "4ad52337-6e17-4d80-8f78-084be25a4ad7",
+          "memberId": "3ad52697-6d98-4d80-8273-084de55a86c0",
+          "memberFirstName": "Homer",
+          "memberLastName": "Simpson",
+          "trainerFirstName": "Steve",
+          "trainerLastName": "Rogers",
+          "bookingDate": "September 20, 2017",
+          "bookingTime": "8:00 PM"
+        }
+      ]
     },
     {
       "firstName": "Natasha",
@@ -48,6 +48,28 @@
           "memberLastName": "Simpson",
           "bookingDate": "August 30, 2017",
           "bookingTime": "6:00 PM"
+        },
+        {
+          "bookingId": "57169b4f-9540-4571-8f0e-376e172da18f",
+          "trainerId": "1bd5638f-4e3a-4d90-5f78-1355a25a4d2e",
+          "memberId": "3ad52697-6d98-4d80-8273-084de55a86c0",
+          "memberFirstName": "Homer",
+          "memberLastName": "Simpson",
+          "trainerFirstName": "Natasha",
+          "trainerLastName": "Romanova",
+          "bookingDate": "September 14, 2017",
+          "bookingTime": "5:30 PM"
+        },
+        {
+          "bookingId": "181bcefd-ac7c-4f11-9751-2df1d9f45b99",
+          "memberId": "a25aaa9f-617e-4ebc-bca0-2a757ae48e37",
+          "trainerId": "1bd5638f-4e3a-4d90-5f78-1355a25a4d2e",
+          "trainerFirstName": "Natasha",
+          "trainerLastName": "Romanova",
+          "memberFirstName": "Bart",
+          "memberLastName": "Simpson",
+          "bookingDate": "September 8, 2017",
+          "bookingTime": "4:35 PM"
         }
       ]
     }

@@ -27,10 +27,10 @@ router.get('/trainerFitnessPrograms', trainerDashboard.fitnessProgram);
 router.get('/memberFitnessPrograms', dashboard.fitnessProgram);
 
 router.get('/dashboard/removeAssessment/:assessmentId', dashboard.removeAssessment);
-router.get('/trainerDashboard/:id/removeAssessment/:assessmentId', trainerDashboard.removeAssessment);
+router.get('/trainerDashboard/:memberId/removeAssessment/:assessmentId', trainerDashboard.removeAssessment);
 router.get('/trainerDashboard', trainerDashboard.index);
-router.get('/trainerDashboard/deleteMember/:id', trainerDashboard.removeMember);
-router.get('/trainerDashboard/viewMemberAssessments/:id', trainerDashboard.viewMemberAssessments);
+router.get('/trainerDashboard/deleteMember/:memberId', trainerDashboard.removeMember);
+router.get('/trainerDashboard/viewMemberAssessments/:memberId', trainerDashboard.viewMemberAssessments);
 router.get('/trainerDashboard/removeClass/:classId', trainerDashboard.removeClass);
 router.get('/trainerDashboard/updateClass/:classId', trainerDashboard.updateClass);
 router.get('/dashboard/enroll/:classId', dashboard.classEnrollment);
@@ -50,7 +50,7 @@ router.get('/trainerDashboard/updateProgram/:programId', trainerDashboard.update
 router.post('/register', accounts.register);
 router.post('/authenticate', accounts.authenticate);
 router.post('/dashboard/addassessment', dashboard.addAssessment);
-router.post('/memberAssessment/:id/updateComment/:assessmentId', trainerDashboard.updateComment);
+router.post('/memberAssessment/:memberId/updateComment/:assessmentId', trainerDashboard.updateComment);
 router.post('/updateProfile', dashboard.updateProfile);
 router.post('/trainerDashboard/addNewClass', trainerDashboard.addNewClass);
 router.post('/trainerDashboard/editClass/:classId', trainerDashboard.editClass);
