@@ -11,19 +11,6 @@
       "memberId": "3ad52697-6d98-4d80-8273-084de55a86c0",
       "assessments": [
         {
-          "assessmentId": "741707c3-1fcc-4827-8488-4ddc5823d790",
-          "assessmentDate": "2017-09-02 20:16:29",
-          "weight": 0,
-          "chest": 2,
-          "thigh": 2,
-          "upperArm": 2,
-          "waist": 2,
-          "hips": 2,
-          "trend": "red",
-          "comment": "",
-          "updateComment": false
-        },
-        {
           "assessmentId": "617324d1-5dc2-4bc8-995f-a402bf13d356",
           "assessmentDate": "2017-09-02 20:15:53",
           "weight": 2,
