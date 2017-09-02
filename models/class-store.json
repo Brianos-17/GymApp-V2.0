@@ -105,7 +105,7 @@
           "currentCapacity": 1,
           "maxCapacity": 25,
           "members": [
-            "a25aaa9f-617e-4ebc-bca0-2a757ae48e37"
+            "3ad52697-6d98-4d80-8273-084de55a86c0"
           ]
         },
         {
@@ -114,7 +114,7 @@
           "currentCapacity": 1,
           "maxCapacity": 25,
           "members": [
-            "a25aaa9f-617e-4ebc-bca0-2a757ae48e37"
+            "3ad52697-6d98-4d80-8273-084de55a86c0"
           ]
         },
         {
@@ -123,7 +123,7 @@
           "currentCapacity": 1,
           "maxCapacity": 25,
           "members": [
-            "a25aaa9f-617e-4ebc-bca0-2a757ae48e37"
+            "3ad52697-6d98-4d80-8273-084de55a86c0"
           ]
         },
         {
@@ -132,7 +132,7 @@
           "currentCapacity": 1,
           "maxCapacity": 25,
           "members": [
-            "a25aaa9f-617e-4ebc-bca0-2a757ae48e37"
+            "3ad52697-6d98-4d80-8273-084de55a86c0"
           ]
         },
         {
@@ -141,7 +141,7 @@
           "currentCapacity": 1,
           "maxCapacity": 25,
           "members": [
-            "a25aaa9f-617e-4ebc-bca0-2a757ae48e37"
+            "3ad52697-6d98-4d80-8273-084de55a86c0"
           ]
         },
         {
@@ -150,26 +150,22 @@
           "currentCapacity": 1,
           "maxCapacity": 25,
           "members": [
-            "a25aaa9f-617e-4ebc-bca0-2a757ae48e37"
+            "3ad52697-6d98-4d80-8273-084de55a86c0"
           ]
         },
         {
           "sessionId": "e77a08a3-8029-4012-99ce-b01d0cb326f4",
           "date": "2017-09-11",
-          "currentCapacity": 1,
+          "currentCapacity": 0,
           "maxCapacity": 25,
-          "members": [
-            "a25aaa9f-617e-4ebc-bca0-2a757ae48e37"
-          ]
+          "members": []
         },
         {
           "sessionId": "e9f46ccc-29a3-4e75-a85d-06944967b67e",
           "date": "2017-09-18",
-          "currentCapacity": 1,
+          "currentCapacity": 0,
           "maxCapacity": 25,
-          "members": [
-            "a25aaa9f-617e-4ebc-bca0-2a757ae48e37"
-          ]
+          "members": []
         }
       ]
     }

@@ -11,15 +11,28 @@
       "memberId": "3ad52697-6d98-4d80-8273-084de55a86c0",
       "assessments": [
         {
-          "assessmentId": "2c070415-1f37-4ec5-a024-4adae520a285",
-          "assessmentDate": "2017-09-02 19:44:25",
-          "weight": 90,
-          "chest": null,
-          "thigh": null,
-          "upperArm": null,
-          "waist": null,
-          "hips": null,
-          "trend": "green",
+          "assessmentId": "741707c3-1fcc-4827-8488-4ddc5823d790",
+          "assessmentDate": "2017-09-02 20:16:29",
+          "weight": 0,
+          "chest": 2,
+          "thigh": 2,
+          "upperArm": 2,
+          "waist": 2,
+          "hips": 2,
+          "trend": "red",
+          "comment": "",
+          "updateComment": false
+        },
+        {
+          "assessmentId": "617324d1-5dc2-4bc8-995f-a402bf13d356",
+          "assessmentDate": "2017-09-02 20:15:53",
+          "weight": 2,
+          "chest": 44,
+          "thigh": 54,
+          "upperArm": 443,
+          "waist": 333,
+          "hips": 22,
+          "trend": "red",
           "comment": "",
           "updateComment": false
         },
@@ -52,17 +65,6 @@
       ],
       "bookings": [
         {
-          "bookingId": "786f6a39-6d5b-42d2-994c-61e86a9d4ec6",
-          "memberId": "3ad52697-6d98-4d80-8273-084de55a86c0",
-          "trainerId": "4ad52597-6d98-4d80-8673-084be55a87a0",
-          "trainerFirstName": "Tony",
-          "trainerLastName": "Stark",
-          "memberFirstName": "Homer",
-          "memberLastName": "Simpson",
-          "bookingDate": "",
-          "bookingTime": ""
-        },
-        {
           "bookingId": "ebb3c768-9901-4067-ad4a-31296a327def",
           "trainerId": "4ad52337-6e17-4d80-8f78-084be25a4ad7",
           "memberId": "3ad52697-6d98-4d80-8273-084de55a86c0",
@@ -72,6 +74,17 @@
           "trainerLastName": "Rogers",
           "bookingDate": "September 20, 2017",
           "bookingTime": "8:00 PM"
+        },
+        {
+          "bookingId": "57169b4f-9540-4571-8f0e-376e172da18f",
+          "trainerId": "1bd5638f-4e3a-4d90-5f78-1355a25a4d2e",
+          "memberId": "3ad52697-6d98-4d80-8273-084de55a86c0",
+          "memberFirstName": "Homer",
+          "memberLastName": "Simpson",
+          "trainerFirstName": "Natasha",
+          "trainerLastName": "Romanova",
+          "bookingDate": "September 14, 2017",
+          "bookingTime": "5:30 PM"
         }
       ],
       "goals": [
