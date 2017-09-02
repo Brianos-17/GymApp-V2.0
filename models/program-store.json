@@ -39,11 +39,14 @@
       "memberId": "3ad52697-6d98-4d80-8273-084de55a86c0",
       "memberFirstName": "Homer",
       "memberLastName": "Simpson",
-      "session1": "Leg Press",
-      "session2": "Bike",
-      "session3": "Bike",
-      "session4": "Treadmill",
-      "session5": "Treadmill"
+      "session1": [
+        "Leg Press",
+        "Bike"
+      ],
+      "session2": "Free Weights",
+      "session3": "Free Weights",
+      "session4": "Free Weights",
+      "session5": "Free Weights"
     }
   ]
 }

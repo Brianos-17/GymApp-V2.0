@@ -7,12 +7,19 @@
     <div class="three fields">
 
         <div class="field">
+            {{#if updatedProgram}}
+                <label>Member</label>
+            <select class="ui fluid dropdown" name="memberId">
+                <option value="{{updatedProgram.memberId}}">{{updatedProgram.memberFirstName}} {{updatedProgram.memberLastName}}</option>
+            </select>
+            {{else}}
             <label>Member</label>
             <select class="ui fluid dropdown" name="memberId">
                 {{#each memberList}}
                     <option value="{{memberId}}">{{firstName}} {{lastName}}</option>
                 {{/each}}
             </select>
+            {{/if}}
         </div>
 
         <div class="field">
