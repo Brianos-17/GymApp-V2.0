@@ -197,20 +197,6 @@
       "assessments": [],
       "bookings": [],
       "goals": []
-    },
-    {
-      "firstName": "Maggie",
-      "lastName": "Simpson",
-      "email": "maggie@simpson.com",
-      "password": "secret",
-      "passwordValid": "secret",
-      "gender": "female",
-      "height": "1.0",
-      "startingWeight": "35",
-      "memberId": "6692e79e-a15d-4afe-b7a0-8912fc0f883a",
-      "assessments": [],
-      "bookings": [],
-      "goals": []
     }
   ]
 }

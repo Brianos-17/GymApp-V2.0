@@ -49,7 +49,7 @@ const trainerDashboard = {
   removeMember(request, response) {
     const memberId = request.params.memberId; //Retrieves members id from the #each loop in member-list.hbs
     logger.debug(`Deleting member ${memberId}`);
-    member.removeMember(id);
+    member.removeMember(memberId);
     response.redirect('/trainerDashboard');
   },
 
