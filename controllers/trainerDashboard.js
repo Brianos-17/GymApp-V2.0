@@ -215,11 +215,10 @@ const trainerDashboard = {
   editBooking(request, response) {
     const currentTrainer = accounts.getCurrentTrainer(request);
     const bookingId = request.params.bookingId;
-    const memberId = request.body.memberId;
     const editedBooking1 = trainer.getBookingById(currentTrainer.trainerId, bookingId);
     editedBooking1.bookingDate = request.body.bookingDate;
     editedBooking1.bookingTime = request.body.bookingTime;
-    const editedBooking2 = member.getBookingById(memberId, bookingId);
+    const editedBooking2 = member.getBookingById(request.body.newMemberId, bookingId);
     editedBooking2.bookingDate = request.body.bookingDate;
     editedBooking2.bookingTime = request.body.bookingTime;
     logger.info(`Editing booking ${bookingId} for ${currentTrainer.firstName}`);

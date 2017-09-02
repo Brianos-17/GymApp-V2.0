@@ -11,6 +11,19 @@
       "memberId": "3ad52697-6d98-4d80-8273-084de55a86c0",
       "assessments": [
         {
+          "assessmentId": "2c070415-1f37-4ec5-a024-4adae520a285",
+          "assessmentDate": "2017-09-02 19:44:25",
+          "weight": 90,
+          "chest": null,
+          "thigh": null,
+          "upperArm": null,
+          "waist": null,
+          "hips": null,
+          "trend": "green",
+          "comment": "",
+          "updateComment": false
+        },
+        {
           "assessmentId": "2968c3d7-331e-466f-9b75-6fe453da5d50",
           "assessmentDate": "2017-08-31 17:15:19",
           "weight": 95,
@@ -46,8 +59,19 @@
           "trainerLastName": "Stark",
           "memberFirstName": "Homer",
           "memberLastName": "Simpson",
-          "bookingDate": "August 16, 2017",
-          "bookingTime": "2:00 PM"
+          "bookingDate": "",
+          "bookingTime": ""
+        },
+        {
+          "bookingId": "ebb3c768-9901-4067-ad4a-31296a327def",
+          "trainerId": "4ad52337-6e17-4d80-8f78-084be25a4ad7",
+          "memberId": "3ad52697-6d98-4d80-8273-084de55a86c0",
+          "memberFirstName": "Homer",
+          "memberLastName": "Simpson",
+          "trainerFirstName": "Steve",
+          "trainerLastName": "Rogers",
+          "bookingDate": "September 20, 2017",
+          "bookingTime": "8:00 PM"
         }
       ],
       "goals": [
@@ -74,6 +98,14 @@
           "goalDate": "August 2, 2017",
           "description": "test",
           "status": "Missed"
+        },
+        {
+          "goalId": "bb19450f-abe6-49b1-b79d-5d7bde691bf5",
+          "targetArea": "thigh",
+          "targetGoal": 18,
+          "goalDate": "September 29, 2017",
+          "description": "",
+          "status": "Open"
         }
       ]
     },
@@ -122,14 +154,6 @@
           "goalDate": "April 3, 2017",
           "description": "",
           "status": "Missed"
-        },
-        {
-          "goalId": "10ff9092-76bc-4482-a78b-04821bcbe6a2",
-          "targetArea": "thigh",
-          "targetGoal": 4567,
-          "goalDate": "August 8, 2017",
-          "description": "",
-          "status": "Open"
         }
       ]
     },

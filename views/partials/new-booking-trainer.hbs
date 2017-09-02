@@ -8,7 +8,9 @@
         <div class="field">
             <label> Member </label>
             {{#if updatedBooking}}
-                <input placeholder="{{updatedBooking.memberFirstName}} {{updatedBooking.memberLastName}}" readonly="">
+                <select class="ui fluid dropdown" name="newMemberId">
+                    <option value="{{updatedBooking.memberId}}">{{updatedBooking.memberFirstName}} {{updatedBooking.memberLastName}}</option>
+                </select>
             {{else}}
             <select class="ui fluid dropdown" name="memberId">
                 {{#each memberList}}

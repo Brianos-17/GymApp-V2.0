@@ -16,8 +16,8 @@
           "trainerLastName": "Stark",
           "memberFirstName": "Homer",
           "memberLastName": "Simpson",
-          "bookingDate": "August 16, 2017",
-          "bookingTime": "2:00 PM"
+          "bookingDate": "",
+          "bookingTime": ""
         }
       ]
     },
@@ -28,7 +28,19 @@
       "password": "secret",
       "gender": "male",
       "trainerId": "4ad52337-6e17-4d80-8f78-084be25a4ad7",
-      "bookings": []
+      "bookings": [
+        {
+          "bookingId": "ebb3c768-9901-4067-ad4a-31296a327def",
+          "trainerId": "4ad52337-6e17-4d80-8f78-084be25a4ad7",
+          "memberId": "3ad52697-6d98-4d80-8273-084de55a86c0",
+          "memberFirstName": "Homer",
+          "memberLastName": "Simpson",
+          "trainerFirstName": "Steve",
+          "trainerLastName": "Rogers",
+          "bookingDate": "September 20, 2017",
+          "bookingTime": "8:00 PM"
+        }
+      ]
     },
     {
       "firstName": "Natasha",

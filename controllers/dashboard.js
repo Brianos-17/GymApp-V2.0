@@ -389,11 +389,10 @@ const dashboard = {
   editBooking(request, response) {
     const currentMember = accounts.getCurrentMember(request);
     const bookingId = request.params.bookingId;
-    const trainerId = request.params.trainerId;
     const editedBooking1 = member.getBookingById(currentMember.memberId, bookingId);
     editedBooking1.bookingDate = request.body.bookingDate;
     editedBooking1.bookingTime = request.body.bookingTime;
-    const editedBooking2 = trainer.getBookingById(trainerId, bookingId);
+    const editedBooking2 = trainer.getBookingById(request.body.newTrainerId, bookingId);
     editedBooking2.bookingDate = request.body.bookingDate;
     editedBooking2.bookingTime = request.body.bookingTime;
     logger.info(`Editing booking ${bookingId} for ${currentMember.firstName}`);
