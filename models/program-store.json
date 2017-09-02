@@ -33,6 +33,17 @@
         "Treadmill"
       ],
       "session5": "Free Weights"
+    },
+    {
+      "programId": "63b9cd87-51c9-45a3-801c-077c476eec5e",
+      "memberId": "3ad52697-6d98-4d80-8273-084de55a86c0",
+      "memberFirstName": "Homer",
+      "memberLastName": "Simpson",
+      "session1": "Leg Press",
+      "session2": "Bike",
+      "session3": "Bike",
+      "session4": "Treadmill",
+      "session5": "Treadmill"
     }
   ]
 }

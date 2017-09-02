@@ -9,7 +9,6 @@
         <div class="field">
             <label>Member</label>
             <select class="ui fluid dropdown" name="memberId">
-                <option value="">Choose a member</option>
                 {{#each memberList}}
                     <option value="{{memberId}}">{{firstName}} {{lastName}}</option>
                 {{/each}}
@@ -18,7 +17,7 @@
 
         <div class="field">
             <label>Session 1</label>
-            <select class="ui fluid dropdown" multiple="" name="session1">
+            <select class="ui fluid dropdown" multiple="" name="session1" required>
                 <option value="">Choose a program</option>
                 <option value="Free Weights">Free Weights</option>
                 <option value="Rowing Machine">Rowing Machine</option>
@@ -32,7 +31,7 @@
         </div>
         <div class="field">
             <label>Session 2</label>
-            <select class="ui fluid dropdown" multiple="" name="session2">
+            <select class="ui fluid dropdown" multiple="" name="session2" required>
                 <option value="">Choose a program</option>
                 <option value="Free Weights">Free Weights</option>
                 <option value="Rowing Machine">Rowing Machine</option>
@@ -48,7 +47,7 @@
     <div class="three fields">
         <div class="field">
             <label>Session 3</label>
-            <select class="ui fluid dropdown" multiple="" name="session3">
+            <select class="ui fluid dropdown" multiple="" name="session3" required>
                 <option value="">Choose a program</option>
                 <option value="Free Weights">Free Weights</option>
                 <option value="Rowing Machine">Rowing Machine</option>
@@ -62,7 +61,7 @@
         </div>
         <div class="field">
             <label>Session 4</label>
-            <select class="ui fluid dropdown" multiple="" name="session4">
+            <select class="ui fluid dropdown" multiple="" name="session4" required>
                 <option value="">Choose a program</option>
                 <option value="Free Weights">Free Weights</option>
                 <option value="Rowing Machine">Rowing Machine</option>
@@ -76,7 +75,7 @@
         </div>
         <div class="field">
             <label>Session 5</label>
-            <select class="ui fluid dropdown" multiple="" name="session5">
+            <select class="ui fluid dropdown" multiple="" name="session5" required>
                 <option value="">Choose a program</option>
                 <option value="Free Weights">Free Weights</option>
                 <option value="Rowing Machine">Rowing Machine</option>
